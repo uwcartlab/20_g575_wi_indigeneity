@@ -1,4 +1,5 @@
 # 20_g575_wi_indigeneity
 
 ### Team Members
-1. Brody W. Manquen
+1. Zoey Colglazier
+2. Brody W. Manquen
