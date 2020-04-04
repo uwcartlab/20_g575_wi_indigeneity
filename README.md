@@ -27,4 +27,4 @@ The reader enters the website at the title and introductory paragraph and chorop
 ## Requirements
 
 ## Wireframe
-See wireframe_draft.pdf in repo
+See [wireframe-draft-2.pdf](https://github.com/uwcartlab/20_g575_wi_indigeneity/blob/master/wireframe-draft-2.pdf) in repo
