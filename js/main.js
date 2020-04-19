@@ -27,14 +27,21 @@
 // Create Information Panel update method to dynamically update InfoPanel when new item selected
 // Create (Dynamic?) Legend for Flowline sizes
 //
+// Pseudocode for Mound Map
+// Collect TopoJSON data for Wisconsin, Mounds, and Historical Tribal Bounds and Promise data to SetMap() function
+// Translate TopoJSON data with topojson.js
+// Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
+// Draw Paths from TopoJSON data
+// Create Information Panel div
+// Create Filter in Menu Selection to filter out Destroyed, Unprotected, and Protected Mounds (checkboxes)
+// Create Retrieve via onClick/onMouseover to select Mounds
+// Create Dynamic Label Method for onClick/onMouseover of a mound
+// Create Overlay/Reexpress method to overlay historical tribal bounds
 //
-//
-//
-//
-//
-//
-//
-//
+// Miscellaneous Pseudocode
+// Create divs/styles for Article Information, Titles, Sources, etc --> i.e. all non-Map elements
+// Create Map containers, adjust for screen sizes(?)
+// Coherent Style Scheme --> Styles of Article body and of Map should be compatible. 
 //
 //
 //
