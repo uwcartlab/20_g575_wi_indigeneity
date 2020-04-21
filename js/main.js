@@ -1,8 +1,39 @@
 // Pseudocode for Choropleth Map
 
 // Collect TopoJSON data for US states and Promise data to SetMap() function
-// Translate TopoJSON data with topojson.js
-// Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
+window.onload = setMap();
+
+function setMap(){
+    var width = 960,
+        height = 460;
+    // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
+    var choropleth = d3.select("body")
+      .append("svg")
+      .attr("class", "map")
+      .attr("width", width)
+      .attr("height", height);
+
+    var choroProjection = d3.geoAlbers()
+      .center([37, -95])
+      .rotate([0, 0, 0])
+      .parallels([28, 46])
+      .scale(3000)
+      .translate([width / 2, height / 2]);
+    //use Promise.all to parallelize asynchronous data loading
+    var promises = [d3.csv("data/choroplethData.csv"),  //placeholder csv file name
+                    d3.json("data/US_states.topojson") //placeholder US State topojson name
+                   ];
+    Promise.all(promises).then(callback);
+
+    funtion callback(data){
+      csvChoropleth = data[0];
+      usStates = data[1];
+    };
+    // Translate TopoJSON data with topojson.js
+    var states = topojson.feature(usStates, usStates.objects) //need objects.???
+};
+
+
 // Draw Paths from TopoJSON data
 // Join GeoJSON features (States) with CSV data (of state repatriation raw numbers)
 // Create ColorScale (which color? which Classification method?)
