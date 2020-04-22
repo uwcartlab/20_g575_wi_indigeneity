@@ -29,17 +29,24 @@
     //promises.push(d3.csv("data/choropleth/choroplethData.csv"));  //placeholder csv file name
     promises.push(d3.json("data/choropleth/US_states.json"));
     promises.push(d3.json("data/choropleth/countries.json"));
+    promises.push(d3.json('data/WI_county.json'));
     Promise.all(promises).then(callback);
 
     function callback(data){
       //choroplethData = data[0];
       usStates = data[0];
+      wisconsin = data[2];
       // Translate TopoJSON data with topojson.js
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
+      var wisc = topojson.feature(wisconsin, wisconsin.objects.WI_county).features;
       //states = joinChoroData(states, choroplethData);
+      getWisconsin(wisc, path);
       //var choroplethColorScale = choroColors(choroplethData)
       setStates(states, choropleth, path);
       dropdown()
+=======
+      dropdown()
+>>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
 
       };
     };
@@ -109,6 +116,7 @@
       colorScale.domain(domainArray);
       return colorScale;
   };
+=======
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
     var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
@@ -173,6 +181,21 @@
       return styleObject[styleName];
     };
   }
+
+  function getWisconsin(wisc, path){
+    var wiPath = d3.selectAll(".counties")
+      .data(wisc)
+      .enter()
+      .append("path")
+      .attr("class", function(d){
+        return "county " + d.properties.COUNTY_NAM; //placeholder name
+      })
+      .attr("d", path)
+      .style("fill", function(d){
+        return '#ccc';
+      })
+  };
+>>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
 })();
 
 
