@@ -1,7 +1,7 @@
 // Choropleth Map
 //Wrapper Function for Choropleth Map
 (function(){
-  var choroplethArray = ["put variables here"]
+  var choroplethArray = ["Option 1", "Option 2", "Option 3"]
   expressed = choroplethArray[0]
   window.onload = setMap();
   function setMap(){
@@ -39,6 +39,7 @@
       //states = joinChoroData(states, choroplethData);
       //var choroplethColorScale = choroColors(choroplethData)
       setStates(states, choropleth, path);
+      dropdown()
 
       };
     };
@@ -68,16 +69,24 @@
         .append("path")
         .attr("class", function(d){
           return "state " + d.properties.postal; //placeholder name
-        })
+          })
         .attr("d", path)
         .style("fill", function(d){ // Color Enumeration Units
           var value = d.properties[expressed]
           if(value){
             return choroColors(d.properties[expressed]);
           } else {
-            return "#ccc";
-          };
+            return "#ddd";
+          }
+          })
+        .on("mouseover", function(d){
+          highlight(d.properties);
         })
+        .on("mouseout", function(d){
+          dehighlight(d.properties);
+        });
+        var desc = statePath.append("desc")
+          .text('{"stroke": "#000", "stroke-width":"0.5px"}');
     };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function choroColors(data){
@@ -100,10 +109,68 @@
       colorScale.domain(domainArray);
       return colorScale;
   };
+  // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
+  function dropdown(choroplethData){
+    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+      .append("select")
+      .attr("class", "dropdown")
+      .on("change", function(){
+        changeAttribute(this.value, choroplethData)
+        });
+    var titleOption = dropdown.append("option")
+      .attr("class", "titleOption")
+      .attr("disabled", "true")
+      .text("Select Item Type");
+    var attrOptions = dropdown.selectAll("attrOptions")
+      .data(choroplethArray)
+      .enter()
+      .append("option")
+      .attr("value", function(d){return d})
+      .text(function(d){return d});
+  };
+  // Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
+  function changeAttribute(attribute, choroplethData){
+    //change Expressed
+    expressed = attribute;
+    //recreate colorScale
+    var choroplethColorScale = choroColors(choroplethData);
+    //recolor States
+    var states = d3.selectAll(".states")
+      .transition()
+      .duration(1000)
+      .style("fill", function(d){
+        var value = d.properties[expressed];
+        if (value) {
+          return choroplethColorScale(value);
+        } else {
+          return "#ddd";
+        }
+      });
+  };
+  // Create Highlight function
+  function highlight(props){
+    var selected = d3.selectAll("."+props.postal)
+      .style("stroke", "red")
+      .style("stroke-width", "2");
+  };
+  // Create Dehighlight Function
+  function dehighlight(props){
+    var selected = d3.selectAll("."+props.postal)
+      .style("stroke", function(){
+        return getStyle(this, "stroke")
+      })
+      .style("stroke-width", function(){
+        return getStyle(this, "stroke-width")
+      });
+    function getStyle(element, styleName){
+      var styleText = d3.select(element)
+        .select("desc")
+        .text();
+      var styleObject = JSON.parse(styleText);
+      return styleObject[styleName];
+    };
+  }
 })();
-
-// Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
-// Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
 // Create Retrieve Method -- onMouseover or onClick methods
 // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
 // Create Dynamic Legend for ColorScale for expressed dataset
