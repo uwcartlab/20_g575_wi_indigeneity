@@ -2,4 +2,5 @@
     fill: #EEE;
     stroke: #AAA;
     stroke-width: 1px;
+    stroke-linecap: round;
 }
