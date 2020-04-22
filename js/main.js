@@ -147,6 +147,9 @@
         }
       });
   };
+  // Create Retrieve Method -- onMouseover or onClick methods
+  // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
+  // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
   function highlight(props){
     var selected = d3.selectAll("."+props.postal)
@@ -171,9 +174,8 @@
     };
   }
 })();
-// Create Retrieve Method -- onMouseover or onClick methods
-// Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
-// Create Dynamic Legend for ColorScale for expressed dataset
+
+
 
 // Pseudocode for Flow Map
 
