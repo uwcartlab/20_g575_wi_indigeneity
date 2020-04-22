@@ -1,9 +1,10 @@
 // Pseudocode for Choropleth Map
 
 // Collect TopoJSON data for US states and Promise data to SetMap() function
-window.onload = setMap();
-
-function setMap(){
+(function(){
+  var choroplethArray = ["put variables here"]
+  window.onload = setMap();
+  function setMap(){
     var width = 960,
         height = 460;
     // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
@@ -29,19 +30,43 @@ function setMap(){
     Promise.all(promises).then(callback);
 
     function callback(data){
-      //csvChoropleth = data[0];
+      //choroplethData = data[0];
       usStates = data[0];
       countries = data[1]
       // Translate TopoJSON data with topojson.js
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
       var country = topojson.feature(countries, countries.objects.ne_50m_admin_0_countries);
-      console.log(states)
 
       var countryPath = choropleth.append("path")
         .datum(country)
         .attr("class", "countries")
         .attr("d", path);
 
+      states = joinData(states, choroplethData)
+
+      };
+    };
+// Join GeoJSON features (States) with CSV data (of state repatriation raw numbers)
+function joinChoroData(states, choroplethData){
+
+      for (var i=0; i<choroplethData.length;i++){  //placeholder csv
+        var csvState = choroplethData[i]; //placeholder csv
+        var csvKey = csvState.postal; /// placeholder unti csv data arrives
+        for (var a=0; a<states.length;a++){
+          var geojsonProps = states[a].properties;
+          var geojsonKey = geojsonProps.postal //placeholder
+          if (geojsonKey == csvKey){
+            choroplethArray.forEach(function(attr){
+              var val = parseFloat(csvState[attr]);
+              geojsonProps[attr] = val;
+              });
+            };
+          };
+        };
+      return states;
+      };
+// Draw Paths from TopoJSON data
+function setStates(states, choropleth, path){
       var statePath = choropleth.selectAll(".states")
         .data(states)
         .enter()
@@ -52,11 +77,7 @@ function setMap(){
         })
         .attr("d", path);
     };
-};
-
-
-// Draw Paths from TopoJSON data
-// Join GeoJSON features (States) with CSV data (of state repatriation raw numbers)
+})();
 // Create ColorScale (which color? which Classification method?)
 // Color Enumeration Units
 // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
