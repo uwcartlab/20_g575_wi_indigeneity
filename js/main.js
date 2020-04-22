@@ -40,10 +40,10 @@
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
       var wisc = topojson.feature(wisconsin, wisconsin.objects.WI_county).features;
       //states = joinChoroData(states, choroplethData);
+      getWisconsin(wisc, path);
       //var choroplethColorScale = choroColors(choroplethData)
       setStates(states, choropleth, path);
-<<<<<<< HEAD
-      getWisconsin(wisc);
+      dropdown()
 =======
       dropdown()
 >>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
@@ -116,21 +116,6 @@
       colorScale.domain(domainArray);
       return colorScale;
   };
-<<<<<<< HEAD
-
-  function getWisconsin(wisc, path){
-    var wiPath = d3.selectAll(".counties")
-      .data(wisc)
-      .enter()
-      .append("path")
-      .attr("class", function(d){
-        return "county " + d.properties.COUNTY_NAM; //placeholder name
-      })
-      .attr("d", path)
-      .style("fill", function(d){
-        return '#ccc';
-      })
-  };
 =======
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
@@ -193,6 +178,20 @@
       return styleObject[styleName];
     };
   }
+
+  function getWisconsin(wisc, path){
+    var wiPath = d3.selectAll(".counties")
+      .data(wisc)
+      .enter()
+      .append("path")
+      .attr("class", function(d){
+        return "county " + d.properties.COUNTY_NAM; //placeholder name
+      })
+      .attr("d", path)
+      .style("fill", function(d){
+        return '#ccc';
+      })
+  };
 >>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
 })();
 // Create Retrieve Method -- onMouseover or onClick methods
