@@ -14,23 +14,44 @@ function setMap(){
       .attr("height", height);
 
     var choroProjection = d3.geoAlbers()
-      .center([37, -95])
-      .rotate([0, 0, 0])
-      .parallels([28, 46])
-      .scale(3000)
+      .center([0, 40])
+      .rotate([97, 0, 0])
+      .parallels([50, 70])
+      .scale(970)
       .translate([width / 2, height / 2]);
+    var path = d3.geoPath()
+        .projection(choroProjection);
     //use Promise.all to parallelize asynchronous data loading
-    var promises = [d3.csv("data/choroplethData.csv"),  //placeholder csv file name
-                    d3.json("data/US_states.topojson") //placeholder US State topojson name
-                   ];
+    var promises = [];
+    //promises.push(d3.csv("data/choropleth/choroplethData.csv"));  //placeholder csv file name
+    promises.push(d3.json("data/choropleth/US_states.json"));
+    promises.push(d3.json("data/choropleth/countries.json"));
     Promise.all(promises).then(callback);
 
-    funtion callback(data){
-      csvChoropleth = data[0];
-      usStates = data[1];
+    function callback(data){
+      //csvChoropleth = data[0];
+      usStates = data[0];
+      countries = data[1]
+      // Translate TopoJSON data with topojson.js
+      var states = topojson.feature(usStates, usStates.objects.US_states).features;
+      var country = topojson.feature(countries, countries.objects.ne_50m_admin_0_countries);
+      console.log(states)
+
+      var countryPath = choropleth.append("path")
+        .datum(country)
+        .attr("class", "countries")
+        .attr("d", path);
+
+      var statePath = choropleth.selectAll(".states")
+        .data(states)
+        .enter()
+        .append("path")
+        .attr("class", function(d){
+          console.log('hello')
+          return "state " + d.properties.postal; //placeholder name
+        })
+        .attr("d", path);
     };
-    // Translate TopoJSON data with topojson.js
-    var states = topojson.feature(usStates, usStates.objects) //need objects.???
 };
 
 
