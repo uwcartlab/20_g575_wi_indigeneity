@@ -1,27 +1,29 @@
-// Pseudocode for Choropleth Map
-
-// Collect TopoJSON data for US states and Promise data to SetMap() function
+// Choropleth Map
+//Wrapper Function for Choropleth Map
 (function(){
   var choroplethArray = ["put variables here"]
+  expressed = choroplethArray[0]
   window.onload = setMap();
   function setMap(){
-    var width = 960,
-        height = 460;
+    var width = 1000,
+        height = 800;
     // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
     var choropleth = d3.select("body")
       .append("svg")
       .attr("class", "map")
       .attr("width", width)
       .attr("height", height);
-
-    var choroProjection = d3.geoAlbers()
-      .center([0, 40])
-      .rotate([97, 0, 0])
-      .parallels([50, 70])
-      .scale(970)
-      .translate([width / 2, height / 2]);
+    //Geo Albers Area Conic Projection
+    var choroProjection = d3.geoAlbersUsa()
+      //.center([0, 40])
+      //.rotate([97, 0, 0])
+      //.parallels([50, 70])
+      //.scale(500)
+      //.translate([width / 2, height / 2]);
     var path = d3.geoPath()
         .projection(choroProjection);
+    //create info Panel
+
     //use Promise.all to parallelize asynchronous data loading
     var promises = [];
     //promises.push(d3.csv("data/choropleth/choroplethData.csv"));  //placeholder csv file name
@@ -32,23 +34,16 @@
     function callback(data){
       //choroplethData = data[0];
       usStates = data[0];
-      countries = data[1]
       // Translate TopoJSON data with topojson.js
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
-      var country = topojson.feature(countries, countries.objects.ne_50m_admin_0_countries);
-
-      var countryPath = choropleth.append("path")
-        .datum(country)
-        .attr("class", "countries")
-        .attr("d", path);
-
-      states = joinData(states, choroplethData)
+      //states = joinChoroData(states, choroplethData);
+      //var choroplethColorScale = choroColors(choroplethData)
+      setStates(states, choropleth, path);
 
       };
     };
-// Join GeoJSON features (States) with CSV data (of state repatriation raw numbers)
-function joinChoroData(states, choroplethData){
-
+  // Join GeoJSON features (States) with CSV data (of state repatriation raw numbers)
+  function joinChoroData(states, choroplethData){
       for (var i=0; i<choroplethData.length;i++){  //placeholder csv
         var csvState = choroplethData[i]; //placeholder csv
         var csvKey = csvState.postal; /// placeholder unti csv data arrives
@@ -65,21 +60,48 @@ function joinChoroData(states, choroplethData){
         };
       return states;
       };
-// Draw Paths from TopoJSON data
-function setStates(states, choropleth, path){
+  // Draw Paths from TopoJSON data
+  function setStates(states, choropleth, path){
       var statePath = choropleth.selectAll(".states")
         .data(states)
         .enter()
         .append("path")
         .attr("class", function(d){
-          console.log('hello')
           return "state " + d.properties.postal; //placeholder name
         })
-        .attr("d", path);
+        .attr("d", path)
+        .style("fill", function(d){ // Color Enumeration Units
+          var value = d.properties[expressed]
+          if(value){
+            return choroColors(d.properties[expressed]);
+          } else {
+            return "#ccc";
+          };
+        })
     };
+  // Create Quantile (maybe use Natural Breaks?) Color Scale
+  function choroColors(data){
+      var colorClasses = [
+      "#fee5d9",  // Red, 4 Classes
+      "#fcae91",
+      "#fb6a4a",
+      "#cb181d"
+      ];
+      //create color scale generator
+      var colorScale = d3.scaleQuantile()
+          .range(colorClasses);
+      //build array of all values of the expressed attribute
+      var domainArray = [];
+      for (var i=0; i<data.length; i++){
+          var val = parseFloat(data[i][expressed]);
+          domainArray.push(val);
+      };
+      //assign array of expressed values as scale domain
+      colorScale.domain(domainArray);
+      return colorScale;
+  };
 })();
-// Create ColorScale (which color? which Classification method?)
-// Color Enumeration Units
+
 // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
 // Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
 // Create Retrieve Method -- onMouseover or onClick methods
