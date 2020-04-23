@@ -1,0 +1,5478 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.878687,42.695651 ]
+    },
+    "properties": {
+    "Num":1,
+    "Site Name":"Aves",
+    "County":"Grant",
+    "Sum":40
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.101,42.905 ]
+    },
+    "properties": {
+    "Num":1,
+    "Site Name":"Bagley",
+    "County":"Grant",
+    "Sum":21
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.07,42.892 ]
+    },
+    "properties": {
+    "Num":2,
+    "Site Name":"Bagley Bluffs",
+    "County":"Grant",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.119,42.992 ]
+    },
+    "properties": {
+    "Num":3,
+    "Site Name":"Ballfield",
+    "County":"Grant",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.047,42.992 ]
+    },
+    "properties": {
+    "Num":4,
+    "Site Name":"Banfill",
+    "County":"Grant",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.941,43.049 ]
+    },
+    "properties": {
+    "Num":5,
+    "Site Name":"Bird Mound (Schlundt)",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.846,42.792 ]
+    },
+    "properties": {
+    "Num":6,
+    "Site Name":"Bird Mound (Hughes)",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.738,42.709 ]
+    },
+    "properties": {
+    "Num":7,
+    "Site Name":"Burr Oak Farm",
+    "County":"Grant",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.902,42.708 ]
+    },
+    "properties": {
+    "Num":8,
+    "Site Name":"C-07",
+    "County":"Grant",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.936,42.7 ]
+    },
+    "properties": {
+    "Num":9,
+    "Site Name":"C-08",
+    "County":"Grant",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.771,42.675 ]
+    },
+    "properties": {
+    "Num":10,
+    "Site Name":"Cammack",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.835,42.778 ]
+    },
+    "properties": {
+    "Num":11,
+    "Site Name":"Conical",
+    "County":"Grant",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.066,42.794 ]
+    },
+    "properties": {
+    "Num":12,
+    "Site Name":"Eagle Valley #2",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.066,42.786 ]
+    },
+    "properties": {
+    "Num":13,
+    "Site Name":"Eagle Valley #3",
+    "County":"Grant",
+    "Sum":55
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.844,42.722 ]
+    },
+    "properties": {
+    "Num":14,
+    "Site Name":"Eckstein-Ploessi",
+    "County":"Grant",
+    "Sum":15
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.086,42.89 ]
+    },
+    "properties": {
+    "Num":15,
+    "Site Name":"Elephant",
+    "County":"Grant",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.489,43.179 ]
+    },
+    "properties": {
+    "Num":16,
+    "Site Name":"English Prairie",
+    "County":"Grant",
+    "Sum":102
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.651,42.576 ]
+    },
+    "properties": {
+    "Num":17,
+    "Site Name":"Fenley",
+    "County":"Grant",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.122,42.956 ]
+    },
+    "properties": {
+    "Num":18,
+    "Site Name":"Gifford",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.963,42.703 ]
+    },
+    "properties": {
+    "Num":19,
+    "Site Name":"Jack Oak Slough",
+    "County":"Grant",
+    "Sum":53
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.823,42.851 ]
+    },
+    "properties": {
+    "Num":20,
+    "Site Name":"Little Grant River",
+    "County":"Grant",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.128,42.952 ]
+    },
+    "properties": {
+    "Num":21,
+    "Site Name":"Lost Bear",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.859,42.686 ]
+    },
+    "properties": {
+    "Num":22,
+    "Site Name":"McCartney",
+    "County":"Grant",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.85,42.684 ]
+    },
+    "properties": {
+    "Num":23,
+    "Site Name":"McCartney (Ridge)",
+    "County":"Grant",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.813,42.851 ]
+    },
+    "properties": {
+    "Num":24,
+    "Site Name":"McLean",
+    "County":"Grant",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.119,42.956 ]
+    },
+    "properties": {
+    "Num":25,
+    "Site Name":"Meng",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.438,43.196 ]
+    },
+    "properties": {
+    "Num":26,
+    "Site Name":"Muscoda",
+    "County":"Grant",
+    "Sum":39
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.83,42.762 ]
+    },
+    "properties": {
+    "Num":27,
+    "Site Name":"Nick Adams",
+    "County":"Grant",
+    "Sum":47
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.659,42.582 ]
+    },
+    "properties": {
+    "Num":28,
+    "Site Name":"Palmer Wanders",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.069,42.781 ]
+    },
+    "properties": {
+    "Num":29,
+    "Site Name":"Panther Ridge #1/#2",
+    "County":"Grant",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.719,42.694 ]
+    },
+    "properties": {
+    "Num":30,
+    "Site Name":"Potosi",
+    "County":"Grant",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.11,42.98 ]
+    },
+    "properties": {
+    "Num":31,
+    "Site Name":"Procession of Mounds",
+    "County":"Grant",
+    "Sum":26
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.87,42.758 ]
+    },
+    "properties": {
+    "Num":32,
+    "Site Name":"Raisbeck",
+    "County":"Grant",
+    "Sum":82
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.988,42.711 ]
+    },
+    "properties": {
+    "Num":33,
+    "Site Name":"Riverside Park",
+    "County":"Grant",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.135,42.965 ]
+    },
+    "properties": {
+    "Num":34,
+    "Site Name":"Robert Glenn",
+    "County":"Grant",
+    "Sum":14
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.722,43.137 ]
+    },
+    "properties": {
+    "Num":35,
+    "Site Name":"Sander's Creek",
+    "County":"Grant",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.068,42.981 ]
+    },
+    "properties": {
+    "Num":36,
+    "Site Name":"Schnee",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.124,42.983 ]
+    },
+    "properties": {
+    "Num":37,
+    "Site Name":"Sentinel Ridge",
+    "County":"Grant",
+    "Sum":28
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.928,43.029 ]
+    },
+    "properties": {
+    "Num":38,
+    "Site Name":"Singular",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.817,42.839 ]
+    },
+    "properties": {
+    "Num":39,
+    "Site Name":"Ski Jump",
+    "County":"Grant",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.14,42.995 ]
+    },
+    "properties": {
+    "Num":40,
+    "Site Name":"South Point",
+    "County":"Grant",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.116,42.972 ]
+    },
+    "properties": {
+    "Num":41,
+    "Site Name":"Spook Hill",
+    "County":"Grant",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.045,42.75 ]
+    },
+    "properties": {
+    "Num":42,
+    "Site Name":"Tertiary",
+    "County":"Grant",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.844,42.686 ]
+    },
+    "properties": {
+    "Num":43,
+    "Site Name":"Uddelhoven #1",
+    "County":"Grant",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.909,42.702 ]
+    },
+    "properties": {
+    "Num":44,
+    "Site Name":"Uppena #1",
+    "County":"Grant",
+    "Sum":27
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.926,42.703 ]
+    },
+    "properties": {
+    "Num":45,
+    "Site Name":"Uppena #2",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.886,42.71 ]
+    },
+    "properties": {
+    "Num":46,
+    "Site Name":"Ursus",
+    "County":"Grant",
+    "Sum":59
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.888,42.69 ]
+    },
+    "properties": {
+    "Num":47,
+    "Site Name":"WA 12",
+    "County":"Grant",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.136,42.949 ]
+    },
+    "properties": {
+    "Num":48,
+    "Site Name":"Wyalusing A",
+    "County":"Grant",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.136,42.943 ]
+    },
+    "properties": {
+    "Num":49,
+    "Site Name":"Wyalusing",
+    "County":"Grant",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.774,42.685 ]
+    },
+    "properties": {
+    "Num":50,
+    "Site Name":"Yearous",
+    "County":"Grant",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.329,42.817 ]
+    },
+    "properties": {
+    "Num":51,
+    "Site Name":"Cushman",
+    "County":"Iowa",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.039,42.905 ]
+    },
+    "properties": {
+    "Num":52,
+    "Site Name":"Fitzimmons",
+    "County":"Iowa",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.334,42.829 ]
+    },
+    "properties": {
+    "Num":53,
+    "Site Name":"Peniel Church",
+    "County":"Iowa",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.865,43.153 ]
+    },
+    "properties": {
+    "Num":54,
+    "Site Name":"Sawle",
+    "County":"Iowa",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.192,43.161 ]
+    },
+    "properties": {
+    "Num":55,
+    "Site Name":"Sider-Culver",
+    "County":"Iowa",
+    "Sum":19
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.356,43.203 ]
+    },
+    "properties": {
+    "Num":56,
+    "Site Name":"Siamese Birds",
+    "County":"Iowa",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.403,43.197 ]
+    },
+    "properties": {
+    "Num":57,
+    "Site Name":"Whatsit",
+    "County":"Iowa",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.329,43.206 ]
+    },
+    "properties": {
+    "Num":58,
+    "Site Name":"Wolf Trap",
+    "County":"Iowa",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.866,42.58 ]
+    },
+    "properties": {
+    "Num":59,
+    "Site Name":"Anderson",
+    "County":"Lafayette",
+    "Sum":28
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.067,42.66 ]
+    },
+    "properties": {
+    "Num":60,
+    "Site Name":"Kerber",
+    "County":"Lafayette",
+    "Sum":16
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.407,43.069 ]
+    },
+    "properties": {
+    "Num":61,
+    "Site Name":"Adams Street Bear",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.429,43.047 ]
+    },
+    "properties": {
+    "Num":62,
+    "Site Name":"Arboretum Woods",
+    "County":"Dane",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.394,43.134 ]
+    },
+    "properties": {
+    "Num":63,
+    "Site Name":"B-25",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.681,43.276 ]
+    },
+    "properties": {
+    "Num":64,
+    "Site Name":"Ballweg",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.284,42.958 ]
+    },
+    "properties": {
+    "Num":65,
+    "Site Name":"Barber",
+    "County":"Dane",
+    "Sum":85
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.479,43.107 ]
+    },
+    "properties": {
+    "Num":66,
+    "Site Name":"Baskerville Park",
+    "County":"Dane",
+    "Sum":26
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.306,43.001 ]
+    },
+    "properties": {
+    "Num":67,
+    "Site Name":"Bird",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.749,43.135 ]
+    },
+    "properties": {
+    "Num":68,
+    "Site Name":"Black Earth",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.453,43.08 ]
+    },
+    "properties": {
+    "Num":69,
+    "Site Name":"Blackhawk Country Club",
+    "County":"Dane",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.681,43.025 ]
+    },
+    "properties": {
+    "Num":70,
+    "Site Name":"Blue Mounds #1",
+    "County":"Dane",
+    "Sum":16
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.824,43.013 ]
+    },
+    "properties": {
+    "Num":71,
+    "Site Name":"Blue Mounds #2",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.532,43.082 ]
+    },
+    "properties": {
+    "Num":72,
+    "Site Name":"Blue Mounds Trail",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.34,43.049 ]
+    },
+    "properties": {
+    "Num":73,
+    "Site Name":"Bridge Road",
+    "County":"Dane",
+    "Sum":36
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.357,43.024 ]
+    },
+    "properties": {
+    "Num":74,
+    "Site Name":"Bryant",
+    "County":"Dane",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.368,43.102 ]
+    },
+    "properties": {
+    "Num":75,
+    "Site Name":"Burrow's Park Bird",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.278,42.964 ]
+    },
+    "properties": {
+    "Num":76,
+    "Site Name":"C. M. Colladay #1",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.307,43.005 ]
+    },
+    "properties": {
+    "Num":77,
+    "Site Name":"Camp Leonard",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.383,43.075 ]
+    },
+    "properties": {
+    "Num":78,
+    "Site Name":"Capitol Park",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.275,42.962 ]
+    },
+    "properties": {
+    "Num":79,
+    "Site Name":"Colladay Point",
+    "County":"Dane",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.611,43.285 ]
+    },
+    "properties": {
+    "Num":80,
+    "Site Name":"Crystal Lake",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.291,43.018 ]
+    },
+    "properties": {
+    "Num":81,
+    "Site Name":"Dale (or Evan-Nelson)",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.095,43.177 ]
+    },
+    "properties": {
+    "Num":82,
+    "Site Name":"Deansville",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.399,43.053 ]
+    },
+    "properties": {
+    "Num":83,
+    "Site Name":"Dividing Ridge",
+    "County":"Dane",
+    "Sum":34
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.367,43.029 ]
+    },
+    "properties": {
+    "Num":84,
+    "Site Name":"E-Way",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.712,43.275 ]
+    },
+    "properties": {
+    "Num":85,
+    "Site Name":"East Bank",
+    "County":"Dane",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.413,43.049 ]
+    },
+    "properties": {
+    "Num":86,
+    "Site Name":"Edgewood",
+    "County":"Dane",
+    "Sum":24
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.306,43.029 ]
+    },
+    "properties": {
+    "Num":87,
+    "Site Name":"Edward's Park",
+    "County":"Dane",
+    "Sum":11
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.303,43.033 ]
+    },
+    "properties": {
+    "Num":88,
+    "Site Name":"Eighmy",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.342,43.09 ]
+    },
+    "properties": {
+    "Num":89,
+    "Site Name":"Elmside Park",
+    "County":"Dane",
+    "Sum":23
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.419,43.062 ]
+    },
+    "properties": {
+    "Num":90,
+    "Site Name":"Eva",
+    "County":"Dane",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.32,42.984 ]
+    },
+    "properties": {
+    "Num":91,
+    "Site Name":"Evans",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.325,43.049 ]
+    },
+    "properties": {
+    "Num":92,
+    "Site Name":"Fairhaven",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.408,43.132 ]
+    },
+    "properties": {
+    "Num":93,
+    "Site Name":"Farwell's Point",
+    "County":"Dane",
+    "Sum":37
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.458,43.156 ]
+    },
+    "properties": {
+    "Num":94,
+    "Site Name":"Fitzgibbon",
+    "County":"Dane",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.432,43.06 ]
+    },
+    "properties": {
+    "Num":95,
+    "Site Name":"Forest Hill Cemetery",
+    "County":"Dane",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.453,43.111 ]
+    },
+    "properties": {
+    "Num":96,
+    "Site Name":"Fox's Bluff",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.335,43.055 ]
+    },
+    "properties": {
+    "Num":97,
+    "Site Name":"Frost Woods",
+    "County":"Dane",
+    "Sum":11
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.374,43.091 ]
+    },
+    "properties": {
+    "Num":98,
+    "Site Name":"Fuller Woods",
+    "County":"Dane",
+    "Sum":48
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.424,43.045 ]
+    },
+    "properties": {
+    "Num":99,
+    "Site Name":"Gallistel Woods",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.301,43.098 ]
+    },
+    "properties": {
+    "Num":100,
+    "Site Name":"Ghost Ridge",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.351,43.03 ]
+    },
+    "properties": {
+    "Num":101,
+    "Site Name":"Gilman",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.431,43.056 ]
+    },
+    "properties": {
+    "Num":102,
+    "Site Name":"Glenway",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.405,43.059 ]
+    },
+    "properties": {
+    "Num":103,
+    "Site Name":"Greenbush",
+    "County":"Dane",
+    "Sum":18
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.316,43.128 ]
+    },
+    "properties": {
+    "Num":104,
+    "Site Name":"H. P. Hall Bird",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.317,43.052 ]
+    },
+    "properties": {
+    "Num":105,
+    "Site Name":"Halverson/Pflaum-McWilliams",
+    "County":"Dane",
+    "Sum":15
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.226,43.032 ]
+    },
+    "properties": {
+    "Num":106,
+    "Site Name":"Hanson",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.498,43.098 ]
+    },
+    "properties": {
+    "Num":107,
+    "Site Name":"Heim",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.694,43.258 ]
+    },
+    "properties": {
+    "Num":108,
+    "Site Name":"Hornung",
+    "County":"Dane",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.702,43.259 ]
+    },
+    "properties": {
+    "Num":109,
+    "Site Name":"Inama",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.549,42.954 ]
+    },
+    "properties": {
+    "Num":110,
+    "Site Name":"Jaggi",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.421,43.059 ]
+    },
+    "properties": {
+    "Num":111,
+    "Site Name":"Jefferson Street Bear",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.447,43.122 ]
+    },
+    "properties": {
+    "Num":112,
+    "Site Name":"Kennedy Pond",
+    "County":"Dane",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.018,42.85 ]
+    },
+    "properties": {
+    "Num":113,
+    "Site Name":"Koshkonong",
+    "County":"Dane",
+    "Sum":75
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.324,43.085 ]
+    },
+    "properties": {
+    "Num":114,
+    "Site Name":"Lake Edge Park",
+    "County":"Dane",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.419,43.047 ]
+    },
+    "properties": {
+    "Num":115,
+    "Site Name":"Lake Forest #2",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.35,43.058 ]
+    },
+    "properties": {
+    "Num":116,
+    "Site Name":"Lake Monona",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.394,43.052 ]
+    },
+    "properties": {
+    "Num":117,
+    "Site Name":"Lakeside Hotel",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.303,43.017 ]
+    },
+    "properties": {
+    "Num":118,
+    "Site Name":"Larson Park",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.697,43.034 ]
+    },
+    "properties": {
+    "Num":119,
+    "Site Name":"Laufenburg",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.242,43.015 ]
+    },
+    "properties": {
+    "Num":120,
+    "Site Name":"Lee",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.3,43.013 ]
+    },
+    "properties": {
+    "Num":121,
+    "Site Name":"Lewis",
+    "County":"Dane",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.408,43.061 ]
+    },
+    "properties": {
+    "Num":122,
+    "Site Name":"Lewis Effigy",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.63,43.055 ]
+    },
+    "properties": {
+    "Num":123,
+    "Site Name":"Locke",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.706,43.021 ]
+    },
+    "properties": {
+    "Num":124,
+    "Site Name":"Lohff",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.372,43.113 ]
+    },
+    "properties": {
+    "Num":125,
+    "Site Name":"Maple Bluff",
+    "County":"Dane",
+    "Sum":22
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.379,43.12 ]
+    },
+    "properties": {
+    "Num":126,
+    "Site Name":"Maple Bluff #2",
+    "County":"Dane",
+    "Sum":18
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.334,43.008 ]
+    },
+    "properties": {
+    "Num":127,
+    "Site Name":"McConnell",
+    "County":"Dane",
+    "Sum":17
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.095,42.915 ]
+    },
+    "properties": {
+    "Num":128,
+    "Site Name":"Melburg",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.38,43.13 ]
+    },
+    "properties": {
+    "Num":129,
+    "Site Name":"Mendota Hills Bird",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.384,43.142 ]
+    },
+    "properties": {
+    "Num":130,
+    "Site Name":"Mendota School",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.393,43.13 ]
+    },
+    "properties": {
+    "Num":131,
+    "Site Name":"Mendota State Hospital",
+    "County":"Dane",
+    "Sum":22
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.474,43.087 ]
+    },
+    "properties": {
+    "Num":132,
+    "Site Name":"Merrill Springs II",
+    "County":"Dane",
+    "Sum":18
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.641,43.048 ]
+    },
+    "properties": {
+    "Num":133,
+    "Site Name":"Military Road Bear",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.346,43.09 ]
+    },
+    "properties": {
+    "Num":134,
+    "Site Name":"Mill Woods",
+    "County":"Dane",
+    "Sum":22
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.384,43.071 ]
+    },
+    "properties": {
+    "Num":135,
+    "Site Name":"Monona Avenue Park",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.324,43.077 ]
+    },
+    "properties": {
+    "Num":136,
+    "Site Name":"Monona Drive",
+    "County":"Dane",
+    "Sum":26
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.424,43.061 ]
+    },
+    "properties": {
+    "Num":137,
+    "Site Name":"Monroe Street",
+    "County":"Dane",
+    "Sum":36
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.248,43.019 ]
+    },
+    "properties": {
+    "Num":138,
+    "Site Name":"Moore",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.433,43.133 ]
+    },
+    "properties": {
+    "Num":139,
+    "Site Name":"Morris Park 1/YMCA Cam",
+    "County":"Dane",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.439,43.123 ]
+    },
+    "properties": {
+    "Num":140,
+    "Site Name":"Morris Park 2",
+    "County":"Dane",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.226,43.001 ]
+    },
+    "properties": {
+    "Num":141,
+    "Site Name":"ML Pleasant",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.396,43.055 ]
+    },
+    "properties": {
+    "Num":142,
+    "Site Name":"Murphy Creek",
+    "County":"Dane",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.566,43.004 ]
+    },
+    "properties": {
+    "Num":143,
+    "Site Name":"Nine Mounds",
+    "County":"Dane",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.029,42.861 ]
+    },
+    "properties": {
+    "Num":144,
+    "Site Name":"Noe Springs",
+    "County":"Dane",
+    "Sum":70
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.296,43.022 ]
+    },
+    "properties": {
+    "Num":145,
+    "Site Name":"Nondahl",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.02,42.866 ]
+    },
+    "properties": {
+    "Num":146,
+    "Site Name":"North",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.419,43.077 ]
+    },
+    "properties": {
+    "Num":147,
+    "Site Name":"Observatory Hill",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.362,43.112 ]
+    },
+    "properties": {
+    "Num":148,
+    "Site Name":"Oscar Meyer",
+    "County":"Dane",
+    "Sum":11
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.483,43.131 ]
+    },
+    "properties": {
+    "Num":149,
+    "Site Name":"Pheasant Branch Grove",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.426,43.077 ]
+    },
+    "properties": {
+    "Num":150,
+    "Site Name":"Picnic Point Bay",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.651,43.04 ]
+    },
+    "properties": {
+    "Num":151,
+    "Site Name":"Pine Bluff",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.461,43.055 ]
+    },
+    "properties": {
+    "Num":152,
+    "Site Name":"Piper",
+    "County":"Dane",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.163,43.236 ]
+    },
+    "properties": {
+    "Num":153,
+    "Site Name":"Pleasant Springs",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.228,43.033 ]
+    },
+    "properties": {
+    "Num":154,
+    "Site Name":"Roth",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.404,43.14 ]
+    },
+    "properties": {
+    "Num":155,
+    "Site Name":"Sauterhoff",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.071,43.193 ]
+    },
+    "properties": {
+    "Num":156,
+    "Site Name":"Shepards Marsh",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.316,43.001 ]
+    },
+    "properties": {
+    "Num":157,
+    "Site Name":"South Lake Waubesa",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.481,43.081 ]
+    },
+    "properties": {
+    "Num":158,
+    "Site Name":"Spring Harbor",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.461,43.07 ]
+    },
+    "properties": {
+    "Num":159,
+    "Site Name":"Stone Quarry",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.36,43.11 ]
+    },
+    "properties": {
+    "Num":160,
+    "Site Name":"Sugar Bush",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.287,43.005 ]
+    },
+    "properties": {
+    "Num":161,
+    "Site Name":"Sure Johnson",
+    "County":"Dane",
+    "Sum":28
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.341,43.058 ]
+    },
+    "properties": {
+    "Num":162,
+    "Site Name":"Third Lake",
+    "County":"Dane",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.361,43.102 ]
+    },
+    "properties": {
+    "Num":163,
+    "Site Name":"Tracks",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.428,43.083 ]
+    },
+    "properties": {
+    "Num":164,
+    "Site Name":"University Ridge",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.358,43.016 ]
+    },
+    "properties": {
+    "Num":165,
+    "Site Name":"Uphoff Ridge",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.417,43.069 ]
+    },
+    "properties": {
+    "Num":166,
+    "Site Name":"Vilas Circle Drive",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.419,43.06 ]
+    },
+    "properties": {
+    "Num":167,
+    "Site Name":"Vilas Park",
+    "County":"Dane",
+    "Sum":11
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.277,42.964 ]
+    },
+    "properties": {
+    "Num":168,
+    "Site Name":"W. E. Colladay",
+    "County":"Dane",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.307,43.006 ]
+    },
+    "properties": {
+    "Num":169,
+    "Site Name":"Wa-che-et-cha",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.273,43.042 ]
+    },
+    "properties": {
+    "Num":170,
+    "Site Name":"Ward",
+    "County":"Dane",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.374,43.127 ]
+    },
+    "properties": {
+    "Num":171,
+    "Site Name":"Warner Beach",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.465,43.116 ]
+    },
+    "properties": {
+    "Num":172,
+    "Site Name":"West Point",
+    "County":"Dane",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.24,42.972 ]
+    },
+    "properties": {
+    "Num":173,
+    "Site Name":"Williams South #1",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.236,42.974 ]
+    },
+    "properties": {
+    "Num":174,
+    "Site Name":"Williams South #2",
+    "County":"Dane",
+    "Sum":11
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.233,42.975 ]
+    },
+    "properties": {
+    "Num":175,
+    "Site Name":"William's Woods",
+    "County":"Dane",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.336,43.032 ]
+    },
+    "properties": {
+    "Num":176,
+    "Site Name":"Williamson 1",
+    "County":"Dane",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.327,43.021 ]
+    },
+    "properties": {
+    "Num":177,
+    "Site Name":"Williamson Indian Cemetery",
+    "County":"Dane",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.418,43.079 ]
+    },
+    "properties": {
+    "Num":178,
+    "Site Name":"Willow Drive",
+    "County":"Dane",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.433,43.053 ]
+    },
+    "properties": {
+    "Num":179,
+    "Site Name":"Wingra",
+    "County":"Dane",
+    "Sum":16
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.432,43.049 ]
+    },
+    "properties": {
+    "Num":180,
+    "Site Name":"Wingra Park",
+    "County":"Dane",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.331,43.073 ]
+    },
+    "properties": {
+    "Num":181,
+    "Site Name":"Winnequah Road",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.388,43.13 ]
+    },
+    "properties": {
+    "Num":182,
+    "Site Name":"Woodward Shores",
+    "County":"Dane",
+    "Sum":29
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.4,43.13 ]
+    },
+    "properties": {
+    "Num":183,
+    "Site Name":"Woodward Shores East",
+    "County":"Dane",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.414,43.15 ]
+    },
+    "properties": {
+    "Num":184,
+    "Site Name":"Yahara #1",
+    "County":"Dane",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.386,43.16 ]
+    },
+    "properties": {
+    "Num":185,
+    "Site Name":"Yahara Heights",
+    "County":"Dane",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.326,43.055 ]
+    },
+    "properties": {
+    "Num":186,
+    "Site Name":"Yahara Hoyt",
+    "County":"Dane",
+    "Sum":20
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.416,43.062 ]
+    },
+    "properties": {
+    "Num":187,
+    "Site Name":"Zoo",
+    "County":"Dane",
+    "Sum":16
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.729,43.384 ]
+    },
+    "properties": {
+    "Num":188,
+    "Site Name":"Army Ordinance Plant",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.721,43.56 ]
+    },
+    "properties": {
+    "Num":189,
+    "Site Name":"Atkinson",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.932,43.204 ]
+    },
+    "properties": {
+    "Num":190,
+    "Site Name":"Badger",
+    "County":"Sauk",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.633,43.375 ]
+    },
+    "properties": {
+    "Num":191,
+    "Site Name":"Bay",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.764,43.355 ]
+    },
+    "properties": {
+    "Num":192,
+    "Site Name":"Big Badger Curve",
+    "County":"Sauk",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.769,43.469 ]
+    },
+    "properties": {
+    "Num":193,
+    "Site Name":"Canfield",
+    "County":"Sauk",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.673,43.48 ]
+    },
+    "properties": {
+    "Num":194,
+    "Site Name":"Carlson",
+    "County":"Sauk",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.755,43.466 ]
+    },
+    "properties": {
+    "Num":195,
+    "Site Name":"Case",
+    "County":"Sauk",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.736,43.446 ]
+    },
+    "properties": {
+    "Num":196,
+    "Site Name":"Cemetery",
+    "County":"Sauk",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.693,43.468 ]
+    },
+    "properties": {
+    "Num":197,
+    "Site Name":"Cook",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.724,43.466 ]
+    },
+    "properties": {
+    "Num":198,
+    "Site Name":"Cornfield",
+    "County":"Sauk",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.724,43.469 ]
+    },
+    "properties": {
+    "Num":199,
+    "Site Name":"Cornfield #2",
+    "County":"Sauk",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.735,43.466 ]
+    },
+    "properties": {
+    "Num":200,
+    "Site Name":"Council House/Remington",
+    "County":"Sauk",
+    "Sum":68
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.73,43.468 ]
+    },
+    "properties": {
+    "Num":201,
+    "Site Name":"Crandall",
+    "County":"Sauk",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.808,43.605 ]
+    },
+    "properties": {
+    "Num":202,
+    "Site Name":"Delton",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.725,43.411 ]
+    },
+    "properties": {
+    "Num":203,
+    "Site Name":"Devil's Lake #1",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.735,43.432 ]
+    },
+    "properties": {
+    "Num":204,
+    "Site Name":"Devil's Lake #2",
+    "County":"Sauk",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.668,43.4 ]
+    },
+    "properties": {
+    "Num":205,
+    "Site Name":"Devil's Nose",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.734,43.453 ]
+    },
+    "properties": {
+    "Num":206,
+    "Site Name":"Draper's Creek",
+    "County":"Sauk",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.649,43.38 ]
+    },
+    "properties": {
+    "Num":207,
+    "Site Name":"Eagle (47-SK-0082) ",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.645,43.384 ]
+    },
+    "properties": {
+    "Num":208,
+    "Site Name":"Eagle (47-SK-0094)",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.624,43.487 ]
+    },
+    "properties": {
+    "Num":209,
+    "Site Name":"Garrisonville Bear",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.708,43.451 ]
+    },
+    "properties": {
+    "Num":210,
+    "Site Name":"Glen Creek",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.736,43.465 ]
+    },
+    "properties": {
+    "Num":211,
+    "Site Name":"Glover",
+    "County":"Sauk",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.713,43.458 ]
+    },
+    "properties": {
+    "Num":212,
+    "Site Name":"Greenfield",
+    "County":"Sauk",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.671,43.488 ]
+    },
+    "properties": {
+    "Num":213,
+    "Site Name":"Greenfield Man Mound",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.648,43.368 ]
+    },
+    "properties": {
+    "Num":214,
+    "Site Name":"Gross",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.133,43.585 ]
+    },
+    "properties": {
+    "Num":215,
+    "Site Name":"Hemlock",
+    "County":"Sauk",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.103,43.164 ]
+    },
+    "properties": {
+    "Num":216,
+    "Site Name":"Hill",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.822,43.267 ]
+    },
+    "properties": {
+    "Num":217,
+    "Site Name":"Honey Creek",
+    "County":"Sauk",
+    "Sum":14
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.771,43.451 ]
+    },
+    "properties": {
+    "Num":218,
+    "Site Name":"Howlett",
+    "County":"Sauk",
+    "Sum":20
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.997,43.215 ]
+    },
+    "properties": {
+    "Num":219,
+    "Site Name":"Hoxie",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.638,43.473 ]
+    },
+    "properties": {
+    "Num":220,
+    "Site Name":"Jackson Creek",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.705,43.559 ]
+    },
+    "properties": {
+    "Num":221,
+    "Site Name":"Jantz",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.779,43.347 ]
+    },
+    "properties": {
+    "Num":222,
+    "Site Name":"Johnson",
+    "County":"Sauk",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.016,43.194 ]
+    },
+    "properties": {
+    "Num":223,
+    "Site Name":"Jones",
+    "County":"Sauk",
+    "Sum":25
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.794,43.351 ]
+    },
+    "properties": {
+    "Num":224,
+    "Site Name":"Kingston",
+    "County":"Sauk",
+    "Sum":54
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.682,43.366 ]
+    },
+    "properties": {
+    "Num":225,
+    "Site Name":"Kruger Creek",
+    "County":"Sauk",
+    "Sum":27
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.091,43.568 ]
+    },
+    "properties": {
+    "Num":226,
+    "Site Name":"La Valle Man Mound",
+    "County":"Sauk",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.685,43.461 ]
+    },
+    "properties": {
+    "Num":227,
+    "Site Name":"Langdon",
+    "County":"Sauk",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.689,43.38 ]
+    },
+    "properties": {
+    "Num":228,
+    "Site Name":"Lapham",
+    "County":"Sauk",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.693,43.382 ]
+    },
+    "properties": {
+    "Num":229,
+    "Site Name":"Lapham #2",
+    "County":"Sauk",
+    "Sum":23
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.685,43.515 ]
+    },
+    "properties": {
+    "Num":230,
+    "Site Name":"Leach Creek",
+    "County":"Sauk",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.689,43.457 ]
+    },
+    "properties": {
+    "Num":231,
+    "Site Name":"Long Lizard",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.739,43.595 ]
+    },
+    "properties": {
+    "Num":232,
+    "Site Name":"Lower Dells",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.736,43.444 ]
+    },
+    "properties": {
+    "Num":233,
+    "Site Name":"Maple Grove",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.997,43.219 ]
+    },
+    "properties": {
+    "Num":234,
+    "Site Name":"May Be",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.689,43.479 ]
+    },
+    "properties": {
+    "Num":235,
+    "Site Name":"McGann",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.706,43.487 ]
+    },
+    "properties": {
+    "Num":236,
+    "Site Name":"McGilvra",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.648,43.375 ]
+    },
+    "properties": {
+    "Num":237,
+    "Site Name":"Merrimac Moon",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.626,43.377 ]
+    },
+    "properties": {
+    "Num":238,
+    "Site Name":"Merry Mac",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.705,43.384 ]
+    },
+    "properties": {
+    "Num":239,
+    "Site Name":"Mink",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.826,43.249 ]
+    },
+    "properties": {
+    "Num":240,
+    "Site Name":"Mosley",
+    "County":"Sauk",
+    "Sum":15
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.659,43.363 ]
+    },
+    "properties": {
+    "Num":241,
+    "Site Name":"Mother and Cub",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.769,43.607 ]
+    },
+    "properties": {
+    "Num":242,
+    "Site Name":"Newport",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.032,43.192 ]
+    },
+    "properties": {
+    "Num":243,
+    "Site Name":"Norton",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.081,43.56 ]
+    },
+    "properties": {
+    "Num":244,
+    "Site Name":"Oak Hill",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.775,43.339 ]
+    },
+    "properties": {
+    "Num":245,
+    "Site Name":"Otter Creek",
+    "County":"Sauk",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.635,43.377 ]
+    },
+    "properties": {
+    "Num":246,
+    "Site Name":"Palisade",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.086,43.612 ]
+    },
+    "properties": {
+    "Num":247,
+    "Site Name":"Paddock",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.988,43.216 ]
+    },
+    "properties": {
+    "Num":248,
+    "Site Name":"Pass",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.819,43.265 ]
+    },
+    "properties": {
+    "Num":249,
+    "Site Name":"Patterson",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.878,43.201 ]
+    },
+    "properties": {
+    "Num":250,
+    "Site Name":"Pierce",
+    "County":"Sauk",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.683,43.557 ]
+    },
+    "properties": {
+    "Num":251,
+    "Site Name":"Poison",
+    "County":"Sauk",
+    "Sum":17
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.657,43.545 ]
+    },
+    "properties": {
+    "Num":252,
+    "Site Name":"Porter",
+    "County":"Sauk",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.733,43.465 ]
+    },
+    "properties": {
+    "Num":253,
+    "Site Name":"Potter",
+    "County":"Sauk",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.772,43.266 ]
+    },
+    "properties": {
+    "Num":254,
+    "Site Name":"Prairie",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.006,43.218 ]
+    },
+    "properties": {
+    "Num":255,
+    "Site Name":"Prairie Effigy",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.848,43.3 ]
+    },
+    "properties": {
+    "Num":256,
+    "Site Name":"Ragatz",
+    "County":"Sauk",
+    "Sum":25
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.052,43.177 ]
+    },
+    "properties": {
+    "Num":257,
+    "Site Name":"Rainbow",
+    "County":"Sauk",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.662,43.365 ]
+    },
+    "properties": {
+    "Num":258,
+    "Site Name":"River Bank",
+    "County":"Sauk",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.799,43.26 ]
+    },
+    "properties": {
+    "Num":259,
+    "Site Name":"Sauk Prairie",
+    "County":"Sauk",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.831,43.265 ]
+    },
+    "properties": {
+    "Num":260,
+    "Site Name":"Saxer",
+    "County":"Sauk",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.677,43.366 ]
+    },
+    "properties": {
+    "Num":261,
+    "Site Name":"Searl's Creek",
+    "County":"Sauk",
+    "Sum":15
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.697,43.367 ]
+    },
+    "properties": {
+    "Num":262,
+    "Site Name":"Siebecker",
+    "County":"Sauk",
+    "Sum":28
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.779,43.457 ]
+    },
+    "properties": {
+    "Num":263,
+    "Site Name":"Skillet's Creek",
+    "County":"Sauk",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.007,43.524 ]
+    },
+    "properties": {
+    "Num":264,
+    "Site Name":"South Park",
+    "County":"Sauk",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.749,43.457 ]
+    },
+    "properties": {
+    "Num":265,
+    "Site Name":"South Side",
+    "County":"Sauk",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.907,43.284 ]
+    },
+    "properties": {
+    "Num":266,
+    "Site Name":"Sprecher",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.693,43.458 ]
+    },
+    "properties": {
+    "Num":267,
+    "Site Name":"Spring Run",
+    "County":"Sauk",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.738,43.567 ]
+    },
+    "properties": {
+    "Num":268,
+    "Site Name":"Stage Road",
+    "County":"Sauk",
+    "Sum":11
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.723,43.43 ]
+    },
+    "properties": {
+    "Num":269,
+    "Site Name":"Terminal Moraine #1",
+    "County":"Sauk",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.735,43.43 ]
+    },
+    "properties": {
+    "Num":270,
+    "Site Name":"Terminal Moraine #2",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.761,43.444 ]
+    },
+    "properties": {
+    "Num":271,
+    "Site Name":"Tinkham",
+    "County":"Sauk",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.672,43.375 ]
+    },
+    "properties": {
+    "Num":272,
+    "Site Name":"Train",
+    "County":"Sauk",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.748,43.459 ]
+    },
+    "properties": {
+    "Num":273,
+    "Site Name":"Tyler",
+    "County":"Sauk",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.767,43.476 ]
+    },
+    "properties": {
+    "Num":274,
+    "Site Name":"Upper Mill Power",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.836,43.265 ]
+    },
+    "properties": {
+    "Num":275,
+    "Site Name":"Vonburn",
+    "County":"Sauk",
+    "Sum":11
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.702,43.36 ]
+    },
+    "properties": {
+    "Num":276,
+    "Site Name":"Wiegand Bay",
+    "County":"Sauk",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.738,43.467 ]
+    },
+    "properties": {
+    "Num":277,
+    "Site Name":"Williams",
+    "County":"Sauk",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.984,43.205 ]
+    },
+    "properties": {
+    "Num":278,
+    "Site Name":"Wilson",
+    "County":"Sauk",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.737,43.578 ]
+    },
+    "properties": {
+    "Num":279,
+    "Site Name":"Wisconsin River",
+    "County":"Sauk",
+    "Sum":63
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -89.848,43.475 ]
+    },
+    "properties": {
+    "Num":280,
+    "Site Name":"Wyman",
+    "County":"Sauk",
+    "Sum":20
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.299,43.273 ]
+    },
+    "properties": {
+    "Num":281,
+    "Site Name":"All Plowed",
+    "County":"Richland ",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.481,43.225 ]
+    },
+    "properties": {
+    "Num":282,
+    "Site Name":"Amalgamation Mound",
+    "County":"Richland ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.464,43.216 ]
+    },
+    "properties": {
+    "Num":283,
+    "Site Name":"Armbuster",
+    "County":"Richland ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.235,43.196 ]
+    },
+    "properties": {
+    "Num":284,
+    "Site Name":"Bear Creek",
+    "County":"Richland ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.299,43.215 ]
+    },
+    "properties": {
+    "Num":285,
+    "Site Name":"Beckwith",
+    "County":"Richland ",
+    "Sum":24
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.431,43.224 ]
+    },
+    "properties": {
+    "Num":286,
+    "Site Name":"Big Eagle Village",
+    "County":"Richland ",
+    "Sum":29
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.401,43.211 ]
+    },
+    "properties": {
+    "Num":287,
+    "Site Name":"Bremmer",
+    "County":"Richland ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.457,43.214 ]
+    },
+    "properties": {
+    "Num":288,
+    "Site Name":"Clipped Wing \n",
+    "County":"Richland ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.44,43.212 ]
+    },
+    "properties": {
+    "Num":289,
+    "Site Name":"Confluence \n",
+    "County":"Richland ",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.306,43.209 ]
+    },
+    "properties": {
+    "Num":290,
+    "Site Name":"Conundrum",
+    "County":"Richland ",
+    "Sum":16
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.468,43.22 ]
+    },
+    "properties": {
+    "Num":291,
+    "Site Name":"Convocation",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.463,43.23 ]
+    },
+    "properties": {
+    "Num":292,
+    "Site Name":"Creekside",
+    "County":"Richland ",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.552,43.211 ]
+    },
+    "properties": {
+    "Num":293,
+    "Site Name":"Cupp Mounds \n",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.633,43.499 ]
+    },
+    "properties": {
+    "Num":294,
+    "Site Name":"Daggers and Does \n",
+    "County":"Richland ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.527,43.214 ]
+    },
+    "properties": {
+    "Num":295,
+    "Site Name":"Dingman",
+    "County":"Richland ",
+    "Sum":21
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.314,43.277 ]
+    },
+    "properties": {
+    "Num":296,
+    "Site Name":"Diving Birds",
+    "County":"Richland ",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.217,43.214 ]
+    },
+    "properties": {
+    "Num":297,
+    "Site Name":"Donner",
+    "County":"Richland ",
+    "Sum":25
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.459,43.205 ]
+    },
+    "properties": {
+    "Num":298,
+    "Site Name":"Eagle Township",
+    "County":"Richland ",
+    "Sum":76
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.462,43.223 ]
+    },
+    "properties": {
+    "Num":299,
+    "Site Name":"Elder",
+    "County":"Richland ",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.596,43.199 ]
+    },
+    "properties": {
+    "Num":300,
+    "Site Name":"Gasser",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.54,43.214 ]
+    },
+    "properties": {
+    "Num":301,
+    "Site Name":"Hamilton",
+    "County":"Richland ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.459,43.212 ]
+    },
+    "properties": {
+    "Num":302,
+    "Site Name":"Hunting Eagle",
+    "County":"Richland ",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.246,43.21 ]
+    },
+    "properties": {
+    "Num":303,
+    "Site Name":"Ketcham",
+    "County":"Richland ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.451,43.215 ]
+    },
+    "properties": {
+    "Num":304,
+    "Site Name":"Lone Eagle",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.251,43.198 ]
+    },
+    "properties": {
+    "Num":305,
+    "Site Name":"Lost Dog",
+    "County":"Richland ",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.454,43.225 ]
+    },
+    "properties": {
+    "Num":306,
+    "Site Name":"Lost Goose",
+    "County":"Richland ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.482,43.214 ]
+    },
+    "properties": {
+    "Num":307,
+    "Site Name":"Man Mound",
+    "County":"Richland ",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.484,43.213 ]
+    },
+    "properties": {
+    "Num":308,
+    "Site Name":"Marsh Eagle \n",
+    "County":"Richland ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.47,43.219 ]
+    },
+    "properties": {
+    "Num":309,
+    "Site Name":"McClary I",
+    "County":"Richland ",
+    "Sum":14
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.472,43.215 ]
+    },
+    "properties": {
+    "Num":310,
+    "Site Name":"McClary 2",
+    "County":"Richland ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.474,43.208 ]
+    },
+    "properties": {
+    "Num":311,
+    "Site Name":"McClary 3",
+    "County":"Richland ",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.436,43.211 ]
+    },
+    "properties": {
+    "Num":312,
+    "Site Name":"Meridian",
+    "County":"Richland ",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.313,43.272 ]
+    },
+    "properties": {
+    "Num":313,
+    "Site Name":"Mink Escape",
+    "County":"Richland ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.277,43.304 ]
+    },
+    "properties": {
+    "Num":314,
+    "Site Name":"Nebraska Hollow",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.299,43.212 ]
+    },
+    "properties": {
+    "Num":315,
+    "Site Name":"Old Channel",
+    "County":"Richland ",
+    "Sum":20
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.442,43.212 ]
+    },
+    "properties": {
+    "Num":316,
+    "Site Name":"Old Road",
+    "County":"Richland ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.312,43.209 ]
+    },
+    "properties": {
+    "Num":317,
+    "Site Name":"Pine River Enclosure",
+    "County":"Richland ",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.445,43.264 ]
+    },
+    "properties": {
+    "Num":318,
+    "Site Name":"Pleasant Valley School",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.666,43.195 ]
+    },
+    "properties": {
+    "Num":319,
+    "Site Name":"Port Andrews",
+    "County":"Richland ",
+    "Sum":34
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.484,43.212 ]
+    },
+    "properties": {
+    "Num":320,
+    "Site Name":"Quarter Post Bird",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.442,43.209 ]
+    },
+    "properties": {
+    "Num":321,
+    "Site Name":"Raptor",
+    "County":"Richland ",
+    "Sum":31
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.441,43.212 ]
+    },
+    "properties": {
+    "Num":322,
+    "Site Name":"Schaeffer",
+    "County":"Richland ",
+    "Sum":14
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.315,43.268 ]
+    },
+    "properties": {
+    "Num":323,
+    "Site Name":"Smoking Birds",
+    "County":"Richland ",
+    "Sum":38
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.456,43.225 ]
+    },
+    "properties": {
+    "Num":324,
+    "Site Name":"Spur",
+    "County":"Richland ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.299,43.231 ]
+    },
+    "properties": {
+    "Num":325,
+    "Site Name":"Stiles #1",
+    "County":"Richland ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.427,43.203 ]
+    },
+    "properties": {
+    "Num":326,
+    "Site Name":"Troller Mounds",
+    "County":"Richland ",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.412,43.204 ]
+    },
+    "properties": {
+    "Num":327,
+    "Site Name":"Twin Lizard/Catfish",
+    "County":"Richland ",
+    "Sum":18
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.543,43.216 ]
+    },
+    "properties": {
+    "Num":328,
+    "Site Name":"Wade",
+    "County":"Richland ",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.592,43.215 ]
+    },
+    "properties": {
+    "Num":329,
+    "Site Name":"Wanek",
+    "County":"Richland ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.306,43.275 ]
+    },
+    "properties": {
+    "Num":330,
+    "Site Name":"Waterbirds",
+    "County":"Richland ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.502,43.213 ]
+    },
+    "properties": {
+    "Num":331,
+    "Site Name":"William Thompson 1",
+    "County":"Richland ",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.502,43.21 ]
+    },
+    "properties": {
+    "Num":332,
+    "Site Name":"William Thompson 2",
+    "County":"Richland ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.468,43.228 ]
+    },
+    "properties": {
+    "Num":333,
+    "Site Name":"Wolf",
+    "County":"Richland ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.101,43.004 ]
+    },
+    "properties": {
+    "Num":334,
+    "Site Name":"A-15",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.069,42.993 ]
+    },
+    "properties": {
+    "Num":335,
+    "Site Name":"A-16",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.798,43.368 ]
+    },
+    "properties": {
+    "Num":336,
+    "Site Name":"A-17",
+    "County":"Crawford ",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.766,43.408 ]
+    },
+    "properties": {
+    "Num":337,
+    "Site Name":"A-18",
+    "County":"Crawford ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.888,43.18 ]
+    },
+    "properties": {
+    "Num":338,
+    "Site Name":"A-19",
+    "County":"Crawford ",
+    "Sum":7
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.038,43.129 ]
+    },
+    "properties": {
+    "Num":339,
+    "Site Name":"A-20",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.035,43.243 ]
+    },
+    "properties": {
+    "Num":340,
+    "Site Name":"A-21",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.828,43.359 ]
+    },
+    "properties": {
+    "Num":341,
+    "Site Name":"A-23",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.819,43.359 ]
+    },
+    "properties": {
+    "Num":342,
+    "Site Name":"A-24",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.058,43.238 ]
+    },
+    "properties": {
+    "Num":343,
+    "Site Name":"Armstrong",
+    "County":"Crawford ",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.038,43.166 ]
+    },
+    "properties": {
+    "Num":344,
+    "Site Name":"Batavia Bear",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.814,43.357 ]
+    },
+    "properties": {
+    "Num":345,
+    "Site Name":"Bear Creek",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.138,43.158 ]
+    },
+    "properties": {
+    "Num":346,
+    "Site Name":"Beckett #5",
+    "County":"Crawford ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.033,43.158 ]
+    },
+    "properties": {
+    "Num":347,
+    "Site Name":"Black Oats",
+    "County":"Crawford ",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.869,43.252 ]
+    },
+    "properties": {
+    "Num":348,
+    "Site Name":"Blackhawk Mounds",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.057,43.006 ]
+    },
+    "properties": {
+    "Num":349,
+    "Site Name":"Bridgeport",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.729,43.143 ]
+    },
+    "properties": {
+    "Num":350,
+    "Site Name":"Bryan",
+    "County":"Crawford ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.1495406,43.0707532 ]
+    },
+    "properties": {
+    "Num":351,
+    "Site Name":"Calvary Cemetery Mound",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.136,43.079 ]
+    },
+    "properties": {
+    "Num":352,
+    "Site Name":"Camel Mound",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.126,43.086 ]
+    },
+    "properties": {
+    "Num":353,
+    "Site Name":"Campbell Coulee I",
+    "County":"Crawford ",
+    "Sum":18
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.116,43.088 ]
+    },
+    "properties": {
+    "Num":354,
+    "Site Name":"Campbell Coulee II",
+    "County":"Crawford ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.094,43.209 ]
+    },
+    "properties": {
+    "Num":355,
+    "Site Name":"Caya",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.832,43.093 ]
+    },
+    "properties": {
+    "Num":356,
+    "Site Name":"Christianson I",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.987,43.036 ]
+    },
+    "properties": {
+    "Num":357,
+    "Site Name":"Cipra",
+    "County":"Crawford ",
+    "Sum":21
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.879,43.202 ]
+    },
+    "properties": {
+    "Num":358,
+    "Site Name":"Citron Valley",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.053,43.317 ]
+    },
+    "properties": {
+    "Num":359,
+    "Site Name":"Copper Creek II",
+    "County":"Crawford ",
+    "Sum":29
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.107,43.004 ]
+    },
+    "properties": {
+    "Num":360,
+    "Site Name":"Dahmen I",
+    "County":"Crawford ",
+    "Sum":16
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.042,43.127 ]
+    },
+    "properties": {
+    "Num":361,
+    "Site Name":"Dividing Ridge/Hazens Corners",
+    "County":"Crawford ",
+    "Sum":31
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.71,43.169 ]
+    },
+    "properties": {
+    "Num":362,
+    "Site Name":"Dremsa",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.127,43.152 ]
+    },
+    "properties": {
+    "Num":363,
+    "Site Name":"Du Charme Split",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.843,43.311 ]
+    },
+    "properties": {
+    "Num":364,
+    "Site Name":"Fairground",
+    "County":"Crawford ",
+    "Sum":14
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.046,43.123 ]
+    },
+    "properties": {
+    "Num":365,
+    "Site Name":"Famechon Ridge",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.029,43.291 ]
+    },
+    "properties": {
+    "Num":366,
+    "Site Name":"Fischer I",
+    "County":"Crawford ",
+    "Sum":9
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.053,43.223 ]
+    },
+    "properties": {
+    "Num":367,
+    "Site Name":"Foley I",
+    "County":"Crawford ",
+    "Sum":10
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.793,43.391 ]
+    },
+    "properties": {
+    "Num":368,
+    "Site Name":"Foot of the Hill",
+    "County":"Crawford ",
+    "Sum":13
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.097,43.158 ]
+    },
+    "properties": {
+    "Num":369,
+    "Site Name":"Four Kites",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.853,43.314 ]
+    },
+    "properties": {
+    "Num":370,
+    "Site Name":"Gays Mills",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.109,43.009 ]
+    },
+    "properties": {
+    "Num":371,
+    "Site Name":"Gravel Pit I",
+    "County":"Crawford ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.114,43.011 ]
+    },
+    "properties": {
+    "Num":372,
+    "Site Name":"Gravel Pit II",
+    "County":"Crawford ",
+    "Sum":25
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.869,43.203 ]
+    },
+    "properties": {
+    "Num":373,
+    "Site Name":"Hogback I",
+    "County":"Crawford ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.869,43.193 ]
+    },
+    "properties": {
+    "Num":374,
+    "Site Name":"Hogback II \n",
+    "County":"Crawford ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.87,43.192 ]
+    },
+    "properties": {
+    "Num":375,
+    "Site Name":"Hogback III",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.086,43.158 ]
+    },
+    "properties": {
+    "Num":376,
+    "Site Name":"Interested Bear",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.839,43.295 ]
+    },
+    "properties": {
+    "Num":377,
+    "Site Name":"Kickapoo River Road",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.838,43.348 ]
+    },
+    "properties": {
+    "Num":378,
+    "Site Name":"Knoble",
+    "County":"Crawford ",
+    "Sum":17
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.1,43.405 ]
+    },
+    "properties": {
+    "Num":379,
+    "Site Name":"Knower",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.892,43.406 ]
+    },
+    "properties": {
+    "Num":380,
+    "Site Name":"Lennon Ridge",
+    "County":"Crawford ",
+    "Sum":28
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.101,43.002 ]
+    },
+    "properties": {
+    "Num":381,
+    "Site Name":"Level Plat",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.136,43.085 ]
+    },
+    "properties": {
+    "Num":382,
+    "Site Name":"Limery Coulee II",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.046,43.347 ]
+    },
+    "properties": {
+    "Num":383,
+    "Site Name":"Metz",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.839,43.274 ]
+    },
+    "properties": {
+    "Num":384,
+    "Site Name":"Petersburg",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.153,43.136 ]
+    },
+    "properties": {
+    "Num":385,
+    "Site Name":"Picatee Coulee I",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.836,43.092 ]
+    },
+    "properties": {
+    "Num":386,
+    "Site Name":"Pomerening",
+    "County":"Crawford ",
+    "Sum":6
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.114,43.037 ]
+    },
+    "properties": {
+    "Num":387,
+    "Site Name":"Prairie du Chien",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.803,43.387 ]
+    },
+    "properties": {
+    "Num":388,
+    "Site Name":"PSA",
+    "County":"Crawford ",
+    "Sum":21
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.71,43.166 ]
+    },
+    "properties": {
+    "Num":389,
+    "Site Name":"Richland Creek",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.021,43.38 ]
+    },
+    "properties": {
+    "Num":390,
+    "Site Name":"Roosa",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.07,43.226 ]
+    },
+    "properties": {
+    "Num":391,
+    "Site Name":"Roy Peterson",
+    "County":"Crawford ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.153,43.375 ]
+    },
+    "properties": {
+    "Num":392,
+    "Site Name":"Rush Creek Effigy",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.152,43.374 ]
+    },
+    "properties": {
+    "Num":393,
+    "Site Name":"Rush Creek I",
+    "County":"Crawford ",
+    "Sum":39
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.147,43.376 ]
+    },
+    "properties": {
+    "Num":394,
+    "Site Name":"Rush Creek II",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.84,43.286 ]
+    },
+    "properties": {
+    "Num":395,
+    "Site Name":"Sand Creek",
+    "County":"Crawford ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.84,43.285 ]
+    },
+    "properties": {
+    "Num":396,
+    "Site Name":"Sand Hill Road Spring",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.109,43.023 ]
+    },
+    "properties": {
+    "Num":397,
+    "Site Name":"Selch I",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.797,43.393 ]
+    },
+    "properties": {
+    "Num":398,
+    "Site Name":"Sherry I",
+    "County":"Crawford ",
+    "Sum":18
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.032,43.01 ]
+    },
+    "properties": {
+    "Num":399,
+    "Site Name":"Slough",
+    "County":"Crawford ",
+    "Sum":22
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.035,43.283 ]
+    },
+    "properties": {
+    "Num":400,
+    "Site Name":"Smith II",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.815,43.359 ]
+    },
+    "properties": {
+    "Num":401,
+    "Site Name":"Smith Hollow",
+    "County":"Crawford ",
+    "Sum":19
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.133,43.166 ]
+    },
+    "properties": {
+    "Num":402,
+    "Site Name":"Soaring Buzzard",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.767,43.402 ]
+    },
+    "properties": {
+    "Num":403,
+    "Site Name":"Soldier's Grove",
+    "County":"Crawford ",
+    "Sum":20
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.838,43.356 ]
+    },
+    "properties": {
+    "Num":404,
+    "Site Name":"Straight Line",
+    "County":"Crawford ",
+    "Sum":5
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.89,43.125 ]
+    },
+    "properties": {
+    "Num":405,
+    "Site Name":"Straka",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.013,43.153 ]
+    },
+    "properties": {
+    "Num":406,
+    "Site Name":"Strong Swallow",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.048,43.212 ]
+    },
+    "properties": {
+    "Num":407,
+    "Site Name":"Strong's Man Mound",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.037,43.272 ]
+    },
+    "properties": {
+    "Num":408,
+    "Site Name":"Sully",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.012,43.198 ]
+    },
+    "properties": {
+    "Num":409,
+    "Site Name":"Swatek Ridge",
+    "County":"Crawford ",
+    "Sum":18
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.108,43.201 ]
+    },
+    "properties": {
+    "Num":410,
+    "Site Name":"Varo",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.149,43.009 ]
+    },
+    "properties": {
+    "Num":411,
+    "Site Name":"Vilas/Flucke",
+    "County":"Crawford ",
+    "Sum":62
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.067,43.187 ]
+    },
+    "properties": {
+    "Num":412,
+    "Site Name":"Wall Ridge",
+    "County":"Crawford ",
+    "Sum":1
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.111,43.201 ]
+    },
+    "properties": {
+    "Num":413,
+    "Site Name":"Wall-Smethurst",
+    "County":"Crawford ",
+    "Sum":12
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.054,43.243 ]
+    },
+    "properties": {
+    "Num":414,
+    "Site Name":"Wallin I",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.869,43.095 ]
+    },
+    "properties": {
+    "Num":415,
+    "Site Name":"Wauzeka Ridge I",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.873,43.094 ]
+    },
+    "properties": {
+    "Num":416,
+    "Site Name":"Wauzeka Ridge II",
+    "County":"Crawford ",
+    "Sum":3
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.879,43.085 ]
+    },
+    "properties": {
+    "Num":417,
+    "Site Name":"Wauzeka Terrace East",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.92,43.084 ]
+    },
+    "properties": {
+    "Num":418,
+    "Site Name":"Wauzeka Terrace West",
+    "County":"Crawford ",
+    "Sum":4
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -90.812,43.361 ]
+    },
+    "properties": {
+    "Num":419,
+    "Site Name":"X-131",
+    "County":"Crawford ",
+    "Sum":8
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -91.106,43.137 ]
+    },
+    "properties": {
+    "Num":420,
+    "Site Name":"Zinkle I",
+    "County":"Crawford ",
+    "Sum":2
+    }
+  }
+]
+}
