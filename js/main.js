@@ -19,7 +19,6 @@
     var path = d3.geoPath()
         .projection(choroProjection);
     //create info Panel
-
     //use Promise.all to parallelize asynchronous data loading
     var promises = [];
     //promises.push(d3.csv("data/choropleth/choroplethData.csv"));  //placeholder csv file name
