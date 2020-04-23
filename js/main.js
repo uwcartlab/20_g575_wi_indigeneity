@@ -38,15 +38,14 @@
       wisconsin = data[2];
       // Translate TopoJSON data with topojson.js
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
-      var wisc = topojson.feature(wisconsin, wisconsin.objects.WI_county).features;
       //states = joinChoroData(states, choroplethData);
-      getWisconsin(wisc, path);
+      setbaseMap(wisconsin)
       //var choroplethColorScale = choroColors(choroplethData)
       setStates(states, choropleth, path);
       dropdown()
-=======
+//=======
       dropdown()
->>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
+//>>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
 
       };
     };
@@ -116,7 +115,7 @@
       colorScale.domain(domainArray);
       return colorScale;
   };
-=======
+//=======
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
     var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
@@ -182,20 +181,45 @@
     };
   }
 
-  function getWisconsin(wisc, path){
-    var wiPath = d3.selectAll(".counties")
-      .data(wisc)
-      .enter()
-      .append("path")
-      .attr("class", function(d){
-        return "county " + d.properties.COUNTY_NAM; //placeholder name
-      })
-      .attr("d", path)
-      .style("fill", function(d){
-        return '#ccc';
-      })
-  };
->>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
+
+//build Wisconsin map
+  function setbaseMap(){
+    var width = 800,
+        height = 600;
+    // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
+    var base = d3.select("body")
+      .append("svg")
+      .attr("class", "basemap")
+      .attr("width", width)
+      .attr("height", height);
+
+    var wisc = topojson.feature(wisconsin, wisconsin.objects.WI_county).features;
+    //Geo Albers Area Conic Projection
+    var baseProjection = d3.geoAlbersUsa()
+      //.center([0, 40])
+      //.rotate([97, 0, 0])
+      //.parallels([50, 70])
+      //.scale(500)
+      //.translate([width / 2, height / 2]);
+    var path = d3.geoPath()
+        .projection(baseProjection);
+    //create info Panel
+    getWisconsin(wisc, base, path);
+    function getWisconsin(wisc, base, path){
+      var wiPath = d3.selectAll(".counties")
+        .data(wisc)
+        .enter()
+        .append("path")
+        .attr("class", function(d){
+          return "county " + d.properties.COUNTY_NAM; //placeholder name
+        })
+        .attr("d", path)
+        .style("fill", function(d){
+          return '#ccc';
+        });
+      };
+    };
+//>>>>>>> 883a175992397cb45ac23e44c750cfee56f32224
 })();
 
 
