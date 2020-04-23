@@ -86,7 +86,7 @@
         })
         .on("mousemove", moveLabel);
         var desc = statePath.append("desc")
-          .text('{"stroke": "#000", "stroke-width":"0.5px"}');
+          .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
     };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function choroColors(data){
@@ -209,6 +209,8 @@
   }
 })();
 (function(){
+  attrArray = ["Selection 1", "Selection 2"]
+  expressed = attrArray[0]
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
@@ -222,32 +224,166 @@
         .attr("height", height);
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbersUsa()
-        .scale(700);
+        .scale(2000);
       var path = d3.geoPath()
           .projection(baseProjection);
       var promises = [];
-      promises.push(d3.json('data/WI_county.json'));
+      promises.push(d3.json('data/effigy/wisconsin.json'));
       Promise.all(promises).then(callback);
       function callback(data){
         wisconsin = data[0];
-        var wisc = topojson.feature(wisconsin, wisconsin.objects.WI_county).features;
+        var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
+        console.log(wisc)
         getWisconsin(wisc, basemap, path)
         };
       };
-    function getWisconsin(wisc, basemap, path){
+  function getWisconsin(wisc, basemap, path){
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
           .enter()
           .append("path")
           .attr("class", function(d){
-            return "county " + d.properties.COUNTY_NAM; //placeholder name
+            return "county " + d.properties.NAME; //placeholder name
             })
           .attr("d", path)
-          .style("fill", function(d){
-            return '#fff';
-            });
+          .style("fill", function(d){ // Color Enumeration Units
+            var value = d.properties[expressed]
+            if(value){
+              return WIcolors(d.properties[expressed]);
+            } else {
+              return "#ddd";
+            }
+            })
+          .on("mouseover", function(d){
+            highlight(d.properties);
+          })
+          .on("mouseout", function(d){
+            dehighlight(d.properties);
+          })
+          .on("mousemove", moveLabel);
+          var desc = wiPath.append("desc")
+            .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-      })();
+  // Create Quantile (maybe use Natural Breaks?) Color Scale
+  function WIcolors(data){
+      var colorClasses = [
+      "#fee5d9",  // Red, 4 Classes
+      "#fcae91",
+      "#fb6a4a",
+      "#cb181d"
+      ];
+      //create color scale generator
+      var colorScale = d3.scaleQuantile()
+          .range(colorClasses);
+      //build array of all values of the expressed attribute
+      var domainArray = [];
+      for (var i=0; i<data.length; i++){
+          var val = parseFloat(data[i][expressed]);
+          domainArray.push(val);
+      };
+      //assign array of expressed values as scale domain
+      colorScale.domain(domainArray);
+      return colorScale;
+  };
+  // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
+  function dropdown(wisconsinData){
+    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+      .append("select")
+      .attr("class", "dropdown")
+      .on("change", function(){
+        changeAttribute(this.value, wisconsinData)
+        });
+    var titleOption = dropdown.append("option")
+      .attr("class", "titleOption")
+      .attr("disabled", "true")
+      .text("Select Item Type");
+    var attrOptions = dropdown.selectAll("attrOptions")
+      .data(attrArray)
+      .enter()
+      .append("option")
+      .attr("value", function(d){return d})
+      .text(function(d){return d});
+  };
+  // Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
+  function changeAttribute(attribute, wisconsinData){
+    //change Expressed
+    expressed = attribute;
+    //recreate colorScale
+    var wiColorScale = WIcolors(wisconsinData);
+    //recolor States
+    var states = d3.selectAll(".counties")
+      .transition()
+      .duration(1000)
+      .style("fill", function(d){
+        var value = d.properties[expressed];
+        if (value) {
+          return wiColorScale(value);
+        } else {
+          return "#ddd";
+        }
+      });
+  };
+  // Create Retrieve Method -- onMouseover or onClick methods
+  // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
+  function wiLabels(props){
+    var labelAttribute = "<h1>"+props[expressed]+"</h1><b>"+expressed+"</b>";
+    var infolabel = d3.select(".county")
+      .append("div")
+      .attr("class", "infolabel")
+      .attr("id", props.NAME+"_label")
+      .html(labelAttribute);
+    var stateName = infolabel.append("div")
+      .attr("class", "labelname")
+      .html(props.NAME);
+    };
+  function moveLabel(){
+        //get width of label
+        var labelWidth = d3.select(".infolabel")
+            .node()
+            .getBoundingClientRect()
+            .width;
+        //use coordinates of mousemove event to set label coordinates
+        var x1 = d3.event.clientX + 10,
+            y1 = d3.event.clientY - 75,
+            x2 = d3.event.clientX - labelWidth - 10,
+            y2 = d3.event.clientY + 25;
+        //horizontal label coordinate, testing for overflow
+        var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
+        //vertical label coordinate, testing for overflow
+        var y = d3.event.clientY < 75 ? y2 : y1;
+
+        d3.select(".infolabel")
+            .style("left", x + "px")
+            .style("top", y + "px");
+    };
+  // Create Dynamic Legend for ColorScale for expressed dataset
+  // Create Highlight function
+  function highlight(props){
+    var selected = d3.selectAll("."+props.NAME)
+      .style("stroke", "red")
+      .style("stroke-width", "2");
+    wiLabels(props);
+    };
+  // Create Dehighlight Function
+  function dehighlight(props){
+    var selected = d3.selectAll("."+props.NAME)
+      .style("stroke", function(){
+        return getStyle(this, "stroke")
+      })
+      .style("stroke-width", function(){
+        return getStyle(this, "stroke-width")
+      });
+    function getStyle(element, styleName){
+      var styleText = d3.select(element)
+        .select("desc")
+        .text();
+      var styleObject = JSON.parse(styleText);
+      return styleObject[styleName];
+    };
+    d3.select(".infolabel")
+      .remove();
+  }
+  })();
 
 // Pseudocode for Flow Map
 
