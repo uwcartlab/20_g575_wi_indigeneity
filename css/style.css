@@ -24,7 +24,6 @@
   font-family: sans-serif;
   font-weight: bold;
   text-align: center;
-  /* padding-left: 70px; */
   padding-top: 20px;
   padding-bottom: 5px;
 }
@@ -39,6 +38,14 @@
 .tab {
     display: inline-block;
     margin-left: 40px;
+}
+.footnotes {
+  font-size: 10px;
+  font-family: sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 .state {
     fill: #EEE;
