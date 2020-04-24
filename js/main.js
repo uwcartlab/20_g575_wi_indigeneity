@@ -220,10 +220,16 @@
         .append("svg")
         .attr("class", "basemap")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
+        .attr('x', 100)
+        .attr('y', 500);
       //Geo Albers Area Conic Projection
-      var baseProjection = d3.geoAlbersUsa()
-        .scale(2000);
+      var baseProjection = d3.geoAlbers()
+        .center([2.25, 44.88205])
+        .scale(5000)
+        .rotate([92.35, .5, -2])
+        .translate([width / 2, height / 2])
+
       var path = d3.geoPath()
           .projection(baseProjection);
       var promises = [];
