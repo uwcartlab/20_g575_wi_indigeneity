@@ -15,13 +15,31 @@
   font-size: 15px;
   font-family: sans-serif;
   font-weight: normal;
-  text-align: center;
-  padding-left: 50px;
-  padding-right: 50px;
+  text-align: justify;
+  padding-left: 60px;
+  padding-right: 60px;
 }
-/* .firstrep {
-
-} */
+.maptitle {
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  /* padding-left: 70px; */
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+.firstrep {
+  font-size: 15px;
+  font-family: sans-serif;
+  font-weight: normal;
+  text-align: justify;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+.tab {
+    display: inline-block;
+    margin-left: 40px;
+}
 .state {
     fill: #EEE;
     stroke: #AAA;
@@ -36,7 +54,7 @@
 }
 .dropdown {
     position: absolute;
-    top: 550px;
+    top: 650px;
     left: 850px;
     z-index: 10;
     font-family: sans-serif;

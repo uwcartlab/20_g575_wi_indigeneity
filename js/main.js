@@ -6,10 +6,10 @@
   window.onload = setMap();
   function setMap(){
     var width = 1000,
-        height = 800;
+        height = 550;
     // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
     var choropleth = d3.select("body")
-      .append("svg")
+      .insert("svg", "#map")
       .attr("class", "map")
       .attr("width", width)
       .attr("height", height);
