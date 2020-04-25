@@ -217,8 +217,8 @@
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("body")
-        .insert("svg", '#basemap')
-        .attr("class", "basemap")
+        .insert("svg", '#flowmap')
+        .attr("class", "flowmap")
         .attr("width", width)
         .attr("height", height)
         .attr('x', 100)
@@ -388,7 +388,7 @@
   //    .remove();
   //}
   })();
-//Wrapper Function for Flow Map
+//Wrapper Function for Mound Map
 (function(){
   attrArray = ["Selection 1", "Selection 2"]
   expressed = attrArray[0]
@@ -399,8 +399,8 @@
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("body")
-        .insert("svg", '#flowmap')
-        .attr("class", "flowmap")
+        .insert("svg", '#moundmap')
+        .attr("class", "moundmap")
         .attr("width", width)
         .attr("height", height)
         .attr('x', 100)
@@ -416,10 +416,14 @@
           .projection(baseProjection);
       var promises = [];
       promises.push(d3.json('data/effigy/wisconsin.json'));
+      promises.push(d3.json('data/effigy/Effigy.json'));
       Promise.all(promises).then(callback);
       function callback(data){
         wisconsin = data[0];
+        effigymounds = data[1];
+        //console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
+        var mounds = topojson.feature(effigymounds, effigymounds.objects['Updated effigy']).features;
         getWisconsin(wisc, basemap, path)
         };
       };
