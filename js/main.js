@@ -1,8 +1,9 @@
 // Choropleth Map
 //Wrapper Function for Choropleth Map
 (function(){
-  var choroplethArray = ["Option 1", "Option 2", "Option 3"]
+  var choroplethArray = ["Minimum Number of Individuals (MNI)", "Associated Funerary Objects (AFO)"]
   expressed = choroplethArray[0]
+  console.log(expressed)
   window.onload = setMap();
   function setMap(){
     var width = 1000,
@@ -21,21 +22,21 @@
     //create info Panel
     //use Promise.all to parallelize asynchronous data loading
     var promises = [];
-    //promises.push(d3.csv("data/choropleth/choroplethData.csv"));  //placeholder csv file name
+    promises.push(d3.csv("data/choropleth/choroplethData.csv"));  //placeholder csv file name
     promises.push(d3.json("data/choropleth/US_states.json"));
     promises.push(d3.json("data/choropleth/countries.json"));
     //promises.push(d3.json('data/WI_county.json'));
     Promise.all(promises).then(callback);
 
     function callback(data){
-      //choroplethData = data[0];
-      usStates = data[0];
+      choroplethData = data[0];
+      //console.log(choroplethData)
+      usStates = data[1];
       //wisconsin = data[2];
       // Translate TopoJSON data with topojson.js
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
-      //states = joinChoroData(states, choroplethData);
-      //setbaseMap(wisconsin)
-      //var choroplethColorScale = choroColors(choroplethData)
+      states = joinChoroData(states, choroplethData);
+      var choroplethColorScale = choroColors(states);
       setStates(states, choropleth, path);
       dropdown()
       };
@@ -98,15 +99,15 @@
       var colorScale = d3.scaleQuantile()
           .range(colorClasses);
       //build array of all values of the expressed attribute
-      var domainArray = [];
-      for (var i=0; i<data.length; i++){
-          var val = parseFloat(data[i][expressed]);
-          domainArray.push(val);
-      };
+      var minmax = [
+        d3.min(data, function(d) { return parseFloat(d[expressed]); }),
+        d3.max(data, function(d) { return parseFloat(d[expressed]); })
+      ];
       //assign array of expressed values as scale domain
-      colorScale.domain(domainArray);
+      colorScale.domain(minmax);
       return colorScale;
   };
+
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
     var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
