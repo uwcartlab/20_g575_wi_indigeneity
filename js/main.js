@@ -30,13 +30,12 @@
 
     function callback(data){
       choroplethData = data[0];
-      //console.log(choroplethData)
       usStates = data[1];
-      //wisconsin = data[2];
       // Translate TopoJSON data with topojson.js
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
       states = joinChoroData(states, choroplethData);
       var choroplethColorScale = choroColors(states);
+      //
       setStates(states, choropleth, path);
       dropdown()
       };
