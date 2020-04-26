@@ -453,7 +453,9 @@
         //console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var mounds = topojson.feature(effigymounds, effigymounds.objects['Updated effigy']).features;
+        console.log(mounds)
         getWisconsin(wisc, basemap, path)
+        drawLocations(mounds, basemap, baseProjection);
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -466,13 +468,12 @@
             })
           .attr("d", path)
           .style("fill", function(d){ // Color Enumeration Units
-            var value = d.properties[expressed]
-            if(value){
-              return WIcolors(d.properties[expressed]);
-            } else {
+            // var value = d.properties[expressed]
+            // if(value){
+            //   return WIcolors(d.properties[expressed]);
+            // } else {
               return "#ddd";
-            }
-          });
+            });
           // .on("mouseover", function(d){
           //   highlight(d.properties);
           // })
@@ -483,6 +484,24 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
+
+
+  function drawLocations(mounds, basemap, baseProjection) {
+      //console.log(mounds[0].geometry)
+      basemap.selectAll("circle")
+      	.data(mounds)
+      	.enter()
+      	.append("circle")
+      	.attr("cx", function(d) {
+      			return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+      		})
+      	.attr("cy", function(d) {
+            return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+      	})
+      	.attr("r", 1)
+      	.attr("class", "locations");
+      };
+
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function WIcolors(data){
       var colorClasses = [
