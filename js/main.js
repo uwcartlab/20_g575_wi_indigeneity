@@ -91,8 +91,9 @@
   function choroColors(){
       var colorClasses = [
         "#f2f0f7", //5 pink
-        "#cbc9e2",
-        "#939ac8",
+        "#dadaeb",
+        "#bcbddc",
+        "#9e9ac8",
         "#756bb1",
         "#54278f"
       ];
@@ -104,7 +105,7 @@
       var afo = [54797,187,4891,617,169516,39,727,3975,0,15149,1541,4,258,57592,13499,1,38343,2788,785,37,102,14037,9955,178,141,9678,150,6458,214,49,160,1612,17132,7124,0,119297,14170,107,94529,21,10361,171,78911,15643,1447,1,5241,84,774,4089,310];
       if(expressed==choroplethArray[0]){
           //var minmax = [
-            var clusters = ss.ckmeans(mni, 5);
+            var clusters = ss.ckmeans(mni, 6);
             mni = clusters.map(function(d){
               return d3.min(d);
             });
@@ -114,7 +115,7 @@
             //d3.max(mni)
           //];
       }else{
-        var clusters = ss.ckmeans(afo, 5);
+        var clusters = ss.ckmeans(afo, 6);
         afo = clusters.map(function(d){
           return d3.min(d);
         });
@@ -325,6 +326,7 @@
               return "#ddd";
             }
           });
+
           // .on("mouseover", function(d){
           //   highlight(d.properties);
           // })
