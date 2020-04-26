@@ -431,9 +431,9 @@
         .attr('y', 500);
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
-        .center([2.25, 44.88205])
-        .scale(5500)
-        .rotate([92.35, .5, -2])
+        .center([3.55, 44.88205])
+        .scale(19000)
+        .rotate([92.35, 1.7, -1])
         .translate([width / 2, height / 2])
 
       var path = d3.geoPath()
@@ -448,11 +448,12 @@
         //console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var mounds = topojson.feature(effigymounds, effigymounds.objects['Updated effigy']).features;
-        console.log(mounds)
+        //console.log(mounds)
         getWisconsin(wisc, basemap, path)
         drawLocations(mounds, basemap, baseProjection);
         };
       };
+
   function getWisconsin(wisc, basemap, path){
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
@@ -493,9 +494,19 @@
       	.attr("cy", function(d) {
             return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
       	})
-      	.attr("r", 1)
-      	.attr("class", "locations");
+      	.attr("r", 2)
+      	.attr("class", "locations")
+        .on("mouseover", function(d){
+          console.log('highlight')
+          highlight(d.properties);
+        })
+        .on("mouseout", function(d){
+          dehighlight(d.properties);
+        });
+        //.on("mousemove", moveLabel);
       };
+
+
 
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function WIcolors(data){
@@ -590,7 +601,31 @@
             .style("top", y + "px");
     };
 
-
+function highlight(props){
+  var selected = d3.selectAll("." +props.properties)
+      .style("stroke", "yellow")
+      .style("stroke-width", "2");
+      //choroLabel(props);
+  };
+    // Create Dehighlight Function
+function dehighlight(props){
+  var selected = d3.selectAll("."+props.properties)
+      .style("stroke", function(){
+          return getStyle(this, "stroke")
+      })
+      .style("stroke-width", function(){
+          return getStyle(this, "stroke-width")
+      });
+function getStyle(element, styleName){
+  var styleText = d3.select(element)
+      .select("desc")
+      .text();
+  var styleObject = JSON.parse(styleText);
+        return styleObject[styleName];
+    };
+  d3.select(".infolabel")
+    .remove();
+}
 
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
