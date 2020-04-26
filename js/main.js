@@ -85,7 +85,7 @@
         })
         .on("mousemove", moveLabel);
         var desc = statePath.append("desc")
-          .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+          .text('{"stroke": "#555", "stroke-width":"0.5px"}');
     };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function choroColors(){
@@ -131,7 +131,6 @@
       //console.log(minmax)
       return colorScale;
   };
-
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
     var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
@@ -154,25 +153,21 @@
   // Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
   function changeAttribute(attribute, choroplethData){
     //change Expressed
-    console.log(expressed)
     expressed = attribute;
-    console.log(expressed)
     //recreate colorScale
     var choroplethColorScale = choroColors();
-    console.log(choroplethColorScale)
     //recolor States
-    var states = d3.selectAll(".states")
+    var states = d3.selectAll(".state")
       .transition()
       .duration(1000)
       .style("fill", function(d){
         var value = d.properties[expressed];
-        console.log(value)
         if (value) {
           return choroplethColorScale(value);
         } else {
-          return "#ccc";
+          return "#ddd";
         }
-      });
+        });
   };
   // Create Retrieve Method -- onMouseover or onClick methods
   // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
