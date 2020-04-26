@@ -49,7 +49,7 @@
 }
 .state {
     fill: #EEE;
-    stroke: #AAA;
+    stroke: #555;
     stroke-width: 1px;
     stroke-linecap: round;
 }
@@ -64,7 +64,7 @@
     top: 650px;
     left: 850px;
     z-index: 10;
-    font-family: sans-serif;
+    font-family: serif;
     font-size: 1em;
     font-weight: bold;
     padding: 2px;
