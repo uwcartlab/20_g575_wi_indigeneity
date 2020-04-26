@@ -25,7 +25,6 @@
     promises.push(d3.csv("data/choropleth/choroplethData.csv"));  //placeholder csv file name
     promises.push(d3.json("data/choropleth/US_states.json"));
     promises.push(d3.json("data/choropleth/countries.json"));
-    //promises.push(d3.json('data/WI_county.json'));
     Promise.all(promises).then(callback);
 
     function callback(data){
@@ -35,7 +34,6 @@
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
       states = joinChoroData(states, choroplethData);
       var choroplethColorScale = choroColors(states);
-      //
       setStates(states, choropleth, path);
       dropdown()
       };
@@ -52,10 +50,11 @@
             choroplethArray.forEach(function(attr){
               var val = parseFloat(csvState[attr]);
               geojsonProps[attr] = val;
-              });
-            };
+              //console.log(geojsonProps)
+            });
           };
         };
+      };
       return states;
       };
   // Draw Paths from TopoJSON data
