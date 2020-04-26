@@ -3,7 +3,7 @@
 (function(){
   var choroplethArray = ["Minimum Number of Individuals (MNI)", "Associated Funerary Objects (AFO)"]
   expressed = choroplethArray[0]
-  console.log(expressed)
+  //console.log(expressed)
   window.onload = setMap();
   function setMap(){
     var width = 1000,
@@ -33,8 +33,9 @@
       // Translate TopoJSON data with topojson.js
       var states = topojson.feature(usStates, usStates.objects.US_states).features;
       states = joinChoroData(states, choroplethData);
-      var choroplethColorScale = choroColors(states);
-      setStates(states, choropleth, path);
+      var choroplethColorScale = choroColors();
+      //console.log(choroplethColorScale)
+      setStates(states, choropleth, path, choroplethColorScale);
       dropdown()
       };
     };
@@ -58,7 +59,7 @@
       return states;
       };
   // Draw Paths from TopoJSON data
-  function setStates(states, choropleth, path){
+  function setStates(states, choropleth, path, colorScale){
       var statePath = choropleth.selectAll(".states")
         .data(states)
         .enter()
@@ -69,8 +70,9 @@
         .attr("d", path)
         .style("fill", function(d){ // Color Enumeration Units
           var value = d.properties[expressed]
+          //console.log(typeof value)
           if(value){
-            return choroColors(d.properties[expressed]);
+            return colorScale(value);
           } else {
             return "#ddd";
           }
@@ -86,23 +88,47 @@
           .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
     };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
-  function choroColors(data){
+  function choroColors(){
       var colorClasses = [
-      "#fee5d9",  // Red, 4 Classes
-      "#fcae91",
-      "#fb6a4a",
-      "#cb181d"
+        "#f2f0f7", //5 pink
+        "#cbc9e2",
+        "#939ac8",
+        "#756bb1",
+        "#54278f"
       ];
       //create color scale generator
-      var colorScale = d3.scaleQuantile()
+      var colorScale = d3.scaleThreshold()
           .range(colorClasses);
       //build array of all values of the expressed attribute
-      var minmax = [
-        d3.min(data, function(d) { return parseFloat(d[expressed]); }),
-        d3.max(data, function(d) { return parseFloat(d[expressed]); })
-      ];
+      var mni = [10054,271,3807,288,13560,279,381,1173,0,6099,623,114,171,10978,5847,142,757,4660,1453,51,276,6784,1211,181,539,3518,43,256,171,17,36,2450,4831,1384,3,9432,3057,166,2628,103,420,63,9464,3732,966,3,741,189,366,2340,188];
+      var afo = [54797,187,4891,617,169516,39,727,3975,0,15149,1541,4,258,57592,13499,1,38343,2788,785,37,102,14037,9955,178,141,9678,150,6458,214,49,160,1612,17132,7124,0,119297,14170,107,94529,21,10361,171,78911,15643,1447,1,5241,84,774,4089,310];
+      if(expressed==choroplethArray[0]){
+          //var minmax = [
+            var clusters = ss.ckmeans(mni, 5);
+            mni = clusters.map(function(d){
+              return d3.min(d);
+            });
+            mni.shift();
+            colorScale.domain(mni)
+            //d3.min(mni),
+            //d3.max(mni)
+          //];
+      }else{
+        var clusters = ss.ckmeans(afo, 5);
+        afo = clusters.map(function(d){
+          return d3.min(d);
+        });
+        afo.shift();
+        colorScale.domain(afo)
+          //var minmax = [
+            //d3.min(afo),
+            //d3.max(afo)
+          //];
+      };
+      //console.log(minmax)
       //assign array of expressed values as scale domain
-      colorScale.domain(minmax);
+      //colorScale.domain(mni);
+      //console.log(minmax)
       return colorScale;
   };
 
@@ -114,10 +140,10 @@
       .on("change", function(){
         changeAttribute(this.value, choroplethData)
         });
-    var titleOption = dropdown.append("option")
-      .attr("class", "titleOption")
-      .attr("disabled", "true")
-      .text("Select Item Type");
+    // var titleOption = dropdown.append("option")
+    //   .attr("class", "titleOption")
+    //   .attr("disabled", "true")
+    //   .text("Select Item Type");
     var attrOptions = dropdown.selectAll("attrOptions")
       .data(choroplethArray)
       .enter()
@@ -128,19 +154,23 @@
   // Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
   function changeAttribute(attribute, choroplethData){
     //change Expressed
+    console.log(expressed)
     expressed = attribute;
+    console.log(expressed)
     //recreate colorScale
-    var choroplethColorScale = choroColors(choroplethData);
+    var choroplethColorScale = choroColors();
+    console.log(choroplethColorScale)
     //recolor States
     var states = d3.selectAll(".states")
       .transition()
       .duration(1000)
       .style("fill", function(d){
         var value = d.properties[expressed];
+        console.log(value)
         if (value) {
           return choroplethColorScale(value);
         } else {
-          return "#ddd";
+          return "#ccc";
         }
       });
   };
@@ -181,7 +211,7 @@
   // Create Highlight function
   function highlight(props){
     var selected = d3.selectAll("."+props.postal)
-      .style("stroke", "red")
+      .style("stroke", "purple")
       .style("stroke-width", "2");
     choroLabel(props);
     };
@@ -208,7 +238,7 @@
 //Wrapper Function for Mound Map
 (function(){
   attrArray = ["Selection 1", "Selection 2"]
-  expressed = attrArray[0]
+  //expressed = attrArray[0]
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
@@ -390,7 +420,7 @@
 //Wrapper Function for Mound Map
 (function(){
   attrArray = ["Selection 1", "Selection 2"]
-  expressed = attrArray[0]
+  //expressed = attrArray[0]
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
