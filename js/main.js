@@ -232,7 +232,7 @@
 })();
 //Wrapper Function for Mound Map
 (function(){
-  attrArray = ["Selection 1", "Selection 2"]
+  attrArray = ["MNI", "AFO", "CUI"]
   //expressed = attrArray[0]
   window.onload = setbaseMap();
   //build Wisconsin map
@@ -253,17 +253,60 @@
         .scale(5500)
         .rotate([92.35, .5, -2])
         .translate([width / 2, height / 2])
-
+      //Path generator
       var path = d3.geoPath()
           .projection(baseProjection);
+
       var promises = [];
       promises.push(d3.json('data/effigy/wisconsin.json'));
+      promises.push(d3.json('data/nagpra/wiRes.json'));
+      promises.push(d3.csv('data/nagpra/wi-destination.csv'));
+      promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
+      promises.push(d3.csv('data/nagpra/wi-source.csv'));
+      promises.push(d3.csv('data/nagpra/institutionLocations.csv'));
       Promise.all(promises).then(callback);
+
+      // d3.queue()
+      //   .defer(d3.json, 'data/effigy/wisconsin.json')
+      //   .defer(d3.csv, 'data/nagpra/institutionLocations.csv')
+      //   .await(ready);
+
       function callback(data){
         wisconsin = data[0];
+        reservation = data[1];
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
+        var lands = topojson.feature(reservation, reservation.objects.wiRes).features;
+        console.log(wisc)
+        console.log(lands)
         getWisconsin(wisc, basemap, path)
         };
+      // function ready(error, dataGeo, data){
+      //   var link = []
+      //   data.forEach(function(row){
+      //     source = [+row.long1, +row.lat1]
+      //     target = [+row.long2, +row.lat2]
+      //     topush = {type: "LineString", coordinates: [source, target]}
+      //     link.push(topush)
+      //   basemap.append("g")
+      //     .selectAll("path")
+      //     .data(dataGeo.features)
+      //     .enter().append("path")
+      //       .attr("fill", "#b8b8b8")
+      //       .attr("d", d3.geoPath()
+      //         .projection(baseProjection)
+      //         )
+      //       .style("stroke", "#fff")
+      //       .style("stroke-width", 0)
+      //   basemap.selectAll("myPath")
+      //     .data(link)
+      //     .enter()
+      //     .append("path")
+      //       .attr("d", function(d){ return path(d)})
+      //       .style("fill", "none")
+      //       .style("stroke", "#69b3a2")
+      //       .style("stroke-width", 2)
+      //   })
+      // }
       };
   function getWisconsin(wisc, basemap, path){
         var wiPath = basemap.selectAll(".counties")
@@ -448,7 +491,7 @@
         //console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var mounds = topojson.feature(effigymounds, effigymounds.objects['Updated effigy']).features;
-        console.log(mounds)
+        //console.log(mounds)
         getWisconsin(wisc, basemap, path)
         drawLocations(mounds, basemap, baseProjection);
         };
