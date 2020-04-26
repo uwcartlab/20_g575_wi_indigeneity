@@ -74,7 +74,7 @@
           if(value){
             return colorScale(value);
           } else {
-            return "#ddd";
+            return "#000";
           }
           })
         .on("mouseover", function(d){
@@ -167,7 +167,7 @@
         if (value) {
           return choroplethColorScale(value);
         } else {
-          return "#ddd";
+          return "#000";
         }
         });
   };
