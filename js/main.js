@@ -265,7 +265,6 @@
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
       promises.push(d3.csv('data/nagpra/wi-source.csv'));
-      promises.push(d3.csv('data/nagpra/institutionLocations.csv'));
       Promise.all(promises).then(callback);
 
       // d3.queue()
