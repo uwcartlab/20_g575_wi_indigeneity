@@ -262,6 +262,7 @@
       var promises = [];
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
+      promises.push(d3.json('data/nagpra/Museumlocations.json'));
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
       promises.push(d3.csv('data/nagpra/wi-source.csv'));
@@ -275,11 +276,14 @@
       function callback(data){
         wisconsin = data[0];
         reservation = data[1];
+        instit = data[2]
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var lands = topojson.feature(reservation, reservation.objects.wiRes).features;
-        console.log(wisc)
-        console.log(lands)
-        getWisconsin(wisc, basemap, path)
+        var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
+        //console.log(institutions);
+        getWisconsin(wisc, basemap, path);
+        getReservations(lands, basemap, path);
+        getInstitutions(institutions, basemap, path)
         };
       // function ready(error, dataGeo, data){
       //   var link = []
@@ -337,6 +341,60 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
+  function getReservations(lands, basemap, path){
+              var reservation = basemap.selectAll(".lands")
+                .data(lands)
+                .enter()
+                .append("path")
+                .attr("class", function(d){
+                  return "reservation " + d.properties.label; //placeholder name
+                  })
+                .attr("d", path)
+                .style("fill", function(d){ // Color Enumeration Units
+                  var value = d.properties[expressed]
+                  if(value){
+                    return WIcolors(d.properties[expressed]);
+                  } else {
+                    return "#fff";
+                  }
+                })
+                .on("mouseover", function(d){
+                  ReservHighlight(d.properties);
+                })
+                .on("mouseout", function(d){
+                  ReservDehighlight(d.properties);
+                })
+                .on("mousemove", moveLabel);
+                var desc = reservation.append("desc")
+                  .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+              };
+  function getInstitutions(institutions, basemap, path){
+              var reservation = basemap.selectAll(".institutions")
+                  .data(institutions)
+                  .enter()
+                  .append("path")
+                  .attr("class", function(d){
+                      return "institution " + d.properties.name; //placeholder name
+                        })
+                  .attr("d", path)
+                  .style("fill", function(d){ // Color Enumeration Units
+                      var value = d.properties[expressed]
+                        if(value){
+                          return WIcolors(d.properties[expressed]);
+                          } else {
+                          return "#000";
+                          }
+                      })
+                      .on("mouseover", function(d){
+                         InstHighlight(d.properties);
+                       })
+                       .on("mouseout", function(d){
+                         InstDehighlight(d.properties);
+                       })
+                       .on("mousemove", moveLabel);
+                var desc = reservation.append("desc")
+                              .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+            };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function WIcolors(data){
       var colorClasses = [
@@ -431,31 +489,56 @@
     };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
-  //function highlight(props){
-    //var selected = d3.selectAll("."+props.NAME)
-      //.style("stroke", "red")
-      //.style("stroke-width", "2");
-    //wiLabels(props);
-  //  };
+  function ReservHighlight(props){
+    var selected = d3.selectAll("."+props.label)
+      .style("stroke", "purple")
+      .style("stroke-width", "1");
+    wiLabels(props);
+    };
   // Create Dehighlight Function
-  //function dehighlight(props){
-  //  var selected = d3.selectAll("."+props.NAME)
-  //    .style("stroke", function(){
-  //      return getStyle(this, "stroke")
-  //    })
-  //    .style("stroke-width", function(){
-  //      return getStyle(this, "stroke-width")
-  //    });
-  //  function getStyle(element, styleName){
-  //    var styleText = d3.select(element)
-  //      .select("desc")
-  //      .text();
-  //    var styleObject = JSON.parse(styleText);
-  //    return styleObject[styleName];
-  //  };
-  //  d3.select(".infolabel")
-  //    .remove();
-  //}
+  function ReservDehighlight(props){
+   var selected = d3.selectAll("."+props.label)
+      .style("stroke", function(){
+        return getStyle(this, "stroke")
+      })
+      .style("stroke-width", function(){
+        return getStyle(this, "stroke-width")
+      });
+    function getStyle(element, styleName){
+      var styleText = d3.select(element)
+       .select("desc")
+       .text();
+      var styleObject = JSON.parse(styleText);
+      return styleObject[styleName];
+    };
+    d3.select(".infolabel")
+      .remove();
+  }
+  function InstHighlight(props){
+    var selected = d3.selectAll("."+props.name)
+      .style("stroke", "purple")
+      .style("stroke-width", "1");
+    wiLabels(props);
+    };
+  // Create Dehighlight Function
+  function InstDehighlight(props){
+   var selected = d3.selectAll("."+props.name)
+      .style("stroke", function(){
+        return getStyle(this, "stroke")
+      })
+      .style("stroke-width", function(){
+        return getStyle(this, "stroke-width")
+      });
+    function getStyle(element, styleName){
+      var styleText = d3.select(element)
+       .select("desc")
+       .text();
+      var styleObject = JSON.parse(styleText);
+      return styleObject[styleName];
+    };
+    d3.select(".infolabel")
+      .remove();
+  }
   })();
 
 
