@@ -457,6 +457,9 @@
   //    .remove();
   //}
   })();
+
+
+
 //Wrapper Function for Mound Map
 (function(){
   attrArray = ["Selection 1", "Selection 2"]
@@ -505,11 +508,12 @@
           .enter()
           .append("path")
           .attr("class", function(d){
+            //console.log(d.properties)
             return "county " + d.properties.NAME; //placeholder name
             })
           .attr("d", path)
           .style("fill", function(d){ // Color Enumeration Units
-            // var value = d.properties[expressed]
+            //var value = d.properties[expressed]
             // if(value){
             //   return WIcolors(d.properties[expressed]);
             // } else {
@@ -528,12 +532,13 @@
 
 
   function drawLocations(mounds, basemap, baseProjection) {
-      //console.log(mounds[0].geometry)
+      console.log(mounds)
       basemap.selectAll("circle")
       	.data(mounds)
       	.enter()
       	.append("circle")
       	.attr("cx", function(d) {
+            //console.log(d.properties)
       			return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
       		})
       	.attr("cy", function(d) {
@@ -541,12 +546,27 @@
       	})
       	.attr("r", 2)
       	.attr("class", "locations")
+        .style("fill", function(d) {
+          //console.log(d.properties['status'])
+          if(d.properties['status']=="intact"){
+            return "green"
+          }
+          if(d.properties['status']=="destroyed"){
+            return "black"
+          }
+          if(d.properties['status']=="unknown"){
+            return "yellow"
+          }
+          if(d.properties['status']=='partially destroyed'){
+            return "gray"
+          }
+        })
         .on("mouseover", function(d){
           console.log('highlight')
-          highlight(d.properties);
+          highlight(d.geometry);
         })
         .on("mouseout", function(d){
-          dehighlight(d.properties);
+          dehighlight(d.geometry);
         });
         //.on("mousemove", moveLabel);
       };
