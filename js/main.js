@@ -605,7 +605,7 @@
 
   function drawLocations(mounds, basemap, baseProjection) {
       //console.log(mounds)
-      basemap.selectAll("circle")
+      var loc = basemap.selectAll("circle")
       	.data(mounds)
       	.enter()
       	.append("circle")
@@ -644,7 +644,10 @@
         })
         //buildInfoPanel(mounds);
         .on("mousemove", buildInfoPanel(mounds));
+        var desc = loc.append('desc')
+            .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
       };
+
   function buildInfoPanel(mounds){
     //console.log('made it')
     var width = 200,
@@ -790,7 +793,7 @@ function getStyle(element, styleName){
   var styleObject = JSON.parse(styleText);
         return styleObject[styleName];
     };
-  d3.select(".infolabel")
+  d3.select("."+props['Site Name'])
     .remove();
 }
 
