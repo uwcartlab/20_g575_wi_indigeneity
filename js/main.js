@@ -569,30 +569,19 @@
           .append("path")
           .attr("class", function(d){
             //console.log(d.properties)
-            return "county " + d.properties.NAME; //placeholder name
+            return "county " + d.properties.NAME;
             })
           .attr("d", path)
-          .style("fill", function(d){ // Color Enumeration Units
-            //var value = d.properties[expressed]
-            // if(value){
-            //   return WIcolors(d.properties[expressed]);
-            // } else {
+          .style("fill", function(d){
               return "#ddd";
             });
-          // .on("mouseover", function(d){
-          //   highlight(d.properties);
-          // })
-          // .on("mouseout", function(d){
-          //   dehighlight(d.properties);
-          // })
-          // .on("mousemove", moveLabel);
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
 
 
   function drawLocations(mounds, basemap, baseProjection) {
-      console.log(mounds)
+      //console.log(mounds)
       basemap.selectAll("circle")
       	.data(mounds)
       	.enter()
@@ -605,7 +594,9 @@
             return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
       	})
       	.attr("r", 2)
-      	.attr("class", "locations")
+      	.attr("class", function(d){
+          return "location " + d.properties['Site Name'];
+        })
         .style("fill", function(d) {
           //console.log(d.properties['status'])
           if(d.properties['status']=="intact"){
@@ -622,32 +613,42 @@
           }
         })
         .on("mouseover", function(d){
-          console.log('highlight')
-          highlight(d.geometry);
+          //console.log('highlight')
+          mhighlight(d.properties);
         })
         .on("mouseout", function(d){
-          dehighlight(d.geometry);
-        });
-        buildInfoPanel(mounds);
-        //.on("mousemove", moveLabel);
+          mdehighlight(d.properties);
+        })
+        //buildInfoPanel(mounds);
+        .on("mousemove", buildInfoPanel(mounds));
       };
   function buildInfoPanel(mounds){
     //console.log('made it')
     var width = 200,
         height = 500;
-    var moundinfo = d3.select("moundinfo")
+    var moundinfo = d3.select("body")
       .insert('svg','#moundinfo')
       .attr("class", "moundinfo")
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-  //   var infopan = d3.select("svg")
-  //     .insert('div', "#infopan")
-  //     .attr('class', 'infopan')
-  //     .attr('text', function(d){
-  //       //return "Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+"."
-  //     })
+    var infopan = d3.select("svg")
+      .insert('rect', '#moundinfo')
+      .attr('class', 'rect')
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500);
+    var pantext = d3.select('rect')
+      .data(mounds)
+      .enter()
+      .append('text')
+      .attr('text', function(d){
+        //console.log('we here')
+        //console.log(d.properties['County'])
+        return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
+      })
   }
 
 
@@ -744,15 +745,15 @@
             .style("top", y + "px");
     };
 
-function highlight(props){
-  var selected = d3.selectAll("." +props.properties)
-      .style("stroke", "yellow")
+function mhighlight(props){
+  var selected = d3.selectAll("." +props['Site Name'])
+      .style("stroke", "red")
       .style("stroke-width", "2");
       //choroLabel(props);
   };
     // Create Dehighlight Function
-function dehighlight(props){
-  var selected = d3.selectAll("."+props.properties)
+function mdehighlight(props){
+  var selected = d3.selectAll("."+props['Site Name'])
       .style("stroke", function(){
           return getStyle(this, "stroke")
       })
