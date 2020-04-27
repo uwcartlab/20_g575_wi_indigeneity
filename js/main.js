@@ -615,7 +615,7 @@
 
 
   function drawLocations(mounds, basemap, baseProjection) {
-      console.log(mounds)
+      //console.log(mounds)
       basemap.selectAll("circle")
       	.data(mounds)
       	.enter()
@@ -666,15 +666,26 @@
       .attr('x', 100)
       .attr('y', 500);
     var infopan = d3.select("svg")
+      .insert('rect', '#moundinfo')
+      .attr('class', 'moundinfo')
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500);
+    var pantext = d3.select('rect')
       .data(mounds)
       .enter()
       .append('text')
-      // .insert('div', "#infopan")
-      // .attr('class', 'infopan')
       .attr('text', function(d){
         console.log('we here')
-        console.log(d)
+        //console.log(d)
         return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
+      // .data(mounds)
+      // .enter()
+      // .append('text')
+      // // .insert('div', "#infopan")
+      // .attr('class', 'infopan')
+
       })
   }
 
