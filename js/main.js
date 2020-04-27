@@ -770,7 +770,7 @@ function getStyle(element, styleName){
   var styleObject = JSON.parse(styleText);
         return styleObject[styleName];
     };
-  d3.select("."+props['Site Name'])
+  d3.select(".infolabel")
     .remove();
 }
 
