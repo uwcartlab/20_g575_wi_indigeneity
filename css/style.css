@@ -9,6 +9,13 @@
   font-family: sans-serif;
   font-weight: lighter;
   text-align: center;
+  padding-bottom: 10px;
+}
+.authors {
+  font-size: 1em;
+  font-family: sans-serif;
+  font-weight: lighter;
+  text-align: center;
   padding-bottom: 20px;
 }
 .intro {
@@ -48,7 +55,7 @@
   padding-right: 60px;
 }
 .moundinfo{
-  left: 1000px
+  display: inline-block;
 }
 .state {
     fill: #EEE;

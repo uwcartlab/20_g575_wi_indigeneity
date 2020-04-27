@@ -550,7 +550,7 @@
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
-      var width = 800,
+      var width = 700,
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("body")
@@ -656,9 +656,10 @@
       };
   function buildInfoPanel(mounds){
     //console.log('made it')
-    var width = 400,
+    var width = 200,
         height = 500;
     var moundinfo = d3.select("moundinfo")
+      .insert('svg','#moundinfo')
       .attr("class", "moundinfo")
       .attr("width", width)
       .attr("height", height)
