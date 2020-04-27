@@ -318,59 +318,59 @@
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
   function getReservations(lands, basemap, path){
-              var reservation = basemap.selectAll(".lands")
-                .data(lands)
-                .enter()
-                .append("path")
-                .attr("class", function(d){
-                  return "reservation " + d.properties.label; //placeholder name
-                  })
-                .attr("d", path)
-                .style("fill", function(d){ // Color Enumeration Units
-                  var value = d.properties[expressed]
-                  if(value){
-                    return WIcolors(d.properties[expressed]);
-                  } else {
-                    return "#fff";
-                  }
-                })
-                .on("mouseover", function(d){
-                  ReservHighlight(d.properties);
-                })
-                .on("mouseout", function(d){
-                  ReservDehighlight(d.properties);
-                })
-                .on("mousemove", moveLabel);
-                var desc = reservation.append("desc")
-                  .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
-              };
-  function getInstitutions(institutions, basemap, path){
-              var reservation = basemap.selectAll(".institutions")
-                  .data(institutions)
-                  .enter()
-                  .append("path")
-                  .attr("class", function(d){
-                      return "institution " + d.properties.name; //placeholder name
-                        })
-                  .attr("d", path)
-                  .style("fill", function(d){ // Color Enumeration Units
-                      var value = d.properties[expressed]
-                        if(value){
-                          return WIcolors(d.properties[expressed]);
-                          } else {
-                          return "#000";
-                          }
-                      })
-                      .on("mouseover", function(d){
-                         InstHighlight(d.properties);
-                       })
-                       .on("mouseout", function(d){
-                         InstDehighlight(d.properties);
-                       })
-                       .on("mousemove", moveLabel);
-                var desc = reservation.append("desc")
-                              .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+          var reservation = basemap.selectAll(".lands")
+            .data(lands)
+            .enter()
+            .append("path")
+            .attr("class", function(d){
+              return "reservation " + d.properties.label; //placeholder name
+              })
+            .attr("d", path)
+            .style("fill", function(d){ // Color Enumeration Units
+              var value = d.properties[expressed]
+              if(value){
+                return WIcolors(d.properties[expressed]);
+              } else {
+                return "#fff";
+              }
+            })
+            .on("mouseover", function(d){
+              ReservHighlight(d.properties);
+            })
+            .on("mouseout", function(d){
+              ReservDehighlight(d.properties);
+            })
+            .on("mousemove", moveLabel);
+            var desc = reservation.append("desc")
+              .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
+  function getInstitutions(institutions, basemap, path){
+          var reservation = basemap.selectAll(".institutions")
+              .data(institutions)
+              .enter()
+              .append("path")
+              .attr("class", function(d){
+                  return "institution " + d.properties.name; //placeholder name
+                    })
+              .attr("d", path)
+              .style("fill", function(d){ // Color Enumeration Units
+                  var value = d.properties[expressed]
+                    if(value){
+                      return WIcolors(d.properties[expressed]);
+                      } else {
+                      return "#000";
+                      }
+                  })
+                  .on("mouseover", function(d){
+                      InstHighlight(d.properties);
+                    })
+                    .on("mouseout", function(d){
+                      InstDehighlight(d.properties);
+                    })
+                    .on("mousemove", moveLabel);
+            var desc = reservation.append("desc")
+              .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+          };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function WIcolors(data){
       var colorClasses = [
@@ -515,7 +515,9 @@
     d3.select(".infolabel")
       .remove();
   };
-  function lines(error){}
+  function lines(wiDest, wiInst, wiSource){
+
+  }
   })();
 
 
