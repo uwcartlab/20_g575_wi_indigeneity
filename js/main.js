@@ -572,22 +572,27 @@
         //.on("mousemove", moveLabel);
       };
   function buildInfoPanel(mounds){
-    //console.log('made it')
+    console.log('made it')
     var width = 200,
         height = 500;
-    var moundinfo = d3.select("moundinfo")
+    var moundinfo = d3.select("body")
       .insert('svg','#moundinfo')
       .attr("class", "moundinfo")
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-  //   var infopan = d3.select("svg")
-  //     .insert('div', "#infopan")
-  //     .attr('class', 'infopan')
-  //     .attr('text', function(d){
-  //       //return "Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+"."
-  //     })
+    var infopan = d3.select("svg")
+      .data(mounds)
+      .enter()
+      .append('text')
+      // .insert('div', "#infopan")
+      // .attr('class', 'infopan')
+      .attr('text', function(d){
+        console.log('we here')
+        console.log(d)
+        return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
+      })
   }
 
 
