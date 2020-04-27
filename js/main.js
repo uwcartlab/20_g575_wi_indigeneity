@@ -479,9 +479,9 @@
         .attr('y', 500);
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
-        .center([3.55, 44.88205])
-        .scale(19000)
-        .rotate([92.35, 1.7, -1])
+        .center([3.35, 44.88205])
+        .scale(22000)
+        .rotate([92.35, 1.8, -1])
         .translate([width / 2, height / 2])
 
       var path = d3.geoPath()
@@ -568,9 +568,26 @@
         .on("mouseout", function(d){
           dehighlight(d.geometry);
         });
+        buildInfoPanel(mounds);
         //.on("mousemove", moveLabel);
       };
-
+  function buildInfoPanel(mounds){
+    //console.log('made it')
+    var width = 400,
+        height = 500;
+    var moundinfo = d3.select("moundinfo")
+      .attr("class", "moundinfo")
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500);
+  //   var infopan = d3.select("svg")
+  //     .insert('div', "#infopan")
+  //     .attr('class', 'infopan')
+  //     .attr('text', function(d){
+  //       //return "Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+"."
+  //     })
+  }
 
 
   // Create Quantile (maybe use Natural Breaks?) Color Scale
