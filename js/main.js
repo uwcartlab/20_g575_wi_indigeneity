@@ -276,7 +276,10 @@
       function callback(data){
         wisconsin = data[0];
         reservation = data[1];
-        instit = data[2]
+        instit = data[2];
+        wiDest = data[3];
+        wiInst = data[4];
+        wiSource = data[5];
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var lands = topojson.feature(reservation, reservation.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
@@ -285,33 +288,6 @@
         getReservations(lands, basemap, path);
         getInstitutions(institutions, basemap, path)
         };
-      // function ready(error, dataGeo, data){
-      //   var link = []
-      //   data.forEach(function(row){
-      //     source = [+row.long1, +row.lat1]
-      //     target = [+row.long2, +row.lat2]
-      //     topush = {type: "LineString", coordinates: [source, target]}
-      //     link.push(topush)
-      //   basemap.append("g")
-      //     .selectAll("path")
-      //     .data(dataGeo.features)
-      //     .enter().append("path")
-      //       .attr("fill", "#b8b8b8")
-      //       .attr("d", d3.geoPath()
-      //         .projection(baseProjection)
-      //         )
-      //       .style("stroke", "#fff")
-      //       .style("stroke-width", 0)
-      //   basemap.selectAll("myPath")
-      //     .data(link)
-      //     .enter()
-      //     .append("path")
-      //       .attr("d", function(d){ return path(d)})
-      //       .style("fill", "none")
-      //       .style("stroke", "#69b3a2")
-      //       .style("stroke-width", 2)
-      //   })
-      // }
       };
   function getWisconsin(wisc, basemap, path){
         var wiPath = basemap.selectAll(".counties")
@@ -538,7 +514,8 @@
     };
     d3.select(".infolabel")
       .remove();
-  }
+  };
+  function lines(error){}
   })();
 
 
