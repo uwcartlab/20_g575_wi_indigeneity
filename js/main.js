@@ -607,14 +607,24 @@
           .style("fill", function(d){
               return "#ddd";
             })
-          .call(d3.zoom().on("zoom", function () {
-              wiPath.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
-          }))
-          .append("g")
+          .call(zoom)
+          // .call(d3.zoom().on("zoom", function () {
+          //     var transform = d3.zoomTransform(this)
+          //     wiPath.attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+          // }))
+          // .append("g")
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
+  function zoomFunction(){
+      var transfrom = d3.zoomTransform(this);
+      d3.selectAll(".counties")
+          .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+      }
 
+  var zoom = d3.zoom()
+      .scaleExtent([0.2, 10])
+      .on("zoom", zoomFunction);
 
   function drawLocations(mounds, basemap, baseProjection) {
       //console.log(mounds)
