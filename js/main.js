@@ -530,7 +530,7 @@
   //build Wisconsin map
   function setbaseMap(){
       var width = 700,
-          height = 500;
+        height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("body")
         .insert("svg", '#moundmap')
@@ -595,7 +595,7 @@
       	.attr("cy", function(d) {
             return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
       	})
-      	.attr("r", 2)
+      	.attr("r", 3)
       	.attr("class", function(d){
           return "location " + d.properties['Site Name'];
         })
@@ -628,7 +628,7 @@
       };
 
   function buildInfoPanel(mounds){
-    //console.log('made it')
+    console.log('made it')
     var width = 300,
         height = 500;
     var moundinfo = d3.select("body")
@@ -638,22 +638,26 @@
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var infopan = d3.select("svg")
-      .insert('rect', '#moundmap')
+    var infopan = moundinfo.selectAll('rect')
       .attr('class', 'rect')
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var pantext = d3.select('rect')
+    var panel = moundinfo.selectAll('text')
+      .attr('class', 'text')
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500);
+    var text = panel
       .data(mounds)
       .enter()
       .append('text')
+      .attr('class', 'actualtext')
       .attr('text', function(d){
-        //console.log('we here')
-        //console.log(d.properties['County'])
-        return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
-      })
+          return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
+    })
   }
 
 
