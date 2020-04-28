@@ -585,10 +585,10 @@
       function callback(data){
         wisconsin = data[0];
         effigymounds = data[1];
-        //console.log(effigymounds)
+        console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var mounds = topojson.feature(effigymounds, effigymounds.objects['RealEffigy_spaces']).features;
-        //console.log(mounds)
+        console.log(mounds)
         getWisconsin(wisc, basemap, path)
         drawLocations(mounds, basemap, baseProjection);
         };
@@ -620,14 +620,16 @@
       	.append("circle")
       	.attr("cx", function(d) {
             //console.log(d.properties)
-      			return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+            return baseProjection([d.properties['Longitutde'], d.properties['Latitude']])[0];
+      			//return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
       		})
       	.attr("cy", function(d) {
-            return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+            return baseProjection([d.properties['Longitutde'], d.properties['Latitude']])[1];
+            //return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
       	})
       	.attr("r", 3)
       	.attr("class", function(d){
-          return "location " + d.properties['Site Name'];
+          return "location " + d.properties['SiteName'];
         })
         .style("fill", function(d) {
           //console.log(d.properties['status'])
@@ -785,14 +787,15 @@
     };
 
 function mhighlight(props){
-  var selected = d3.selectAll("." +props['Site Name'])
+  console.log(props)
+  var selected = d3.selectAll("." +props['SiteName'])
       .style("stroke", "red")
       .style("stroke-width", "2");
       //choroLabel(props);
   };
     // Create Dehighlight Function
 function mdehighlight(props){
-  var selected = d3.selectAll("."+props['Site Name'])
+  var selected = d3.selectAll("."+props['SiteName'])
       .style("stroke", function(){
           return getStyle(this, "stroke")
       })
