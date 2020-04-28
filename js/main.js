@@ -265,7 +265,7 @@
       promises.push(d3.json('data/nagpra/Museumlocations.json'));
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
-      promises.push(d3.csv('data/nagpra/wi-source.csv'));
+      promises.push(d3.csv('data/nagpra/wiSource.csv'));
       Promise.all(promises).then(callback);
 
       // d3.queue()
@@ -629,17 +629,17 @@
 
   function buildInfoPanel(mounds){
     //console.log('made it')
-    var width = 200,
+    var width = 300,
         height = 500;
     var moundinfo = d3.select("body")
-      .insert('svg','#moundinfo')
+      .insert('svg','#moundmap')
       .attr("class", "moundinfo")
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
     var infopan = d3.select("svg")
-      .insert('rect', '#moundinfo')
+      .insert('rect', '#moundmap')
       .attr('class', 'rect')
       .attr("width", width)
       .attr("height", height)
