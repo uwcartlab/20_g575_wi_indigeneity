@@ -34,6 +34,10 @@
   padding-top: 20px;
   padding-bottom: 5px;
 }
+.moundinfo {
+  display: inline-block;
+  padding-left: 100px;
+}
 .firstrep {
   font-size: 15px;
   font-family: sans-serif;
