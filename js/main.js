@@ -609,6 +609,7 @@
             });
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+          //wiPath.call(d3.zoom().on("zoom", zoomed));
         };
 
 
