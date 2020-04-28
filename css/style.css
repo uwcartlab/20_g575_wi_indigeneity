@@ -50,13 +50,12 @@ p {
 
 /*.moundmap {
   width: 60%;
-}
-
-.moundinfo {
-  display: inline-block;
-  padding-left: 100px;
-  width: 30%;
 }*/
+
+.moundpaneltext {
+  background-color: #FFF0E6;
+  padding: 12px;
+}
 
 .tab {
     display: inline-block;
@@ -86,7 +85,7 @@ p {
     font-size: 1em;
     font-weight: bold;
     padding: 2px;
-    background-color: #FFF5E3;
+    background-color: #FFF0E6;
     box-shadow: 1px 1px 2px #1A1A1A;
 }
 
