@@ -263,13 +263,13 @@
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
       promises.push(d3.json('data/nagpra/Museumlocations.json'));
-<<<<<<< HEAD
+//<<<<<<< HEAD
       promises.push(d3.csv('data/nagpra/wiDestination.csv'));
       promises.push(d3.csv('data/nagpra/wiInstitutions.csv'));
-=======
+//=======
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
->>>>>>> eaddc89fb324b7b53aa181fe23dbef9de67eec5e
+//>>>>>>> eaddc89fb324b7b53aa181fe23dbef9de67eec5e
       promises.push(d3.csv('data/nagpra/wiSource.csv'));
       Promise.all(promises).then(callback);
 
@@ -580,14 +580,14 @@
           .projection(baseProjection);
       var promises = [];
       promises.push(d3.json('data/effigy/wisconsin.json'));
-      promises.push(d3.json('data/effigy/Effigy.json'));
+      promises.push(d3.json('data/effigy/RealEffigy_spaces.json'));
       Promise.all(promises).then(callback);
       function callback(data){
         wisconsin = data[0];
         effigymounds = data[1];
         //console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
-        var mounds = topojson.feature(effigymounds, effigymounds.objects['Updated effigy']).features;
+        var mounds = topojson.feature(effigymounds, effigymounds.objects['RealEffigy_spaces']).features;
         //console.log(mounds)
         getWisconsin(wisc, basemap, path)
         drawLocations(mounds, basemap, baseProjection);
