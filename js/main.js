@@ -587,16 +587,17 @@
       function callback(data){
         wisconsin = data[0];
         effigymounds = data[1];
-        console.log(effigymounds)
+        //console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var mounds = topojson.feature(effigymounds, effigymounds.objects['RealEffigy_spaces']).features;
-        console.log(mounds)
+        //console.log(mounds)
         getWisconsin(wisc, basemap, path)
         drawLocations(mounds, basemap, baseProjection);
         };
       };
 
   function getWisconsin(wisc, basemap, path){
+        console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
           .enter()
@@ -619,13 +620,14 @@
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
   function zoomFunction(){
-      var transfrom = d3.zoomTransform(this);
+      var transform = d3.zoomTransform(this);
+      console.log(transform)
       d3.selectAll(".counties")
           .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
       }
 
   var zoom = d3.zoom()
-      .scaleExtent([0.2, 10])
+      .scaleExtent([5, 10])
       .on("zoom", zoomFunction);
 
   function drawLocations(mounds, basemap, baseProjection) {
@@ -676,7 +678,7 @@
       };
 
   function buildInfoPanel(mounds){
-    console.log('made it')
+    //console.log('made it')
     var width = 300,
         height = 500;
     var moundinfo = d3.select("body > div > div > div", "#moundmap")
@@ -704,7 +706,7 @@
       .style('fill', 'red')
       .attr('class', 'actualtext')
       .attr('text', function(d){
-          console.log(d.properties['County'])
+          //console.log(d.properties['County'])
           return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
       });
   }
