@@ -563,8 +563,9 @@
         // .attr('x', 100)
         // .attr('y', 500)
         .call(d3.zoom().on("zoom", function () {
-       basemap.attr("transform", d3.event.transform)
-    }));
+            basemap.attr("transform", d3.event.transform)
+        }))
+        .append("g");
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([3.35, 44.88205])
