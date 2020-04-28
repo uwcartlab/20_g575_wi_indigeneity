@@ -9,8 +9,8 @@
     var width = 1000,
         height = 550;
     // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-    var choropleth = d3.select("body > div > div > div", "#map")
-      .insert("svg", "#map")
+    var choropleth = d3.select("div#map")
+      .append("svg")
       .attr("class", "map")
       .attr("width", width)
       .attr("height", height);
@@ -135,7 +135,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
-    var dropdown = d3.select("body > div > div > div", "#map")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("div#map")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
@@ -175,7 +175,7 @@
   // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
   function choroLabel(props){
     var labelAttribute = "<h1>"+props[expressed]+"</h1><b>"+expressed+"</b>";
-    var infolabel = d3.select("body > div > div > div", "#map")
+    var infolabel = d3.select("div#map")
       .append("div")
       .attr("class", "infolabel")
       .attr("id", props.postal+"_label")
@@ -243,9 +243,8 @@
       var width = 800,
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("body > div > div > div", "#flowmap")
-        //should this be going to #flowmap or #moundmap? -Nick
-        .insert("svg", '#flowmap')
+      var basemap = d3.select("div#flowmap")
+        .append("svg")
         .attr("class", "flowmap")
         .attr("width", width)
         .attr("height", height)
@@ -393,7 +392,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(wisconsinData){
-    var dropdown = d3.select("body > div > div > div", "#flowmap")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("div#flowmap")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
@@ -556,13 +555,16 @@
       var width = 700,
         height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("body > div > div > div", "#moundmap")
-        .insert("svg", '#moundmap')
+      var basemap = d3.select("div#moundmap")
+        .append("svg")
         .attr("class", "moundmap")
         .attr("width", width)
         .attr("height", height)
-        .attr('x', 100)
-        .attr('y', 500);
+        // .attr('x', 100)
+        // .attr('y', 500)
+        .call(d3.zoom().on("zoom", function () {
+       basemap.attr("transform", d3.event.transform)
+    }));
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([3.35, 44.88205])
@@ -589,7 +591,7 @@
       };
 
   function getWisconsin(wisc, basemap, path){
-        console.log(zoom)
+        //console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
           .enter()
@@ -602,25 +604,25 @@
           .style("fill", function(d){
               return "#ddd";
             })
-          .call(zoom)
+          // .call(zoom)
           // .call(d3.zoom().on("zoom", function () {
           //     var transform = d3.zoomTransform(this)
-          //     wiPath.attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+          //     wiPath.attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scalemou(" + transform.k +")");
           // }))
           // .append("g")
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-  function zoomFunction(){
-      var transform = d3.zoomTransform(this);
-      console.log(transform)
-      d3.selectAll(".counties")
-          .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
-      }
-
-  var zoom = d3.zoom()
-      .scaleExtent([5, 10])
-      .on("zoom", zoomFunction);
+  // function zoomFunction(){
+  //     var transform = d3.zoomTransform(this);
+  //     console.log(transform)
+  //     d3.select(".counties")
+  //         .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+  //     }
+  //
+  // var zoom = d3.zoom()
+  //     //.scaleExtent([5, 10])
+  //     .on("zoom", zoomFunction);
 
   function drawLocations(mounds, basemap, baseProjection) {
       //console.log(mounds)
@@ -673,8 +675,8 @@
     //console.log('made it')
     var width = 300,
         height = 500;
-    var moundinfo = d3.select("body > div > div > div", "#moundmap")
-      .insert('svg','#moundmap')
+    var moundinfo = d3.select("div#moundmap")
+      .append('svg')
       .attr("class", "moundinfo")
       .attr("width", width)
       .attr("height", height)
@@ -727,7 +729,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(wisconsinData){
-    var dropdown = d3.select("body > div > div > div", "#moundmap")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("div#moundmap")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
