@@ -71,6 +71,18 @@ p {
   padding-top: 20px;
   padding-bottom: 5px;
 }
+.moundmap {
+  width: 60%;
+}
+.moundinfo {
+  display: inline-block;
+  padding-left: 100px;
+  width: 30%;
+}
+.actualtext {
+  font-family: san-serif;
+  font-size: 15px;
+}
 .firstrep {
   font-size: 15px;
   font-family: sans-serif;
@@ -90,9 +102,6 @@ p {
   text-align: left;
   padding-left: 60px;
   padding-right: 60px;
-}
-.moundinfo{
-  display: inline-block;
 }
 .state {
     fill: #EEE;

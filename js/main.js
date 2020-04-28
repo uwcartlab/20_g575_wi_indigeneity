@@ -265,9 +265,14 @@
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
       promises.push(d3.json('data/nagpra/Museumlocations.json'));
+//<<<<<<< HEAD
+      promises.push(d3.csv('data/nagpra/wiDestination.csv'));
+      promises.push(d3.csv('data/nagpra/wiInstitutions.csv'));
+//=======
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
-      promises.push(d3.csv('data/nagpra/wi-source.csv'));
+//>>>>>>> eaddc89fb324b7b53aa181fe23dbef9de67eec5e
+      promises.push(d3.csv('data/nagpra/wiSource.csv'));
       Promise.all(promises).then(callback);
 
       // d3.queue()
@@ -287,8 +292,8 @@
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         //console.log(institutions);
         getWisconsin(wisc, basemap, path);
-        getReservations(lands, basemap, path);
-        getInstitutions(institutions, basemap, path)
+        getReservations(wisc, lands, basemap, path);
+        getInstitutions(wisc, institutions, basemap, path)
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -319,7 +324,7 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-  function getReservations(lands, basemap, path){
+  function getReservations(wisc, lands, basemap, path){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -337,16 +342,16 @@
               }
             })
             .on("mouseover", function(d){
-              ReservHighlight(d.properties);
+              ReservHighlight(d);
             })
             .on("mouseout", function(d){
-              ReservDehighlight(d.properties);
+              ReservDehighlight(d);
             })
             .on("mousemove", moveLabel);
             var desc = reservation.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
-  function getInstitutions(institutions, basemap, path){
+  function getInstitutions(wisc, institutions, basemap, path){
           var reservation = basemap.selectAll(".institutions")
               .data(institutions)
               .enter()
@@ -364,10 +369,11 @@
                       }
                   })
                   .on("mouseover", function(d){
-                      InstHighlight(d.properties);
+                      //console.log(d)
+                      InstHighlight(wisc,d);
                     })
                     .on("mouseout", function(d){
-                      InstDehighlight(d.properties);
+                      InstDehighlight(wisc,d);
                     })
                     .on("mousemove", moveLabel);
             var desc = reservation.append("desc")
@@ -465,17 +471,43 @@
             .style("left", x + "px")
             .style("top", y + "px");
     };
+  function instLines(props, wisc, wiDest, wiInst, wiSource){
+      var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
+      //console.log(source)
+      //console.log(wiInst)
+      //console.log(wisc)
+      var obj;
+      var instit;
+      for (obj in wisc){
+        //console.log(wisc[obj].properties.NAME)
+        for (instit in wiInst){
+          if(wisc[obj].properties.NAME == wiInst[instit].County){
+            console.log(wiInst[instit].County)
+          }
+        }
+      }
+      var museum = d3.selectAll("."+props.label)
+        .data(wiInst)
+        .enter()
+        //console.log(props.geometry)
+        .attr("d", function(d){
+          var dx = 2,
+              dy = 2,
+              dr = Math.sqrt(dx*dx+dy*dy);
+          //return "M"+d.source.x+","+d.source.y+"A"+dr+","+dr+"0 0,1"+d.target.x+","+d.target.y;
+        });
+    };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
   function ReservHighlight(props){
-    var selected = d3.selectAll("."+props.label)
+    var selected = d3.selectAll("."+props.properties.label)
       .style("stroke", "purple")
-      .style("stroke-width", "1");
+      .style("stroke-width", "1.5");
     wiLabels(props);
     };
   // Create Dehighlight Function
   function ReservDehighlight(props){
-   var selected = d3.selectAll("."+props.label)
+   var selected = d3.selectAll("."+props.properties.label)
       .style("stroke", function(){
         return getStyle(this, "stroke")
       })
@@ -492,15 +524,16 @@
     d3.select(".infolabel")
       .remove();
   }
-  function InstHighlight(props){
-    var selected = d3.selectAll("."+props.name)
+  function InstHighlight(wisc,props){
+    var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", "purple")
-      .style("stroke-width", "1");
+      .style("stroke-width", "1.5")
     wiLabels(props);
+    instLines(props,wisc, wiDest, wiInst, wiSource);
     };
   // Create Dehighlight Function
-  function InstDehighlight(props){
-   var selected = d3.selectAll("."+props.name)
+  function InstDehighlight(wisc,props){
+   var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", function(){
         return getStyle(this, "stroke")
       })
@@ -517,9 +550,6 @@
     d3.select(".infolabel")
       .remove();
   };
-  function lines(wiDest, wiInst, wiSource){
-
-  }
   })();
 
 
@@ -532,7 +562,7 @@
   //build Wisconsin map
   function setbaseMap(){
       var width = 700,
-          height = 500;
+        height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("body > div > div > div", "#moundmap")
         .insert("svg", '#moundmap')
@@ -552,15 +582,15 @@
           .projection(baseProjection);
       var promises = [];
       promises.push(d3.json('data/effigy/wisconsin.json'));
-      promises.push(d3.json('data/effigy/Effigy.json'));
+      promises.push(d3.json('data/effigy/RealEffigy_spaces.json'));
       Promise.all(promises).then(callback);
       function callback(data){
         wisconsin = data[0];
         effigymounds = data[1];
-        //console.log(effigymounds)
+        console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
-        var mounds = topojson.feature(effigymounds, effigymounds.objects['Updated effigy']).features;
-        //console.log(mounds)
+        var mounds = topojson.feature(effigymounds, effigymounds.objects['RealEffigy_spaces']).features;
+        console.log(mounds)
         getWisconsin(wisc, basemap, path)
         drawLocations(mounds, basemap, baseProjection);
         };
@@ -578,7 +608,11 @@
           .attr("d", path)
           .style("fill", function(d){
               return "#ddd";
-            });
+            })
+          .call(d3.zoom().on("zoom", function () {
+              wiPath.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+          }))
+          .append("g")
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
@@ -592,14 +626,16 @@
       	.append("circle")
       	.attr("cx", function(d) {
             //console.log(d.properties)
-      			return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+            return baseProjection([d.properties['Longitutde'], d.properties['Latitude']])[0];
+      			//return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
       		})
       	.attr("cy", function(d) {
-            return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+            return baseProjection([d.properties['Longitutde'], d.properties['Latitude']])[1];
+            //return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
       	})
-      	.attr("r", 2)
+      	.attr("r", 3)
       	.attr("class", function(d){
-          return "location " + d.properties['Site Name'];
+          return "location " + d.properties['SiteName'];
         })
         .style("fill", function(d) {
           //console.log(d.properties['status'])
@@ -630,32 +666,37 @@
       };
 
   function buildInfoPanel(mounds){
-    //console.log('made it')
-    var width = 200,
+    console.log('made it')
+    var width = 300,
         height = 500;
-    var moundinfo = d3.select("body > div > div > div", "#moundinfo")
-      .insert('svg','#moundinfo')
+    var moundinfo = d3.select("body > div > div > div", "#moundmap")
+      .insert('svg','#moundmap')
       .attr("class", "moundinfo")
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var infopan = d3.select("svg")
-      .insert('rect', '#moundinfo')
+    var infopan = moundinfo.selectAll('rect')
       .attr('class', 'rect')
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var pantext = d3.select('rect')
+    var panel = moundinfo.selectAll('text')
       .data(mounds)
       .enter()
       .append('text')
+      .attr('class', 'text')
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500)
+      .style('fill', 'red')
+      .attr('class', 'actualtext')
       .attr('text', function(d){
-        //console.log('we here')
-        //console.log(d.properties['County'])
-        return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
-      })
+          console.log(d.properties['County'])
+          return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
+      });
   }
 
 
@@ -753,14 +794,15 @@
     };
 
 function mhighlight(props){
-  var selected = d3.selectAll("." +props['Site Name'])
+  console.log(props)
+  var selected = d3.selectAll("." +props['SiteName'])
       .style("stroke", "red")
       .style("stroke-width", "2");
       //choroLabel(props);
   };
     // Create Dehighlight Function
 function mdehighlight(props){
-  var selected = d3.selectAll("."+props['Site Name'])
+  var selected = d3.selectAll("."+props['SiteName'])
       .style("stroke", function(){
           return getStyle(this, "stroke")
       })
