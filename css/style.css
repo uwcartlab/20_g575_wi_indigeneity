@@ -79,14 +79,14 @@ p {
 
 .dropdown {
     position: absolute;
-    top: 650px;
-    left: 850px;
+    top: 400px;
+    left: 775px;
     z-index: 10;
-    font-family: serif;
+    font-family: "open sans", "verdana", "sans-serif";
     font-size: 1em;
     font-weight: bold;
     padding: 2px;
-    border: 1px solid #1A1A1A;
+    background-color: #FFF5E3;
     box-shadow: 1px 1px 2px #1A1A1A;
 }
 
