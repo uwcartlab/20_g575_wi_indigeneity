@@ -579,8 +579,11 @@
         .attr("class", "moundmap")
         .attr("width", width)
         .attr("height", height)
-        .attr('x', 100)
-        .attr('y', 500);
+        // .attr('x', 100)
+        // .attr('y', 500)
+        .call(d3.zoom().on("zoom", function () {
+       basemap.attr("transform", d3.event.transform)
+    }));
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([3.35, 44.88205])
@@ -607,7 +610,7 @@
       };
 
   function getWisconsin(wisc, basemap, path){
-        console.log(zoom)
+        //console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
           .enter()
@@ -620,25 +623,25 @@
           .style("fill", function(d){
               return "#ddd";
             })
-          .call(zoom)
+          // .call(zoom)
           // .call(d3.zoom().on("zoom", function () {
           //     var transform = d3.zoomTransform(this)
-          //     wiPath.attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+          //     wiPath.attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scalemou(" + transform.k +")");
           // }))
           // .append("g")
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-  function zoomFunction(){
-      var transform = d3.zoomTransform(this);
-      console.log(transform)
-      d3.select(".counties")
-          .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
-      }
-
-  var zoom = d3.zoom()
-      //.scaleExtent([5, 10])
-      .on("zoom", zoomFunction);
+  // function zoomFunction(){
+  //     var transform = d3.zoomTransform(this);
+  //     console.log(transform)
+  //     d3.select(".counties")
+  //         .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+  //     }
+  //
+  // var zoom = d3.zoom()
+  //     //.scaleExtent([5, 10])
+  //     .on("zoom", zoomFunction);
 
   function drawLocations(mounds, basemap, baseProjection) {
       //console.log(mounds)
