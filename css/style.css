@@ -1,10 +1,3 @@
-/* color scheme:
-
-
-
-
-*/
-
 .bg-nav {
 	background-color: #602F2D;
 }
@@ -55,66 +48,35 @@ p {
   line-height: 27px;
 }
 
-.intro {
-  font-size: 15px;
-  font-family: sans-serif;
-  font-weight: normal;
-  text-align: justify;
-  padding-left: 60px;
-  padding-right: 60px;
-}
-.maptitle {
-  font-size: 20px;
-  font-family: sans-serif;
-  font-weight: bold;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 5px;
-}
 .moundmap {
   width: 60%;
 }
+
 .moundinfo {
   display: inline-block;
   padding-left: 100px;
   width: 30%;
 }
-.actualtext {
-  font-family: san-serif;
-  font-size: 15px;
-}
-.firstrep {
-  font-size: 15px;
-  font-family: sans-serif;
-  font-weight: normal;
-  text-align: justify;
-  padding-left: 60px;
-  padding-right: 60px;
-}
+
 .tab {
     display: inline-block;
     margin-left: 40px;
 }
-.footnotes {
-  font-size: 10px;
-  font-family: sans-serif;
-  font-weight: lighter;
-  text-align: left;
-  padding-left: 60px;
-  padding-right: 60px;
-}
+
 .state {
     fill: #EEE;
     stroke: #555;
     stroke-width: 1px;
     stroke-linecap: round;
 }
+
 .county {
     fill: #EEE;
     stroke: #AAA;
     stroke-width: 0.5px;
     stroke-linecap: round;
 }
+
 .dropdown {
     position: absolute;
     top: 650px;
@@ -127,6 +89,7 @@ p {
     border: 1px solid #999;
     box-shadow: 2px 2px 4px #999;
 }
+
 .infolabel {
     position: absolute;
     height: 50px;
@@ -142,6 +105,7 @@ p {
     padding: 0;
     display: inline-block;
     line-height: 1em;
+
 }
 option {
     font-weight: normal;
