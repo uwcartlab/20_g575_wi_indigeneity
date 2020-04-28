@@ -632,12 +632,12 @@
   function zoomFunction(){
       var transform = d3.zoomTransform(this);
       console.log(transform)
-      d3.selectAll(".counties")
+      d3.select(".counties")
           .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
       }
 
   var zoom = d3.zoom()
-      .scaleExtent([5, 10])
+      //.scaleExtent([5, 10])
       .on("zoom", zoomFunction);
 
   function drawLocations(mounds, basemap, baseProjection) {
