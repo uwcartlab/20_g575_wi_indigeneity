@@ -1,78 +1,82 @@
-.title {
-  font-size: 4em;
-  font-family: sans-serif;
+.bg-nav {
+	background-color: #602F2D;
+}
+
+.navbar-dark {
   font-weight: bold;
-  text-align: center;
+  font-family: "open sans", "verdana", "sans-serif";
 }
-.subtitle {
-  font-size: 2em;
-  font-family: sans-serif;
-  font-weight: lighter;
+
+.header {
   text-align: center;
-  padding-bottom: 10px;
-}
-.authors {
-  font-size: 1em;
-  font-family: sans-serif;
-  font-weight: lighter;
-  text-align: center;
+  padding-top: 25px;
   padding-bottom: 20px;
 }
-.intro {
-  font-size: 15px;
-  font-family: sans-serif;
-  font-weight: normal;
-  text-align: justify;
-  padding-left: 60px;
-  padding-right: 60px;
+
+html, body {
+  background-color: #F8F3ED;
+  color: #1A1A1A;
+  font-family: "open sans", "verdana", "sans-serif";
 }
-.maptitle {
-  font-size: 20px;
-  font-family: sans-serif;
+
+h1 {
+  text-transform: uppercase;
+  font-size: 80px;
   font-weight: bold;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 5px;
+  font-family: "open sans", "verdana", "sans-serif";
 }
+
+h2 {
+  font-size: 44px;
+  font-weight: bold;
+  font-family: "open sans", "verdana", "sans-serif";
+}
+
+h3 {
+  font-size: 30px;
+  font-family: "open sans", "verdana", "sans-serif";
+  padding-bottom: 7px
+}
+
+h4 {
+  font-size: 20px;
+  font-family: "open sans", "verdana", "sans-serif";
+}
+
+p {
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.moundmap {
+  width: 60%;
+}
+
 .moundinfo {
   display: inline-block;
   padding-left: 100px;
+  width: 30%;
 }
-.firstrep {
-  font-size: 15px;
-  font-family: sans-serif;
-  font-weight: normal;
-  text-align: justify;
-  padding-left: 60px;
-  padding-right: 60px;
-}
+
 .tab {
     display: inline-block;
     margin-left: 40px;
 }
-.footnotes {
-  font-size: 10px;
-  font-family: sans-serif;
-  font-weight: lighter;
-  text-align: left;
-  padding-left: 60px;
-  padding-right: 60px;
-}
-.moundinfo{
-  display: inline-block;
-}
+
 .state {
     fill: #EEE;
     stroke: #555;
     stroke-width: 1px;
     stroke-linecap: round;
 }
+
 .county {
     fill: #EEE;
     stroke: #AAA;
     stroke-width: 0.5px;
     stroke-linecap: round;
 }
+
 .dropdown {
     position: absolute;
     top: 650px;
@@ -85,6 +89,7 @@
     border: 1px solid #999;
     box-shadow: 2px 2px 4px #999;
 }
+
 .infolabel {
     position: absolute;
     height: 50px;
@@ -100,6 +105,7 @@
     padding: 0;
     display: inline-block;
     line-height: 1em;
+
 }
 option {
     font-weight: normal;

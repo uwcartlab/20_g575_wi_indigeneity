@@ -9,7 +9,7 @@
     var width = 1000,
         height = 550;
     // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-    var choropleth = d3.select("body")
+    var choropleth = d3.select("body > div > div > div", "#map")
       .insert("svg", "#map")
       .attr("class", "map")
       .attr("width", width)
@@ -74,7 +74,7 @@
           if(value){
             return colorScale(value);
           } else {
-            return "#000";
+            return "#E0E0E0";
           }
           })
         .on("mouseover", function(d){
@@ -135,7 +135,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
-    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("body > div > div > div", "#map")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
@@ -167,7 +167,7 @@
         if (value) {
           return choroplethColorScale(value);
         } else {
-          return "#000";
+          return "#E0E0E0";
         }
         });
   };
@@ -175,12 +175,12 @@
   // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
   function choroLabel(props){
     var labelAttribute = "<h1>"+props[expressed]+"</h1><b>"+expressed+"</b>";
-    var infolabel = d3.select("body")
+    var infolabel = d3.select("body > div > div > div", "#map")
       .append("div")
       .attr("class", "infolabel")
       .attr("id", props.postal+"_label")
       .html(labelAttribute);
-    var stateName = infolabel.append("div")
+    var stateName = infolabel.append("div") //state is not being properly appended after adding bootstrap
       .attr("class", "labelname")
       .html(props.name);
     };
@@ -232,6 +232,7 @@
       .remove();
   }
 })();
+
 //Wrapper Function for Mound Map
 (function(){
   attrArray = ["MNI", "AFO", "CUI"]
@@ -242,7 +243,8 @@
       var width = 800,
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("body")
+      var basemap = d3.select("body > div > div > div", "#flowmap")
+        //should this be going to #flowmap or #moundmap? -Nick
         .insert("svg", '#flowmap')
         .attr("class", "flowmap")
         .attr("width", width)
@@ -263,8 +265,13 @@
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
       promises.push(d3.json('data/nagpra/Museumlocations.json'));
+//<<<<<<< HEAD
       promises.push(d3.csv('data/nagpra/wiDestination.csv'));
       promises.push(d3.csv('data/nagpra/wiInstitutions.csv'));
+//=======
+      promises.push(d3.csv('data/nagpra/wi-destination.csv'));
+      promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
+//>>>>>>> eaddc89fb324b7b53aa181fe23dbef9de67eec5e
       promises.push(d3.csv('data/nagpra/wiSource.csv'));
       Promise.all(promises).then(callback);
 
@@ -331,7 +338,7 @@
               if(value){
                 return WIcolors(d.properties[expressed]);
               } else {
-                return "#fff";
+                return "#E0E0E0";
               }
             })
             .on("mouseover", function(d){
@@ -358,7 +365,7 @@
                     if(value){
                       return WIcolors(d.properties[expressed]);
                       } else {
-                      return "#000";
+                      return "#E0E0E0";
                       }
                   })
                   .on("mouseover", function(d){
@@ -395,7 +402,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(wisconsinData){
-    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("body > div > div > div", "#flowmap")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
@@ -566,9 +573,9 @@
   //build Wisconsin map
   function setbaseMap(){
       var width = 700,
-          height = 500;
+        height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("body")
+      var basemap = d3.select("body > div > div > div", "#moundmap")
         .insert("svg", '#moundmap')
         .attr("class", "moundmap")
         .attr("width", width)
@@ -586,14 +593,14 @@
           .projection(baseProjection);
       var promises = [];
       promises.push(d3.json('data/effigy/wisconsin.json'));
-      promises.push(d3.json('data/effigy/Effigy.json'));
+      promises.push(d3.json('data/effigy/RealEffigy_spaces.json'));
       Promise.all(promises).then(callback);
       function callback(data){
         wisconsin = data[0];
         effigymounds = data[1];
         //console.log(effigymounds)
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
-        var mounds = topojson.feature(effigymounds, effigymounds.objects['Updated effigy']).features;
+        var mounds = topojson.feature(effigymounds, effigymounds.objects['RealEffigy_spaces']).features;
         //console.log(mounds)
         getWisconsin(wisc, basemap, path)
         drawLocations(mounds, basemap, baseProjection);
@@ -601,6 +608,7 @@
       };
 
   function getWisconsin(wisc, basemap, path){
+        console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
           .enter()
@@ -612,11 +620,26 @@
           .attr("d", path)
           .style("fill", function(d){
               return "#ddd";
-            });
+            })
+          .call(zoom)
+          // .call(d3.zoom().on("zoom", function () {
+          //     var transform = d3.zoomTransform(this)
+          //     wiPath.attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+          // }))
+          // .append("g")
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
+  function zoomFunction(){
+      var transform = d3.zoomTransform(this);
+      console.log(transform)
+      d3.selectAll(".counties")
+          .attr("transform", "translate("+ transform.x + "," +transform.y +")" + " scale(" + transform.k +")");
+      }
 
+  var zoom = d3.zoom()
+      .scaleExtent([5, 10])
+      .on("zoom", zoomFunction);
 
   function drawLocations(mounds, basemap, baseProjection) {
       //console.log(mounds)
@@ -626,14 +649,16 @@
       	.append("circle")
       	.attr("cx", function(d) {
             //console.log(d.properties)
-      			return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+            return baseProjection([d.properties['Longitutde'], d.properties['Latitude']])[0];
+      			//return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
       		})
       	.attr("cy", function(d) {
-            return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+            return baseProjection([d.properties['Longitutde'], d.properties['Latitude']])[1];
+            //return baseProjection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
       	})
-      	.attr("r", 2)
+      	.attr("r", 3)
       	.attr("class", function(d){
-          return "location " + d.properties['Site Name'];
+          return "location " + d.properties['SiteName'];
         })
         .style("fill", function(d) {
           //console.log(d.properties['status'])
@@ -667,29 +692,34 @@
     //console.log('made it')
     var width = 300,
         height = 500;
-    var moundinfo = d3.select("body")
+    var moundinfo = d3.select("body > div > div > div", "#moundmap")
       .insert('svg','#moundmap')
       .attr("class", "moundinfo")
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var infopan = d3.select("svg")
-      .insert('rect', '#moundmap')
+    var infopan = moundinfo.selectAll('rect')
       .attr('class', 'rect')
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var pantext = d3.select('rect')
+    var panel = moundinfo.selectAll('text')
       .data(mounds)
       .enter()
       .append('text')
+      .attr('class', 'text')
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500)
+      .style('fill', 'red')
+      .attr('class', 'actualtext')
       .attr('text', function(d){
-        //console.log('we here')
-        //console.log(d.properties['County'])
-        return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
-      })
+          //console.log(d.properties['County'])
+          return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
+      });
   }
 
 
@@ -716,7 +746,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(wisconsinData){
-    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("body > div > div > div", "#moundmap")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
@@ -787,14 +817,15 @@
     };
 
 function mhighlight(props){
-  var selected = d3.selectAll("." +props['Site Name'])
+  console.log(props)
+  var selected = d3.selectAll("." +props['SiteName'])
       .style("stroke", "red")
       .style("stroke-width", "2");
       //choroLabel(props);
   };
     // Create Dehighlight Function
 function mdehighlight(props){
-  var selected = d3.selectAll("."+props['Site Name'])
+  var selected = d3.selectAll("."+props['SiteName'])
       .style("stroke", function(){
           return getStyle(this, "stroke")
       })
