@@ -265,20 +265,12 @@
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
       promises.push(d3.json('data/nagpra/Museumlocations.json'));
-//<<<<<<< HEAD
       promises.push(d3.csv('data/nagpra/wiDestination.csv'));
       promises.push(d3.csv('data/nagpra/wiInstitutions.csv'));
-//=======
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
-//>>>>>>> eaddc89fb324b7b53aa181fe23dbef9de67eec5e
       promises.push(d3.csv('data/nagpra/wiSource.csv'));
       Promise.all(promises).then(callback);
-
-      // d3.queue()
-      //   .defer(d3.json, 'data/effigy/wisconsin.json')
-      //   .defer(d3.csv, 'data/nagpra/institutionLocations.csv')
-      //   .await(ready);
 
       function callback(data){
         wisconsin = data[0];
@@ -293,7 +285,7 @@
         //console.log(institutions);
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, basemap, path);
-        getInstitutions(basemap, wisc, institutions, basemap, path)
+        getInstitutions(basemap, baseProjection, wisc, institutions, basemap, path)
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -313,7 +305,6 @@
               return "#ddd";
             }
           });
-
           // .on("mouseover", function(d){
           //   highlight(d.properties);
           // })
@@ -336,9 +327,9 @@
             .style("fill", function(d){ // Color Enumeration Units
               var value = d.properties[expressed]
               if(value){
-                return WIcolors(d.properties[expressed]);
+                return "#000";
               } else {
-                return "#E0E0E0";
+                return "#888";
               }
             })
             .on("mouseover", function(d){
@@ -351,8 +342,8 @@
             var desc = reservation.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
-  function getInstitutions(basemap, wisc, institutions, basemap, path){
-          var reservation = basemap.selectAll(".institutions")
+  function getInstitutions(basemap, baseProjection, wisc, institutions, basemap, path){
+          var institution = basemap.selectAll(".institutions")
               .data(institutions)
               .enter()
               .append("path")
@@ -363,20 +354,20 @@
               .style("fill", function(d){ // Color Enumeration Units
                   var value = d.properties[expressed]
                     if(value){
-                      return WIcolors(d.properties[expressed]);
+                      return "#000";
                       } else {
-                      return "#E0E0E0";
+                      return "#555";
                       }
                   })
                   .on("mouseover", function(d){
                       //console.log(d)
-                      InstHighlight(basemap,wisc,d);
+                      InstHighlight(basemap, baseProjection,wisc,d);
                     })
                     .on("mouseout", function(d){
                       InstDehighlight(wisc,d);
                     })
                     .on("mousemove", moveLabel);
-            var desc = reservation.append("desc")
+            var desc = institution.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
           };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
@@ -471,18 +462,8 @@
             .style("left", x + "px")
             .style("top", y + "px");
     };
-  function instLines(basemap,props, wisc, wiDest, wiInst, wiSource){
+  function instLines(basemap, baseProjection ,props, wisc, wiInst){
       var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
-      //console.log(props.geometry.coordinates)
-      //console.log(wiInst)
-      //console.log(wisc)
-      var width = 800,
-          height = 500;
-      var baseProjection = d3.geoAlbers()
-        .center([2.25, 44.88205])
-        .scale(5500)
-        .rotate([92.35, .5, -2])
-        .translate([width / 2, height / 2]);
       var path = d3.geoPath()
         .projection(baseProjection)
       var link = []
@@ -535,12 +516,12 @@
     d3.select(".infolabel")
       .remove();
   }
-  function InstHighlight(basemap,wisc,props){
+  function InstHighlight(basemap, baseProjection, wisc, props){
     var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", "purple")
       .style("stroke-width", "1.5")
     wiLabels(props);
-    instLines(basemap,props,wisc, wiDest, wiInst, wiSource);
+    instLines(basemap, baseProjection, props, wisc, wiInst);
     };
   // Create Dehighlight Function
   function InstDehighlight(wisc,props){
