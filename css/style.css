@@ -48,7 +48,7 @@ p {
   line-height: 27px;
 }
 
-.moundmap {
+/*.moundmap {
   width: 60%;
 }
 
@@ -56,7 +56,7 @@ p {
   display: inline-block;
   padding-left: 100px;
   width: 30%;
-}
+}*/
 
 .tab {
     display: inline-block;
@@ -86,16 +86,16 @@ p {
     font-size: 1em;
     font-weight: bold;
     padding: 2px;
-    border: 1px solid #999;
-    box-shadow: 2px 2px 4px #999;
+    border: 1px solid #1A1A1A;
+    box-shadow: 1px 1px 2px #1A1A1A;
 }
 
 .infolabel {
     position: absolute;
-    height: 50px;
+    height: 150px;
     min-width: 100px;
     color: #fff;
-    background-color: #000;
+    background-color: #1A1A1A;
     border: solid thin #fff;
     padding: 5px 10px; */
 }
