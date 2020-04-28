@@ -263,13 +263,8 @@
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
       promises.push(d3.json('data/nagpra/Museumlocations.json'));
-<<<<<<< HEAD
       promises.push(d3.csv('data/nagpra/wiDestination.csv'));
       promises.push(d3.csv('data/nagpra/wiInstitutions.csv'));
-=======
-      promises.push(d3.csv('data/nagpra/wi-destination.csv'));
-      promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
->>>>>>> eaddc89fb324b7b53aa181fe23dbef9de67eec5e
       promises.push(d3.csv('data/nagpra/wiSource.csv'));
       Promise.all(promises).then(callback);
 
@@ -291,7 +286,7 @@
         //console.log(institutions);
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, basemap, path);
-        getInstitutions(wisc, institutions, basemap, path)
+        getInstitutions(basemap, wisc, institutions, basemap, path)
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -349,7 +344,7 @@
             var desc = reservation.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
-  function getInstitutions(wisc, institutions, basemap, path){
+  function getInstitutions(basemap, wisc, institutions, basemap, path){
           var reservation = basemap.selectAll(".institutions")
               .data(institutions)
               .enter()
@@ -368,7 +363,7 @@
                   })
                   .on("mouseover", function(d){
                       //console.log(d)
-                      InstHighlight(wisc,d);
+                      InstHighlight(basemap,wisc,d);
                     })
                     .on("mouseout", function(d){
                       InstDehighlight(wisc,d);
@@ -469,31 +464,42 @@
             .style("left", x + "px")
             .style("top", y + "px");
     };
-  function instLines(props, wisc, wiDest, wiInst, wiSource){
+  function instLines(basemap,props, wisc, wiDest, wiInst, wiSource){
       var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
-      //console.log(source)
+      //console.log(props.geometry.coordinates)
       //console.log(wiInst)
       //console.log(wisc)
+      var width = 800,
+          height = 500;
+      var baseProjection = d3.geoAlbers()
+        .center([2.25, 44.88205])
+        .scale(5500)
+        .rotate([92.35, .5, -2])
+        .translate([width / 2, height / 2]);
+      var path = d3.geoPath()
+        .projection(baseProjection)
+      var link = []
       var obj;
       var instit;
       for (obj in wisc){
-        //console.log(wisc[obj].properties.NAME)
         for (instit in wiInst){
           if(wisc[obj].properties.NAME == wiInst[instit].County){
-            console.log(wiInst[instit].County)
+            var target = wisc[obj].properties.coordinates,
+                origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
+                topush = {type: "LineString", coordinates: [origin, target]}
+                console.log(topush)
+                link.push(topush)
+            basemap.selectAll("myPath")
+              .data(link)
+              .enter()
+              .append("path")
+                .attr("d", function(d){return path(d)})
+                .style("fill", "none")
+                .style("stroke", "#69b3a2")
+                .style("stroke-width", 2)
           }
         }
       }
-      var museum = d3.selectAll("."+props.label)
-        .data(wiInst)
-        .enter()
-        //console.log(props.geometry)
-        .attr("d", function(d){
-          var dx = 2,
-              dy = 2,
-              dr = Math.sqrt(dx*dx+dy*dy);
-          //return "M"+d.source.x+","+d.source.y+"A"+dr+","+dr+"0 0,1"+d.target.x+","+d.target.y;
-        });
     };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
@@ -522,12 +528,12 @@
     d3.select(".infolabel")
       .remove();
   }
-  function InstHighlight(wisc,props){
+  function InstHighlight(basemap,wisc,props){
     var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", "purple")
       .style("stroke-width", "1.5")
     wiLabels(props);
-    instLines(props,wisc, wiDest, wiInst, wiSource);
+    instLines(basemap,props,wisc, wiDest, wiInst, wiSource);
     };
   // Create Dehighlight Function
   function InstDehighlight(wisc,props){
