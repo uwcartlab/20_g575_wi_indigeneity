@@ -677,19 +677,20 @@
       .attr('x', 100)
       .attr('y', 500);
     var panel = moundinfo.selectAll('text')
+      .data(mounds)
+      .enter()
+      .append('text')
       .attr('class', 'text')
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
-      .attr('y', 500);
-    var text = panel
-      .data(mounds)
-      .enter()
-      .append('text')
+      .attr('y', 500)
+      .style('fill', 'red')
       .attr('class', 'actualtext')
       .attr('text', function(d){
-          return ("Located in "+ d.properties['County']+"at "+d.properties['Site Name']+". The site has "+ d.properties["Sum"]+"mounds listed as "+d.properties['status']+".")
-    })
+          console.log(d.properties['County'])
+          return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
+      });
   }
 
 
