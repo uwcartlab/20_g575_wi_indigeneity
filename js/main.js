@@ -263,8 +263,13 @@
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
       promises.push(d3.json('data/nagpra/Museumlocations.json'));
+<<<<<<< HEAD
+      promises.push(d3.csv('data/nagpra/wiDestination.csv'));
+      promises.push(d3.csv('data/nagpra/wiInstitutions.csv'));
+=======
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
+>>>>>>> eaddc89fb324b7b53aa181fe23dbef9de67eec5e
       promises.push(d3.csv('data/nagpra/wiSource.csv'));
       Promise.all(promises).then(callback);
 
@@ -285,8 +290,8 @@
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         //console.log(institutions);
         getWisconsin(wisc, basemap, path);
-        getReservations(lands, basemap, path);
-        getInstitutions(institutions, basemap, path)
+        getReservations(wisc, lands, basemap, path);
+        getInstitutions(wisc, institutions, basemap, path)
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -317,7 +322,7 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-  function getReservations(lands, basemap, path){
+  function getReservations(wisc, lands, basemap, path){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -335,16 +340,16 @@
               }
             })
             .on("mouseover", function(d){
-              ReservHighlight(d.properties);
+              ReservHighlight(d);
             })
             .on("mouseout", function(d){
-              ReservDehighlight(d.properties);
+              ReservDehighlight(d);
             })
             .on("mousemove", moveLabel);
             var desc = reservation.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
-  function getInstitutions(institutions, basemap, path){
+  function getInstitutions(wisc, institutions, basemap, path){
           var reservation = basemap.selectAll(".institutions")
               .data(institutions)
               .enter()
@@ -362,10 +367,11 @@
                       }
                   })
                   .on("mouseover", function(d){
-                      InstHighlight(d.properties);
+                      //console.log(d)
+                      InstHighlight(wisc,d);
                     })
                     .on("mouseout", function(d){
-                      InstDehighlight(d.properties);
+                      InstDehighlight(wisc,d);
                     })
                     .on("mousemove", moveLabel);
             var desc = reservation.append("desc")
@@ -463,17 +469,43 @@
             .style("left", x + "px")
             .style("top", y + "px");
     };
+  function instLines(props, wisc, wiDest, wiInst, wiSource){
+      var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
+      //console.log(source)
+      //console.log(wiInst)
+      //console.log(wisc)
+      var obj;
+      var instit;
+      for (obj in wisc){
+        //console.log(wisc[obj].properties.NAME)
+        for (instit in wiInst){
+          if(wisc[obj].properties.NAME == wiInst[instit].County){
+            console.log(wiInst[instit].County)
+          }
+        }
+      }
+      var museum = d3.selectAll("."+props.label)
+        .data(wiInst)
+        .enter()
+        //console.log(props.geometry)
+        .attr("d", function(d){
+          var dx = 2,
+              dy = 2,
+              dr = Math.sqrt(dx*dx+dy*dy);
+          //return "M"+d.source.x+","+d.source.y+"A"+dr+","+dr+"0 0,1"+d.target.x+","+d.target.y;
+        });
+    };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
   function ReservHighlight(props){
-    var selected = d3.selectAll("."+props.label)
+    var selected = d3.selectAll("."+props.properties.label)
       .style("stroke", "purple")
-      .style("stroke-width", "1");
+      .style("stroke-width", "1.5");
     wiLabels(props);
     };
   // Create Dehighlight Function
   function ReservDehighlight(props){
-   var selected = d3.selectAll("."+props.label)
+   var selected = d3.selectAll("."+props.properties.label)
       .style("stroke", function(){
         return getStyle(this, "stroke")
       })
@@ -490,15 +522,16 @@
     d3.select(".infolabel")
       .remove();
   }
-  function InstHighlight(props){
-    var selected = d3.selectAll("."+props.name)
+  function InstHighlight(wisc,props){
+    var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", "purple")
-      .style("stroke-width", "1");
+      .style("stroke-width", "1.5")
     wiLabels(props);
+    instLines(props,wisc, wiDest, wiInst, wiSource);
     };
   // Create Dehighlight Function
-  function InstDehighlight(props){
-   var selected = d3.selectAll("."+props.name)
+  function InstDehighlight(wisc,props){
+   var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", function(){
         return getStyle(this, "stroke")
       })
@@ -515,9 +548,6 @@
     d3.select(".infolabel")
       .remove();
   };
-  function lines(wiDest, wiInst, wiSource){
-
-  }
   })();
 
 
