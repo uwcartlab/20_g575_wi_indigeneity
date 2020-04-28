@@ -1,23 +1,60 @@
-.title {
-  font-size: 4em;
-  font-family: sans-serif;
+/* color scheme:
+
+
+
+
+*/
+
+.bg-nav {
+	background-color: #602F2D;
+}
+
+.navbar-dark {
   font-weight: bold;
-  text-align: center;
+  font-family: "open sans", "verdana", "sans-serif";
 }
-.subtitle {
-  font-size: 2em;
-  font-family: sans-serif;
-  font-weight: lighter;
+
+.header {
   text-align: center;
-  padding-bottom: 10px;
-}
-.authors {
-  font-size: 1em;
-  font-family: sans-serif;
-  font-weight: lighter;
-  text-align: center;
+  padding-top: 25px;
   padding-bottom: 20px;
 }
+
+html, body {
+  background-color: #F8F3ED;
+  color: #1A1A1A;
+  font-family: "open sans", "verdana", "sans-serif";
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 80px;
+  font-weight: bold;
+  font-family: "open sans", "verdana", "sans-serif";
+}
+
+h2 {
+  font-size: 44px;
+  font-weight: bold;
+  font-family: "open sans", "verdana", "sans-serif";
+}
+
+h3 {
+  font-size: 30px;
+  font-family: "open sans", "verdana", "sans-serif";
+  padding-bottom: 7px
+}
+
+h4 {
+  font-size: 20px;
+  font-family: "open sans", "verdana", "sans-serif";
+}
+
+p {
+  font-size: 16px;
+  line-height: 27px;
+}
+
 .intro {
   font-size: 15px;
   font-family: sans-serif;

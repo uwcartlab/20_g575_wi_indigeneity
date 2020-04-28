@@ -9,7 +9,7 @@
     var width = 1000,
         height = 550;
     // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-    var choropleth = d3.select("body")
+    var choropleth = d3.select("body > div > div > div", "#map")
       .insert("svg", "#map")
       .attr("class", "map")
       .attr("width", width)
@@ -74,7 +74,7 @@
           if(value){
             return colorScale(value);
           } else {
-            return "#000";
+            return "#E0E0E0";
           }
           })
         .on("mouseover", function(d){
@@ -135,7 +135,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(choroplethData){
-    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("body > div > div > div", "#map")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
@@ -167,7 +167,7 @@
         if (value) {
           return choroplethColorScale(value);
         } else {
-          return "#000";
+          return "#E0E0E0";
         }
         });
   };
@@ -175,12 +175,12 @@
   // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
   function choroLabel(props){
     var labelAttribute = "<h1>"+props[expressed]+"</h1><b>"+expressed+"</b>";
-    var infolabel = d3.select("body")
+    var infolabel = d3.select("body > div > div > div", "#map")
       .append("div")
       .attr("class", "infolabel")
       .attr("id", props.postal+"_label")
       .html(labelAttribute);
-    var stateName = infolabel.append("div")
+    var stateName = infolabel.append("div") //state is not being properly appended after adding bootstrap
       .attr("class", "labelname")
       .html(props.name);
     };
@@ -232,6 +232,7 @@
       .remove();
   }
 })();
+
 //Wrapper Function for Mound Map
 (function(){
   attrArray = ["MNI", "AFO", "CUI"]
@@ -242,7 +243,8 @@
       var width = 800,
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("body")
+      var basemap = d3.select("body > div > div > div", "#flowmap")
+        //should this be going to #flowmap or #moundmap? -Nick
         .insert("svg", '#flowmap')
         .attr("class", "flowmap")
         .attr("width", width)
@@ -331,7 +333,7 @@
               if(value){
                 return WIcolors(d.properties[expressed]);
               } else {
-                return "#fff";
+                return "#E0E0E0";
               }
             })
             .on("mouseover", function(d){
@@ -358,7 +360,7 @@
                     if(value){
                       return WIcolors(d.properties[expressed]);
                       } else {
-                      return "#000";
+                      return "#E0E0E0";
                       }
                   })
                   .on("mouseover", function(d){
@@ -394,7 +396,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(wisconsinData){
-    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("body > div > div > div", "#flowmap")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
@@ -532,7 +534,7 @@
       var width = 700,
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("body")
+      var basemap = d3.select("body > div > div > div", "#moundmap")
         .insert("svg", '#moundmap')
         .attr("class", "moundmap")
         .attr("width", width)
@@ -631,7 +633,7 @@
     //console.log('made it')
     var width = 200,
         height = 500;
-    var moundinfo = d3.select("body")
+    var moundinfo = d3.select("body > div > div > div", "#moundinfo")
       .insert('svg','#moundinfo')
       .attr("class", "moundinfo")
       .attr("width", width)
@@ -680,7 +682,7 @@
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
   function dropdown(wisconsinData){
-    var dropdown = d3.select("body")  //change to info Panel --> Need to append to DIV
+    var dropdown = d3.select("body > div > div > div", "#moundmap")  //change to info Panel --> Need to append to DIV
       .append("select")
       .attr("class", "dropdown")
       .on("change", function(){
