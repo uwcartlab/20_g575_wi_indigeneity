@@ -470,6 +470,8 @@
       for (obj in wisc){
         for (instit in wiInst){
           if(wisc[obj].properties.NAME == wiInst[instit].County){
+            console.log(wiInst[instit].name)
+            if(props.properties.name==wiInst[instit.name]){}
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
