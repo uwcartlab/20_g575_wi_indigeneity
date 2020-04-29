@@ -50,13 +50,12 @@ p {
 
 /*.moundmap {
   width: 60%;
-}
-
-.moundinfo {
-  display: inline-block;
-  padding-left: 100px;
-  width: 30%;
 }*/
+
+.moundpaneltext {
+  background-color: #FFF0E6;
+  padding: 12px;
+}
 
 .tab {
     display: inline-block;
@@ -79,14 +78,14 @@ p {
 
 .dropdown {
     position: absolute;
-    top: 650px;
-    left: 850px;
+    top: 400px;
+    left: 775px;
     z-index: 10;
-    font-family: serif;
+    font-family: "open sans", "verdana", "sans-serif";
     font-size: 1em;
     font-weight: bold;
     padding: 2px;
-    border: 1px solid #1A1A1A;
+    background-color: #FFF0E6;
     box-shadow: 1px 1px 2px #1A1A1A;
 }
 
