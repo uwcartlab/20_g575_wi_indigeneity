@@ -671,16 +671,15 @@
 
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
-      //legend title - for some reason it won't accept transform as a function to rotate the text
-      //legend.append("text").attr("x",5).attr("y",3).transform("rotate", "90").text("Mound state").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
-      legend.append("circle").attr("cx",30).attr("cy",20).attr("r", 6).style("fill", "green")
-      legend.append("circle").attr("cx",30).attr("cy",40).attr("r", 6).style("fill", "yellow")
-      legend.append("circle").attr("cx",30).attr("cy",60).attr("r", 6).style("fill", "gray")
-      legend.append("circle").attr("cx",30).attr("cy",80).attr("r", 6).style("fill", "black")
-      legend.append("text").attr("x", 45).attr("y", 21).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 45).attr("y", 41).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 45).attr("y", 61).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 45).attr("y", 81).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x",-97).attr("y",9).attr("transform", "rotate(-90)").text("Mound state").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
+      legend.append("circle").attr("cx",35).attr("cy",20).attr("r", 6).style("fill", "green")
+      legend.append("circle").attr("cx",35).attr("cy",40).attr("r", 6).style("fill", "yellow")
+      legend.append("circle").attr("cx",35).attr("cy",60).attr("r", 6).style("fill", "gray")
+      legend.append("circle").attr("cx",35).attr("cy",80).attr("r", 6).style("fill", "black")
+      legend.append("text").attr("x", 50).attr("y", 21).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 50).attr("y", 41).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 50).attr("y", 61).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 50).attr("y", 81).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
 
       var loc = basemap.selectAll("circle")
       	.data(mounds)
