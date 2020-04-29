@@ -56,7 +56,9 @@ p {
   background-color: #FFF0E6;
   padding: 12px;
 }
-
+.moundlegend {
+	display: inline-block;
+}
 .tab {
     display: inline-block;
     margin-left: 40px;
