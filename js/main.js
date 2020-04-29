@@ -504,9 +504,9 @@
 
 
   //Reservations need flow lines to institutions they got items from.
-  function resLines(basemap, baseProjection, props, wisc, lands){
-      console.log(props)
-      var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
+  function resLines(basemap, baseProjection, d, lands, wisc){
+      console.log(d[0])
+      var source = [d.geometry.coordinates[0], d.geometry.coordinates[1]]
       console.log(source)
       var path = d3.geoPath()
         .projection(baseProjection)
@@ -537,13 +537,13 @@
     };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
-  function ReservHighlight(basemap, baseProjection, lands, wisc, props){
+  function ReservHighlight(basemap, baseProjection, d, lands, wisc){
     console.log(lands)
     var selected = d3.selectAll("." + lands.properties)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
     //wiLabels(props);
-    resLines(basemap, baseProjection, wisc, lands, props);
+    resLines(basemap, baseProjection, d, lands, wisc);
     };
   // Create Dehighlight Function
   function ReservDehighlight(props){
