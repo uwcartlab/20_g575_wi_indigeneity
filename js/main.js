@@ -233,7 +233,7 @@
   }
 })();
 
-//Wrapper Function for Mound Map
+//Wrapper Function for Flow Map
 (function(){
   attrArray = ["MNI", "AFO", "CUI"]
   //expressed = attrArray[0]
@@ -333,7 +333,7 @@
             })
             .on("mouseover", function(d){
               console.log(res)
-              ReservHighlight(basemap, wisc, res, d);
+              ReservHighlight(basemap, lands, wisc, res, d);
             })
             .on("mouseout", function(d){
               ReservDehighlight(d);
@@ -506,13 +506,14 @@
   //Reservations need flow lines to institutions they got items from.
   function resLines(basemap, baseProjection, props, wisc, res){
       console.log(res)
-      var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
+      var source = [res.geometry.coordinates[0], res.geometry.coordinates[1]]
       console.log(source)
       var path = d3.geoPath()
         .projection(baseProjection)
       var link = []
       var obj;
       var reserv;
+      console.log('so good so far')
       for (obj in wisc){
         for (reserv in res){
           if(wisc[obj].properties.NAME == res[reserv].County){
@@ -537,12 +538,12 @@
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
   function ReservHighlight(basemap, baseProjection, res, wisc, props){
-    console.log(props)
-    var selected = d3.selectAll("."+props.properties.label)
+    //console.log(lands)
+    var selected = d3.selectAll("." + props.properties.label)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
     wiLabels(props);
-    resLines(basemap, baseProjection, props, wisc, res);
+    resLines(basemap, baseProjection, wisc, res, props);
     };
   // Create Dehighlight Function
   function ReservDehighlight(props){
@@ -564,6 +565,7 @@
       .remove();
   }
   function InstHighlight(basemap, baseProjection, wisc, props){
+    //console.log(props)
     var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", "purple")
       .style("stroke-width", "1.5")
