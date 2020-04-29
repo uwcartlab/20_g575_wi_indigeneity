@@ -482,7 +482,7 @@
               .append("path")
                 .attr("d", function(d){return path(d)})
                 .style("fill", "none")
-                .style("stroke", "#69b3a2")
+                .style("stroke", "#807dba")
                 .style("stroke-width", 2)
           }
         }
@@ -539,6 +539,8 @@
       return styleObject[styleName];
     };
     d3.select(".infolabel")
+      .remove();
+    d3.select("path")
       .remove();
   };
   })();
