@@ -505,7 +505,7 @@
 
   //Reservations need flow lines to institutions they got items from.
   function resLines(basemap, baseProjection, props, wisc, lands){
-      console.log(props)
+      //console.log(lands)
       //var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
       //console.log(source)
       var path = d3.geoPath()
@@ -513,11 +513,11 @@
       var link = []
       var obj;
       var reserv;
-      console.log('so good so far')
+      //console.log('so good so far')
       for (obj in wisc){
         for (reserv in lands){
-          if(wisc[obj].properties.NAME == lands[reserv].County){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
-            console.log(wisc[obj]) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
+          if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
+            //console.log(wisc[obj]) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
@@ -538,7 +538,7 @@
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
   function ReservHighlight(basemap, baseProjection, lands, wisc, props){
-    console.log(props)
+    //console.log(props)
     var selected = d3.selectAll("." + props.properties.label)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
