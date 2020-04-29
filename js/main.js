@@ -518,18 +518,23 @@
         for (reserv in lands){
           if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
             //console.log(props.geometry) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
-            var target = [wisc[obj].properties.coordinates[0],wisc[obj].properties.coordinates[1]],
+            var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
-                //console.log(props.geometry.coordinates[0][0])
+                console.log(wisc[obj].properties.coordinates[0])
                 console.log(origin)
                 console.log(topush)
                 link.push(topush)
             basemap.selectAll("myPath")
-              .data(link)
-              .enter()
-              .append("path")
-                .attr("d", function(d){return path(d)})
+                .data(link)
+                .enter()
+                .append("path")
+                .attr("class", function(d){
+                  return "arc"; //name it  "arc" --> may need more specific name for Final
+                  })
+                .attr("d", function(d){
+                  //console.log('at the resPath')
+                  return path(d)})
                 .style("fill", "none")
                 .style("stroke", "#807dba")
                 .style("stroke-width", 2)
@@ -544,7 +549,7 @@
     var selected = d3.selectAll("." + props.properties.label)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
-    //wiLabels(props);
+    wiLabels(props);
     resLines(basemap, baseProjection, props, wisc, lands);
     };
   // Create Dehighlight Function
