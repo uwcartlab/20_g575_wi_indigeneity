@@ -12,6 +12,10 @@
       	<link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" href="css/style.css">
 
+        <!--put fonts here-->
+        <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
+
+
         <!--[if IE<9]>
             <link rel="stylesheet" href="css/style.ie.css">
         <![endif]-->
@@ -54,8 +58,8 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
               <div class = "header">
-                  <h1>Collections:</h1>
-                  <h3>Where did they come from and where do they go?</h3>
+                  <h1>Collected:</h1>
+                  <h3>Where are collections from and where do they go?</h3>
                   <hr width="700px">
                   <p>Created by Zoey Colglazier, Jake Hildebrand, Brody Manquen, and Nick Smith</p>
                   <hr width="600px">
@@ -133,13 +137,20 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
               <h3>Effigy Mounds in Wisconsin</h3>
-              <div class="row"> <!-- this row contains the map -->
+              <div class="row"> <!-- this row contains the map and panel -->
                 <div class="col-md-8">
                     <div id='moundmap'></div>
                 </div>
                 <div class="col-md-4">
                     <div id="moundpanel"></div>
                 </div>
+              </div>
+              <div class="row" style="margin: 0 0 20px 0;"> <!-- this row contains the legend -->
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <svg id = 'moundlegend' style="width: 180px; height: 100px;"></svg>
+                </div>
+                <div class="col-md-8"></div>
               </div>
             </div>
             <div class="col-md-3"></div>
@@ -150,7 +161,6 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <!--<div id = 'moundinfo'></div>-->
-                <svg id = 'moundlegend'></svg>
                 <p><span class='tab'></span>Within Wisconsin, repatriation is often to the Ho-Chunk Nation of Wisconsin, the Bad River, Red Cliff, Lac Courte Oreilles, Lac du Flambeau and St. Croix Bands of Lake Superior Chippewa Indians, the Forest County Potawatomi Community, Oneida Tribe of Wisconsin, and the Menominee Indian Tribe. Because of the extent of traditional tribal lands, repatriations from other states are not uncommon, and multiple tribes from various states can be listed as culturally affiliated with the items. For Wisconsin cases with multiple culturally affiliated tribes, the Wisconsin Inter-Tribal Repatriations Committee (WITRC), a subcommittee of the Great Lakes Inter-Tribal Council (GLITC), handles repatriation issues between Nations. If an institution identifies multiple Wisconsin Nations as culturally affiliated, they’ll work things out among them. Usually the Ho-Chunk Nation of Wisconsin will take the lead when they’re involved in a multi-Nation repatriation.</p>
             </div>
             <div class="col-md-3"></div>

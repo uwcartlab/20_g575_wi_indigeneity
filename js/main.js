@@ -74,7 +74,7 @@
           if(value){
             return colorScale(value);
           } else {
-            return "#E0E0E0";
+            return "#fff";
           }
           })
         .on("mouseover", function(d){
@@ -167,7 +167,7 @@
         if (value) {
           return choroplethColorScale(value);
         } else {
-          return "#E0E0E0";
+          return "#fff";
         }
         });
   };
@@ -611,7 +611,7 @@
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
-      var width = 700,
+      var width = 600,
         height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("div#moundmap")
@@ -628,7 +628,7 @@
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([3.35, 44.88205])
-        .scale(22000)
+        .scale(20000)
         .rotate([92.35, 1.8, -1])
         .translate([width / 2, height / 2])
 
@@ -671,14 +671,16 @@
 
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
-      legend.append("circle").attr("cx",120).attr("cy",80).attr("r", 6).style("fill", "green")
-      legend.append("circle").attr("cx",120).attr("cy",100).attr("r", 6).style("fill", "yellow")
-      legend.append("circle").attr("cx",120).attr("cy",120).attr("r", 6).style("fill", "gray")
-      legend.append("circle").attr("cx",120).attr("cy",140).attr("r", 6).style("fill", "black")
-      legend.append("text").attr("x", 130).attr("y", 80).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 130).attr("y", 100).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 130).attr("y", 120).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 130).attr("y", 140).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      //legend title - for some reason it won't accept transform as a function to rotate the text
+      //legend.append("text").attr("x",5).attr("y",3).transform("rotate", "90").text("Mound state").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
+      legend.append("circle").attr("cx",30).attr("cy",20).attr("r", 6).style("fill", "green")
+      legend.append("circle").attr("cx",30).attr("cy",40).attr("r", 6).style("fill", "yellow")
+      legend.append("circle").attr("cx",30).attr("cy",60).attr("r", 6).style("fill", "gray")
+      legend.append("circle").attr("cx",30).attr("cy",80).attr("r", 6).style("fill", "black")
+      legend.append("text").attr("x", 45).attr("y", 21).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 45).attr("y", 41).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 45).attr("y", 61).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 45).attr("y", 81).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
 
       var loc = basemap.selectAll("circle")
       	.data(mounds)
@@ -735,7 +737,7 @@
     //console.log('made it')
     var width = 300,
         height = 500;
-    var moundinfo = d3.select("div#moundmap")
+    var moundinfo = d3.select("div#moundpanel")
       .append('svg')
       .attr("class", "moundinfo")
       .attr("width", width)
