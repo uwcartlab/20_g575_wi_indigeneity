@@ -517,10 +517,12 @@
       for (obj in wisc){
         for (reserv in lands){
           if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
-            console.log(props.geometry) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
+            //console.log(props.geometry) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
             var target = [wisc[obj].properties.coordinates[0],wisc[obj].properties.coordinates[1]],
-                origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
+                origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
+                //console.log(props.geometry.coordinates[0][0])
+                console.log(origin)
                 console.log(topush)
                 link.push(topush)
             basemap.selectAll("myPath")
