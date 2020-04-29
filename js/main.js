@@ -281,7 +281,7 @@
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
-        console.log(lands)
+        //console.log(lands)
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, basemap, path);
         getInstitutions(basemap, baseProjection, wisc, institutions, basemap, path)
@@ -360,7 +360,7 @@
                       }
                   })
                   .on("mouseover", function(d){
-                      console.log(d)
+                      //console.log(d)
                       InstHighlight(basemap, baseProjection, wisc, d);
                     })
                     .on("mouseout", function(d){
@@ -517,8 +517,8 @@
       for (obj in wisc){
         for (reserv in lands){
           if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
-            //console.log(wisc[obj]) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
-            var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
+            console.log(props.geometry) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
+            var target = [wisc[obj].properties.coordinates[0],wisc[obj].properties.coordinates[1]],
                 origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
                 console.log(topush)
@@ -565,7 +565,7 @@
       .remove();
   }
   function InstHighlight(basemap, baseProjection, wisc, props){
-    console.log(props)
+    //console.log(props)
     var selected = d3.selectAll("."+props.properties.name)
       .style("stroke", "purple")
       .style("stroke-width", "1.5")
