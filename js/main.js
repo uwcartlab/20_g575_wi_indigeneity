@@ -359,7 +359,6 @@
                       }
                   })
                   .on("mouseover", function(d){
-                      //console.log(d)
                       InstHighlight(basemap, baseProjection,wisc,d);
                     })
                     .on("mouseout", function(d){
@@ -367,7 +366,7 @@
                     })
                     .on("mousemove", moveLabel);
             var desc = institution.append("desc")
-              .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+              .text('{"stroke": "#555", "stroke-width":"0.5px"}');
           };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function WIcolors(data){
@@ -474,12 +473,14 @@
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
-                console.log(topush)
                 link.push(topush)
             basemap.selectAll("myPath")
               .data(link)
               .enter()
               .append("path")
+                .attr("class", function(d){
+                  return "arc"; //placeholder name
+                    })
                 .attr("d", function(d){return path(d)})
                 .style("fill", "none")
                 .style("stroke", "#807dba")
@@ -540,7 +541,7 @@
     };
     d3.select(".infolabel")
       .remove();
-    d3.select("path")
+    d3.selectAll(".arc")
       .remove();
   };
   })();
