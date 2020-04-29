@@ -464,31 +464,37 @@
     };
   function instLines(basemap, baseProjection, props, wisc, wiInst){
       var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
-      var path = d3.geoPath()
-        .projection(baseProjection)
-      var link = []
-      var obj;
-      var instit;
-      for (obj in wisc){
-        for (instit in wiInst){
-          if(wisc[obj].properties.NAME == wiInst[instit].County){
-            console.log(wiInst[instit].name)
-            if(props.properties.name==wiInst[instit.name]){}
-            var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
-                origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
-                topush = {type: "LineString", coordinates: [origin, target]}
-                link.push(topush)
-            basemap.selectAll("myPath")
-              .data(link)
-              .enter()
-              .append("path")
-                .attr("class", function(d){
-                  return "arc"; //placeholder name
-                    })
-                .attr("d", function(d){return path(d)})
-                .style("fill", "none")
-                .style("stroke", "#807dba")
-                .style("stroke-width", 2)
+      var path = d3.geoPath() //create Path generator
+        .projection(baseProjection) //use baseProjection
+      var link = []  // creates array for linestrings to be pushed
+      var obj; // objects in County topojson
+      var instit; //institutions in wisconsin institutions csv
+      for (obj in wisc){  //iterate each county
+        for (instit in wiInst){ //iterate each institution
+          if(wisc[obj].properties.NAME == wiInst[instit].County){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
+            if(props.properties.name==wiInst[instit].Label){       // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
+            //if these two conditions are met, draw line from coordinates of Institution (from II) to coordinates of all counties it is linked to (from I)
+                //set target coordinates
+              var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
+                //set origin coordinates
+                  origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
+                //create LineString element with Each Coordinate Array as the two End Points
+                  topush = {type: "LineString", coordinates: [origin, target]}
+                  //push LineString to array
+                  link.push(topush)
+              //Draw Lines on Basemap
+              basemap.selectAll("myPath")
+                .data(link) //enter link data
+                .enter()
+                .append("path") //append arc
+                  .attr("class", function(d){
+                    return "arc"; //name it  "arc" --> may need more specific name for Final
+                      })
+                  .attr("d", function(d){return path(d)})
+                  .style("fill", "none")
+                  .style("stroke", "#807dba") //color
+                  .style("stroke-width", 2)
+            }
           }
         }
       }
