@@ -332,7 +332,7 @@
               }
             })
             .on("mouseover", function(d){
-              console.log(d)
+              //console.log(d)
               ReservHighlight(basemap, baseProjection, lands, wisc,d);
             })
             .on("mouseout", function(d){
@@ -463,7 +463,6 @@
             .style("top", y + "px");
     };
   function instLines(basemap, baseProjection, props, wisc, wiInst){
-      var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
       var path = d3.geoPath() //create Path generator
         .projection(baseProjection) //use baseProjection
       var link = []  // creates array for linestrings to be pushed
@@ -480,6 +479,7 @@
                   origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
                 //create LineString element with Each Coordinate Array as the two End Points
                   topush = {type: "LineString", coordinates: [origin, target]}
+                  console.log(topush)
                   //push LineString to array
                   link.push(topush)
               //Draw Lines on Basemap
@@ -517,27 +517,22 @@
       for (obj in wisc){
         for (reserv in lands){
           if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
-            //console.log(props.geometry) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
-                console.log(wisc[obj].properties.coordinates[0])
-                console.log(origin)
-                console.log(topush)
                 link.push(topush)
             basemap.selectAll("myPath")
                 .data(link)
                 .enter()
                 .append("path")
-                .attr("class", function(d){
-                  return "arc"; //name it  "arc" --> may need more specific name for Final
-                  })
-                .attr("d", function(d){
-                  //console.log('at the resPath')
-                  return path(d)})
-                .style("fill", "none")
-                .style("stroke", "#807dba")
-                .style("stroke-width", 2)
+                  .attr("class", function(d){
+                    console.log(link)
+                    return "arc"; //name it  "arc" --> may need more specific name for Final
+                    })
+                  .attr("d", function(d){return path(d)})
+                  .style("fill", "none")
+                  .style("stroke", "#807dba")
+                  .style("stroke-width", 2)
           }
         }
       }
