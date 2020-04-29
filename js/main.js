@@ -670,7 +670,16 @@
 
 
   function drawLocations(mounds, basemap, baseProjection) {
-      //console.log(mounds)
+      var legend = d3.select("#moundlegend")
+      legend.append("circle").attr("cx",120).attr("cy",80).attr("r", 6).style("fill", "green")
+      legend.append("circle").attr("cx",120).attr("cy",100).attr("r", 6).style("fill", "yellow")
+      legend.append("circle").attr("cx",120).attr("cy",120).attr("r", 6).style("fill", "gray")
+      legend.append("circle").attr("cx",120).attr("cy",140).attr("r", 6).style("fill", "black")
+      legend.append("text").attr("x", 130).attr("y", 80).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 130).attr("y", 100).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 130).attr("y", 120).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 130).attr("y", 140).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+
       var loc = basemap.selectAll("circle")
       	.data(mounds)
       	.enter()
@@ -757,8 +766,9 @@
   }
 
   function populatePanel(d){
+    console.log('reached function')
     var dynamictext = d3.selectAll('rect')
-        .data(mounds)
+        .data(d)
         .enter()
         .append('text')
         .attr('text', function(d){
