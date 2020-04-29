@@ -281,9 +281,9 @@
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
-        console.log(res);
+        console.log(lands)
         getWisconsin(wisc, basemap, path);
-        getReservations(wisc, lands, res, basemap, path);
+        getReservations(wisc, lands, basemap, path);
         getInstitutions(basemap, baseProjection, wisc, institutions, basemap, path)
         };
       };
@@ -314,7 +314,7 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-  function getReservations(wisc, lands, res, basemap, path){
+  function getReservations(wisc, lands, basemap, path, baseProjection){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -332,8 +332,8 @@
               }
             })
             .on("mouseover", function(d){
-              console.log(res)
-              ReservHighlight(basemap, lands, wisc, res, d);
+              console.log(lands)
+              ReservHighlight(basemap, baseProjection, lands, wisc);
             })
             .on("mouseout", function(d){
               ReservDehighlight(d);
@@ -504,9 +504,9 @@
 
 
   //Reservations need flow lines to institutions they got items from.
-  function resLines(basemap, baseProjection, props, wisc, res){
-      console.log(res)
-      var source = [res.geometry.coordinates[0], res.geometry.coordinates[1]]
+  function resLines(basemap, baseProjection, props, wisc, lands){
+      console.log(props)
+      var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
       console.log(source)
       var path = d3.geoPath()
         .projection(baseProjection)
@@ -515,9 +515,9 @@
       var reserv;
       console.log('so good so far')
       for (obj in wisc){
-        for (reserv in res){
-          if(wisc[obj].properties.NAME == res[reserv].County){
-            console.log(wisc[obj])
+        for (reserv in lands){
+          if(wisc[obj].properties.NAME == lands[reserv].County){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
+            console.log(wisc[obj]) // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
@@ -537,13 +537,13 @@
     };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
-  function ReservHighlight(basemap, baseProjection, res, wisc, props){
-    //console.log(lands)
-    var selected = d3.selectAll("." + props.properties.label)
+  function ReservHighlight(basemap, baseProjection, lands, wisc, props){
+    console.log(lands)
+    var selected = d3.selectAll("." + lands.properties)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
-    wiLabels(props);
-    resLines(basemap, baseProjection, wisc, res, props);
+    //wiLabels(props);
+    resLines(basemap, baseProjection, wisc, lands, props);
     };
   // Create Dehighlight Function
   function ReservDehighlight(props){
