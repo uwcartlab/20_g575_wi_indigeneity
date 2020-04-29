@@ -109,3 +109,9 @@ p {
 option {
     font-weight: normal;
 }
+
+.footer {
+	background-color: #602F2D;
+	margin: 3em 0 0 0;
+	padding: 0 0 4em 0;
+}
