@@ -662,6 +662,9 @@
             return "gray"
           }
         })
+        // .addEventListener("click", function(d){
+        //   populatePanel(mounds)
+        // })
         .on("mouseover", function(d){
           //console.log('highlight')
           mhighlight(d.properties);
@@ -671,44 +674,57 @@
         })
         //buildInfoPanel(mounds);
         .on("mousemove", buildInfoPanel(mounds));
+        loc.on("click", function(d){
+          populatePanel(d)
+        })
         var desc = loc.append('desc')
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
-      };
+    }
 
   function buildInfoPanel(mounds){
     //console.log('made it')
-//    var width = 300,
-//        height = 500;
-//    var moundinfo = d3.select("div#moundpanel")
-//      .append('svg')
-//      .attr("class", "moundinfo")
-//      .attr("width", width)
-//      .attr("height", height)
-//      .attr('x', 100)
-//      .attr('y', 500);
-    var moundinfo = d3.select("div#moundpanel")
-      .attr('class', 'moundpaneltext')
-//      .attr("width", width)
-//      .attr("height", height)
-//      .attr('x', 100)
-//      .attr('y', 500);
-    var panel = moundinfo.selectAll()
+    var width = 300,
+        height = 500;
+    var moundinfo = d3.select("div#moundmap")
+      .append('svg')
+      .attr("class", "moundinfo")
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500);
+    var infopan = moundinfo.selectAll('rect')
+      .attr('class', 'rect')
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500);
+    var panel = moundinfo.selectAll('text')
       .data(mounds)
       .enter()
-      .append('p')
-//      .attr('class', 'text')
-//      .attr("width", width)
-//      .attr("height", height)
-//      .attr('x', 100)
-//      .attr('y', 500)
-//      .style('fill', 'red')
-//      .attr('class', 'actualtext')
-      .text(function(d){
-          //console.log(d.properties['County'])
-          return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
-      });
+      .append('text')
+      .attr('class', 'text')
+      .attr("width", width)
+      .attr("height", height)
+      .attr('x', 100)
+      .attr('y', 500)
+      .style('fill', 'red')
+      .attr('class', 'actualtext')
+      // .attr('text', function(d){
+      //     //console.log(d.properties['County'])
+      //     return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
+      // });
   }
 
+  function populatePanel(d){
+    var dynamictext = d3.selectAll('rect')
+        .data(mounds)
+        .enter()
+        .append('text')
+        .attr('text', function(d){
+          console.log('ah')
+          return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
+        });
+  }
 
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function WIcolors(data){
@@ -804,7 +820,7 @@
     };
 
 function mhighlight(props){
-  console.log(props)
+  //console.log(props)
   var selected = d3.selectAll("." +props['SiteName'])
       .style("stroke", "red")
       .style("stroke-width", "2");
