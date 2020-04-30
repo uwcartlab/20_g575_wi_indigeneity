@@ -49,18 +49,10 @@ p {
   line-height: 27px;
 }
 
-/*.moundmap {
-  width: 60%;
-}*/
-
 .moundpaneltext {
   background-color: #FFF0E6;
   padding: 12px;
 }
-
-/* .moundlegend {
-	display: inline-block;
-} */
 
 .tab {
     display: inline-block;
@@ -114,7 +106,11 @@ p {
 option {
     font-weight: normal;
 }
-
+.flowinfo{
+	background-color: #8d8d8b;
+	stroke: #333;
+	stroke-width: 10px
+}
 .footer {
 	background-color: #602F2D;
 	margin: 3em 0 0 0;
