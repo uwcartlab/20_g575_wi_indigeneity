@@ -54,7 +54,9 @@ p {
 	display: inline-block;
   padding: 12px;
 }
-
+.flowmap{
+	display: inline-block;
+}
 .tab {
     display: inline-block;
     margin-left: 40px;

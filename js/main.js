@@ -605,6 +605,13 @@
       .attr('class', 'actualtext')
 
   };
+//we'll use this eventually
+  // function populatePanel(wiInst){
+  //   var dynamictext = d3.select("div#moundpanel")
+  //     .attr('class', 'moundpaneltext')
+  //     .append("text")
+  //     .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".");
+  // };
   function populatePanel(d){
     console.log('reached function')
     var dynamictext = d3.selectAll('rect')
@@ -750,7 +757,7 @@
       var dynamictext = d3.select("div#moundpanel")
         .attr('class', 'moundpaneltext')
         .append("text")
-        .text("Located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".");
+        .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".");
     };
 
   // Create Retrieve Method -- onMouseover or onClick methods
