@@ -269,6 +269,7 @@
       promises.push(d3.csv('data/nagpra/wi-destination.csv'));
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
       promises.push(d3.csv('data/nagpra/wiSource.csv'));
+      promises.push(d3.csv('data/nagpra/wiReservations.csv'));
       Promise.all(promises).then(callback);
 
       function callback(data){
@@ -278,13 +279,14 @@
         wiDest = data[3];
         wiInst = data[4];
         wiSource = data[5];
+        wiReserv = data[6];
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         //console.log(lands)
         getWisconsin(wisc, basemap, path);
-        getReservations(wisc, lands, basemap, path);
-        getInstitutions(basemap, baseProjection, wisc, institutions, basemap, path)
+        getReservations(wisc, lands, wiReserv, basemap, path, baseProjection);
+        getInstitutions(basemap, baseProjection, wisc, institutions, path)
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -314,7 +316,7 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-  function getReservations(wisc, lands, basemap, path, baseProjection, wiInst){
+  function getReservations(wisc, lands, wiReserv, basemap, path, baseProjection){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -333,7 +335,7 @@
             })
             .on("mouseover", function(d){
               //console.log(d)
-              ReservHighlight(basemap, baseProjection, lands, wisc,d, wiInst);
+              ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc,d);
             })
             .on("mouseout", function(d){
               ReservDehighlight(d);
@@ -342,7 +344,7 @@
             var desc = reservation.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
-  function getInstitutions(basemap, baseProjection, wisc, institutions, basemap, path){
+  function getInstitutions(basemap, baseProjection, wisc, institutions, path){
           var institution = basemap.selectAll(".institutions")
               .data(institutions)
               .enter()
@@ -479,7 +481,7 @@
                   origin = [props.geometry.coordinates[0],props.geometry.coordinates[1]]
                 //create LineString element with Each Coordinate Array as the two End Points
                   topush = {type: "LineString", coordinates: [origin, target]}
-                  console.log(topush)
+                  //console.log(topush)
                   //push LineString to array
                   link.push(topush)
               //Draw Lines on Basemap
@@ -488,6 +490,7 @@
                 .enter()
                 .append("path") //append arc
                   .attr("class", function(d){
+                    console.log(link)
                     return "arc"; //name it  "arc" --> may need more specific name for Final
                       })
                   .attr("d", function(d){return path(d)})
@@ -504,36 +507,26 @@
 
 
   //Reservations need flow lines to institutions they got items from.
-  function resLines(basemap, baseProjection, props, wisc, lands, wiInst){
-      //console.log(lands)
-      //var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
-      //console.log(source)
+  function resLines(basemap, baseProjection, wiReserv, props, wisc, lands){
       var path = d3.geoPath()
         .projection(baseProjection)
       var link = []
       var obj;
       var reserv;
-      console.log(link)
-      for (obj in wiInst){
-        console.log('here')
+      for (obj in wisc){
         for (reserv in lands){
-          console.log('there')
-          //if(wisc[obj].properties.NAME == lands[reserv].properties.label){
-          if(lands[reserv].properties.label == wisc[obj].properties.NAME){
-            console.log(reserv) // I - check if Name of County is Equal to Name of a Target County for any Institutions
+          if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
+            console.log(props)
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
-                console.log([origin, target])
-                console.log(topush)
                 link.push(topush)
-                console.log(link)
             basemap.selectAll("myPath")
                 .data(link)
                 .enter()
                 .append("path")
                   .attr("class", function(d){
-                    //console.log(link)
+                    console.log(link)
                     return "arc"; //name it  "arc" --> may need more specific name for Final
                     })
                   .attr("d", function(d){return path(d)})
@@ -546,13 +539,13 @@
     };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
-  function ReservHighlight(basemap, baseProjection, lands, wisc, props, wiInst){
+  function ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc, props){
     //console.log(props)
     var selected = d3.selectAll("." + props.properties.label)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
     wiLabels(props);
-    resLines(basemap, baseProjection, props, wisc, lands, wiInst);
+    resLines(basemap, baseProjection, wiReserv, props, wisc, lands);
     };
   // Create Dehighlight Function
   function ReservDehighlight(props){
@@ -673,15 +666,15 @@
 
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
-      legend.append("text").attr("x",-114).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
-      legend.append("circle").attr("cx",30).attr("cy",28).attr("r", 6).style("fill", "green")
-      legend.append("circle").attr("cx",30).attr("cy",48).attr("r", 6).style("fill", "yellow")
-      legend.append("circle").attr("cx",30).attr("cy",68).attr("r", 6).style("fill", "gray")
-      legend.append("circle").attr("cx",30).attr("cy",88).attr("r", 6).style("fill", "black")
-      legend.append("text").attr("x", 40).attr("y", 29).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 40).attr("y", 49).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 40).attr("y", 69).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 40).attr("y", 89).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x",-110).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
+      legend.append("circle").attr("cx",35).attr("cy",28).attr("r", 6).style("fill", "green")
+      legend.append("circle").attr("cx",35).attr("cy",48).attr("r", 6).style("fill", "yellow")
+      legend.append("circle").attr("cx",35).attr("cy",68).attr("r", 6).style("fill", "gray")
+      legend.append("circle").attr("cx",35).attr("cy",88).attr("r", 6).style("fill", "black")
+      legend.append("text").attr("x", 50).attr("y", 29).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 50).attr("y", 49).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 50).attr("y", 69).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 50).attr("y", 89).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
 
       var loc = basemap.selectAll("circle")
       	.data(mounds)
