@@ -51,7 +51,7 @@ p {
 
 .moundpaneltext {
   background-color: #FFF0E6;
-	display: inline-block;
+	border: 2px solid #602F2D;
   padding: 12px;
 }
 

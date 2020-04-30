@@ -749,7 +749,7 @@
     function populatePanel(mounds){
       var dynamictext = d3.select("div#moundpanel")
         .attr('class', 'moundpaneltext')
-        .append("text")
+        .append("p")
         .text("Located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".");
     };
 
