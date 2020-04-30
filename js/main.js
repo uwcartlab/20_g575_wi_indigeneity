@@ -749,7 +749,7 @@
   function buildInfoPanel(mounds){
     //console.log('made it')
     var width = 300,
-        height = 500;
+        height = 400;
     var moundinfo = d3.select("div#moundpanel")
       .append('svg')
       .attr("class", "moundinfo")
@@ -773,7 +773,7 @@
       .attr('x', 100)
       .attr('y', 500)
       .style('fill', 'red')
-      .attr('class', 'actualtext')
+      //.attr('class', 'actualtext')
       // .attr('text', function(d){
       //     //console.log(d.properties['County'])
       //     return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
@@ -782,11 +782,12 @@
 
   function populatePanel(mounds){
     console.log('ahhhh')
-    var dynamictext = d3.select("div#moundpanel")
+    console.log(mounds)
+    var dynamictext = d3.select("#moundpanel")
       .attr('class', 'moundpaneltext')
       .data(mounds)
       .enter()
-      .text(function(mounds) {
+      .text('text', function(mounds) {
         console.log('chitty chitty bang bang')
           return ("Located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".")
       });
