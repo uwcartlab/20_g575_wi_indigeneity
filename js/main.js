@@ -739,6 +739,7 @@
         //buildInfoPanel(mounds);
         .on("mousemove", buildInfoPanel(mounds));
         loc.on("click", function(d){
+
           populatePanel(d)
         })
         var desc = loc.append('desc')
@@ -777,14 +778,16 @@
       //     //console.log(d.properties['County'])
       //     return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
       // });
-  // }
+   }
 
   function populatePanel(mounds){
+    console.log('ahhhh')
     var dynamictext = d3.select("div#moundpanel")
       .attr('class', 'moundpaneltext')
       .data(mounds)
       .enter()
       .text(function(mounds) {
+        console.log('chitty chitty bang bang')
           return ("Located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".")
       });
   };
