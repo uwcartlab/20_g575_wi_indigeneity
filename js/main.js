@@ -286,7 +286,8 @@
         //console.log(lands)
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, wiReserv, basemap, path, baseProjection);
-        getInstitutions(basemap, baseProjection, wisc, institutions, path)
+        getInstitutions(basemap, baseProjection, wisc, institutions, path);
+        buildInfoPanel(wiSource, wiInst, wiReserv)
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -584,7 +585,7 @@
       .attr("width", width)
       .attr("height", height)
       .attr('x', 100)
-      .attr('y', 500);
+      .attr('y', 500)
     var infopan = flowinfo.selectAll('rect')
       .attr('class', 'rect')
       .attr("width", width)
