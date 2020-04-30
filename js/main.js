@@ -513,20 +513,25 @@
       var link = []
       var obj;
       var reserv;
-      //console.log('so good so far')
+      console.log(link)
       for (obj in wisc){
         for (reserv in lands){
-          if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
+          //console.log(reserv)
+          if(wisc[obj].properties.NAME == lands[reserv].properties.label){
+            console.log(reserv) // I - check if Name of County is Equal to Name of a Target County for any Institutions
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
+                console.log([origin, target])
+                console.log(topush)
                 link.push(topush)
+                console.log(link)
             basemap.selectAll("myPath")
                 .data(link)
                 .enter()
                 .append("path")
                   .attr("class", function(d){
-                    console.log(link)
+                    //console.log(link)
                     return "arc"; //name it  "arc" --> may need more specific name for Final
                     })
                   .attr("d", function(d){return path(d)})
