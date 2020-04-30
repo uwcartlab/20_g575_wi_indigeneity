@@ -1,4 +1,4 @@
-// Choropleth Map
+//Final Project 75% Check-in
 //Wrapper Function for Choropleth Map
 (function(){
   var choroplethArray = ["Minimum Number of Individuals (MNI)", "Associated Funerary Objects (AFO)"]
