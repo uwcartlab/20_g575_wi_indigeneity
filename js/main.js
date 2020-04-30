@@ -782,9 +782,12 @@
 
   function populatePanel(mounds){
     console.log('ahhhh')
-    console.log(mounds)
+    //console.log(mounds)
     var dynamictext = d3.select("#moundpanel")
-      .attr('class', 'moundpaneltext')
+      .attr('class', function(d){
+        console.log('and if')
+        return 'moundpaneltext'
+        })
       .data(mounds)
       .enter()
       .text('text', function(mounds) {
