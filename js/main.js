@@ -737,7 +737,7 @@
           mdehighlight(d.properties);
         })
         //buildInfoPanel(mounds);
-        .on("mousemove", buildInfoPanel(mounds));
+        // .on("mousemove", buildInfoPanel(mounds));
         loc.on("click", function(d){
 
           populatePanel(d)
@@ -746,55 +746,12 @@
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
     }
 
-  function buildInfoPanel(mounds){
-    //console.log('made it')
-    var width = 300,
-        height = 400;
-    var moundinfo = d3.select("div#moundpanel")
-      .append('svg')
-      .attr("class", "moundinfo")
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500);
-    var infopan = moundinfo.selectAll('rect')
-      .attr('class', 'rect')
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500);
-    var panel = moundinfo.selectAll('text')
-      .data(mounds)
-      .enter()
-      .append('text')
-      .attr('class', 'text')
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500)
-      .style('fill', 'red')
-      //.attr('class', 'actualtext')
-      // .attr('text', function(d){
-      //     //console.log(d.properties['County'])
-      //     return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
-      // });
-   }
-
-  function populatePanel(mounds){
-    console.log('ahhhh')
-    //console.log(mounds)
-    var dynamictext = d3.select("#moundpanel")
-      .attr('class', function(d){
-        console.log('and if')
-        return 'moundpaneltext'
-        })
-      .data(mounds)
-      .enter()
-      .text('text', function(mounds) {
-        console.log('chitty chitty bang bang')
-          return ("Located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".")
-      });
-  };
+    function populatePanel(mounds){
+      var dynamictext = d3.select("div#moundpanel")
+        .attr('class', 'moundpaneltext')
+        .append("text")
+        .text("Located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".");
+    };
 
   // Create Retrieve Method -- onMouseover or onClick methods
   // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
