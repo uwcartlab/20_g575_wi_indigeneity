@@ -531,7 +531,7 @@
                     })
                   .attr("d", function(d){return path(d)})
                   .style("fill", "none")
-                  .style("stroke", "#807dba")
+                  .style("stroke", "#3f007d")
                   .style("stroke-width", 2)
           }
         }
@@ -668,15 +668,15 @@
 
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
-      legend.append("text").attr("x",-110).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
-      legend.append("circle").attr("cx",35).attr("cy",28).attr("r", 6).style("fill", "green")
-      legend.append("circle").attr("cx",35).attr("cy",48).attr("r", 6).style("fill", "yellow")
-      legend.append("circle").attr("cx",35).attr("cy",68).attr("r", 6).style("fill", "gray")
-      legend.append("circle").attr("cx",35).attr("cy",88).attr("r", 6).style("fill", "black")
-      legend.append("text").attr("x", 50).attr("y", 29).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 50).attr("y", 49).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 50).attr("y", 69).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 50).attr("y", 89).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x",-113).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
+      legend.append("circle").attr("cx",30).attr("cy",28).attr("r", 6).style("fill", "green")
+      legend.append("circle").attr("cx",30).attr("cy",48).attr("r", 6).style("fill", "yellow")
+      legend.append("circle").attr("cx",30).attr("cy",68).attr("r", 6).style("fill", "gray")
+      legend.append("circle").attr("cx",30).attr("cy",88).attr("r", 6).style("fill", "black")
+      legend.append("text").attr("x", 40).attr("y", 29).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 49).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 69).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 89).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
 
       var loc = basemap.selectAll("circle")
       	.data(mounds)
@@ -746,29 +746,30 @@
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var panel = moundinfo.selectAll('text')
-      .data(mounds)
-      .enter()
-      .append('text')
-      .attr('class', 'text')
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500)
-      .style('fill', 'red')
-      .attr('class', 'actualtext')
-      // .attr('text', function(d){
-      //     //console.log(d.properties['County'])
-      //     return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
-      // });
+    // var panel = moundinfo.selectAll('text')
+    //   .data(mounds)
+    //   .enter()
+    //   .append('text')
+    //   .attr('class', 'text')
+    //   .attr("width", width)
+    //   .attr("height", height)
+    //   .attr('x', 100)
+    //   .attr('y', 500)
+    //   .style('fill', 'red')
+    //   .attr('class', 'actualtext')
+    //   // .attr('text', function(d){
+    //   //     //console.log(d.properties['County'])
+    //   //     return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
+    //   // });
   }
 
   function populatePanel(d){
+    console.log(d)
     console.log('reached function')
-    var dynamictext = d3.selectAll('rect')
+    var dynamictext = d3.select('moundinfo')
         .data(d)
         .enter()
-        .append('text')
+        .insert('text', '#moundpanel')
         .attr('text', function(d){
           console.log('ah')
           return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
