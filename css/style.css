@@ -49,18 +49,10 @@ p {
   line-height: 27px;
 }
 
-/*.moundmap {
-  width: 60%;
-}*/
-
 .moundpaneltext {
   background-color: #FFF0E6;
   padding: 12px;
 }
-
-/* .moundlegend {
-	display: inline-block;
-} */
 
 .tab {
     display: inline-block;

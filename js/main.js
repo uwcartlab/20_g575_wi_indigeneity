@@ -529,7 +529,7 @@
                     })
                   .attr("d", function(d){return path(d)})
                   .style("fill", "none")
-                  .style("stroke", "#807dba")
+                  .style("stroke", "#3f007d")
                   .style("stroke-width", 2)
           }
         }
@@ -666,15 +666,15 @@
 
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
-      legend.append("text").attr("x",-110).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
-      legend.append("circle").attr("cx",35).attr("cy",28).attr("r", 6).style("fill", "green")
-      legend.append("circle").attr("cx",35).attr("cy",48).attr("r", 6).style("fill", "yellow")
-      legend.append("circle").attr("cx",35).attr("cy",68).attr("r", 6).style("fill", "gray")
-      legend.append("circle").attr("cx",35).attr("cy",88).attr("r", 6).style("fill", "black")
-      legend.append("text").attr("x", 50).attr("y", 29).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 50).attr("y", 49).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 50).attr("y", 69).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 50).attr("y", 89).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x",-113).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
+      legend.append("circle").attr("cx",30).attr("cy",28).attr("r", 6).style("fill", "green")
+      legend.append("circle").attr("cx",30).attr("cy",48).attr("r", 6).style("fill", "yellow")
+      legend.append("circle").attr("cx",30).attr("cy",68).attr("r", 6).style("fill", "gray")
+      legend.append("circle").attr("cx",30).attr("cy",88).attr("r", 6).style("fill", "black")
+      legend.append("text").attr("x", 40).attr("y", 29).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 49).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 69).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 89).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
 
       var loc = basemap.selectAll("circle")
       	.data(mounds)
@@ -708,9 +708,6 @@
             return "gray"
           }
         })
-        // .addEventListener("click", function(d){
-        //   populatePanel(mounds)
-        // })
         .on("mouseover", function(d){
           //console.log('highlight')
           mhighlight(d.properties);
@@ -721,6 +718,7 @@
         //buildInfoPanel(mounds);
         .on("mousemove", buildInfoPanel(mounds));
         loc.on("click", function(d){
+          console.log(d)
           populatePanel(d)
         })
         var desc = loc.append('desc')
@@ -744,96 +742,22 @@
       .attr("height", height)
       .attr('x', 100)
       .attr('y', 500);
-    var panel = moundinfo.selectAll('text')
-      .data(mounds)
-      .enter()
-      .append('text')
-      .attr('class', 'text')
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500)
-      .style('fill', 'red')
-      .attr('class', 'actualtext')
-      // .attr('text', function(d){
-      //     //console.log(d.properties['County'])
-      //     return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
-      // });
   }
 
   function populatePanel(d){
+    console.log(d)
     console.log('reached function')
-    var dynamictext = d3.selectAll('rect')
+    var dynamictext = d3.select('moundinfo')
         .data(d)
         .enter()
-        .append('text')
+        .insert('text', '#moundpanel')
         .attr('text', function(d){
           console.log('ah')
           return ("Located in "+ d.properties['County']+" county at the "+d.properties['Present Name']+" site. The site has "+ d.properties["Sum"]+" mounds listed as "+d.properties['status']+".")
         });
+    console.log(dynamictext)
   }
 
-  // Create Quantile (maybe use Natural Breaks?) Color Scale
-  function WIcolors(data){
-      var colorClasses = [
-      "#fee5d9",  // Red, 4 Classes
-      "#fcae91",
-      "#fb6a4a",
-      "#cb181d"
-      ];
-      //create color scale generator
-      var colorScale = d3.scaleQuantile()
-          .range(colorClasses);
-      //build array of all values of the expressed attribute
-      var domainArray = [];
-      for (var i=0; i<data.length; i++){
-          var val = parseFloat(data[i][expressed]);
-          domainArray.push(val);
-      };
-      //assign array of expressed values as scale domain
-      colorScale.domain(domainArray);
-      return colorScale;
-  };
-  // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
-  function dropdown(wisconsinData){
-    var dropdown = d3.select("div#moundmap")  //change to info Panel --> Need to append to DIV
-      .append("select")
-      .attr("class", "dropdown")
-      .on("change", function(){
-        changeAttribute(this.value, wisconsinData)
-        });
-    var titleOption = dropdown.append("option")
-      .attr("class", "titleOption")
-      .attr("disabled", "true")
-      .text("Select Item Type");
-    var attrOptions = dropdown.selectAll("attrOptions")
-      .data(attrArray)
-      .enter()
-      .append("option")
-      .attr("value", function(d){return d})
-      .text(function(d){return d});
-  };
-  // Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
-  function changeAttribute(attribute, wisconsinData){
-    //change Expressed
-    expressed = attribute;
-    //recreate colorScale
-    var wiColorScale = WIcolors(wisconsinData);
-    //recolor States
-    var states = d3.selectAll(".counties")
-      .transition()
-      .duration(1000)
-      .style("fill", function(d){
-        var value = d.properties[expressed];
-        if (value) {
-          return wiColorScale(value);
-        } else {
-          return "#ddd";
-        }
-      });
-  };
-  // Create Retrieve Method -- onMouseover or onClick methods
-  // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
   function wiLabels(props){
     var labelAttribute = "<h1>"+props[expressed]+"</h1><b>"+expressed+"</b>";
     var infolabel = d3.select(".county")
@@ -893,70 +817,4 @@ function getStyle(element, styleName){
     .remove();
 }
 
-  // Create Dynamic Legend for ColorScale for expressed dataset
-  // Create Highlight function
-  //function highlight(props){
-    //var selected = d3.selectAll("."+props.NAME)
-      //.style("stroke", "red")
-      //.style("stroke-width", "2");
-    //wiLabels(props);
-  //  };
-  // Create Dehighlight Function
-  //function dehighlight(props){
-  //  var selected = d3.selectAll("."+props.NAME)
-  //    .style("stroke", function(){
-  //      return getStyle(this, "stroke")
-  //    })
-  //    .style("stroke-width", function(){
-  //      return getStyle(this, "stroke-width")
-  //    });
-  //  function getStyle(element, styleName){
-  //    var styleText = d3.select(element)
-  //      .select("desc")
-  //      .text();
-  //    var styleObject = JSON.parse(styleText);
-  //    return styleObject[styleName];
-  //  };
-  //  d3.select(".infolabel")
-  //    .remove();
-  //}
   })();
-
-
-// Pseudocode for Flow Map
-
-// Collect TopoJSON data for Wisconsin, Museums/Institutions, and Reservations, and Historical Tribal Bounds and Promise data to SetMap() function
-// Translate TopoJSON data with topojson.js
-// Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-// Draw Paths from TopoJSON data
-// Create Information Panel div
-// Create Retrieve via Menu Selection to Select Tribes or Institutions
-// Create Retrieve via onClick/onMouseover to select Tribes or Institutions
-// Create Dynamic Label Method for onClick/onMouseover of a reservation or institution
-// Create Flow Creation Method with Size Scaled to Amount Returned to or from the Tribe or Institution respectively
-// Create Flow Creation Method with Size Scaled to Amount Affiliated to or from the Tribe or Institution respectively -- But not known if Returned (uses dotted line instead of full flow)
-// Create Reexpress method to dynamically call Flow Creation Method when a new Tribe/Institution is selected
-// Create Overlay/Reexpress method to overlay historical tribal bounds when a Reservation/Tribe is selected
-// Create Information Panel update method to dynamically update InfoPanel when new item selected
-// Create Legend for Flowline sizes
-// Determine Zoom, Pan, and Search Constraints if we are restricting until end of article
-
-// Pseudocode for Mound Map
-
-// Collect TopoJSON data for Wisconsin, Mounds, and Historical Tribal Bounds and Promise data to SetMap() function
-// Translate TopoJSON data with topojson.js
-// Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-// Draw Paths from TopoJSON data
-// Create Information Panel div
-// Create Filter in Menu Selection to filter out Unprotected and Protected Mounds (checkboxes)
-// Create Reexpress method to color each Mound Site as Destroyed, Partially Intact, Intact, or Unknown
-// Create Retrieve via onClick/onMouseover to select Mounds
-// Create Dynamic Label Method for onClick/onMouseover of a mound
-// Create Overlay/Reexpress method to overlay historical tribal bounds
-// Determine Zoom, Pan, and Search Constraints if we are restricting until end of article
-
-// Miscellaneous Pseudocode
-
-// Create divs/styles for Article Information, Titles, Sources, etc --> i.e. all non-Map elements
-// Create Map containers, adjust for screen sizes(?)
-// Coherent Style Scheme --> Styles of Article body and of Map should be compatible.
