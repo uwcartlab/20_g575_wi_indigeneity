@@ -565,6 +565,8 @@
     };
     d3.select(".infolabel")
       .remove();
+    d3.selectAll(".arc")
+      .remove();
   }
   function InstHighlight(basemap, baseProjection, wisc, props){
     //console.log(props)
