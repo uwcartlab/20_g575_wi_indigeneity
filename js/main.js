@@ -516,7 +516,6 @@
       for (obj in wisc){
         for (reserv in lands){
           if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
-            console.log(props)
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
                 topush = {type: "LineString", coordinates: [origin, target]}
@@ -526,7 +525,6 @@
                 .enter()
                 .append("path")
                   .attr("class", function(d){
-                    console.log(link)
                     return "arc"; //name it  "arc" --> may need more specific name for Final
                     })
                   .attr("d", function(d){return path(d)})
