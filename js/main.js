@@ -314,7 +314,7 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
-  function getReservations(wisc, lands, basemap, path, baseProjection){
+  function getReservations(wisc, lands, basemap, path, baseProjection, wiInst){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -333,7 +333,7 @@
             })
             .on("mouseover", function(d){
               //console.log(d)
-              ReservHighlight(basemap, baseProjection, lands, wisc,d);
+              ReservHighlight(basemap, baseProjection, lands, wisc,d, wiInst);
             })
             .on("mouseout", function(d){
               ReservDehighlight(d);
@@ -504,7 +504,7 @@
 
 
   //Reservations need flow lines to institutions they got items from.
-  function resLines(basemap, baseProjection, props, wisc, lands){
+  function resLines(basemap, baseProjection, props, wisc, lands, wiInst){
       //console.log(lands)
       //var source = [props.geometry.coordinates[0], props.geometry.coordinates[1]]
       //console.log(source)
@@ -514,10 +514,12 @@
       var obj;
       var reserv;
       console.log(link)
-      for (obj in wisc){
+      for (obj in wiInst){
+        console.log('here')
         for (reserv in lands){
-          //console.log(reserv)
-          if(wisc[obj].properties.NAME == lands[reserv].properties.label){
+          console.log('there')
+          //if(wisc[obj].properties.NAME == lands[reserv].properties.label){
+          if(lands[reserv].properties.label == wisc[obj].properties.NAME){
             console.log(reserv) // I - check if Name of County is Equal to Name of a Target County for any Institutions
             var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
@@ -544,13 +546,13 @@
     };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
-  function ReservHighlight(basemap, baseProjection, lands, wisc, props){
+  function ReservHighlight(basemap, baseProjection, lands, wisc, props, wiInst){
     //console.log(props)
     var selected = d3.selectAll("." + props.properties.label)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
     wiLabels(props);
-    resLines(basemap, baseProjection, props, wisc, lands);
+    resLines(basemap, baseProjection, props, wisc, lands, wiInst);
     };
   // Create Dehighlight Function
   function ReservDehighlight(props){
