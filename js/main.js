@@ -307,13 +307,6 @@
               return "#ddd";
             }
           });
-          // .on("mouseover", function(d){
-          //   highlight(d.properties);
-          // })
-          // .on("mouseout", function(d){
-          //   dehighlight(d.properties);
-          // })
-          // .on("mousemove", moveLabel);
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
@@ -369,7 +362,8 @@
                     .on("mouseout", function(d){
                       InstDehighlight(wisc, d);
                     })
-                    .on("mousemove", moveLabel);
+                    .on("mousemove", moveLabel)
+                    .on('click', populateInstPanel(wiInst));
             var desc = institution.append("desc")
               .text('{"stroke": "#555", "stroke-width":"0.5px"}');
           };
@@ -474,7 +468,7 @@
                 .enter()
                 .append("path") //append arc
                   .attr("class", function(d){
-                    console.log(link)
+                    //console.log(link)
                     return "arc"; //name it  "arc" --> may need more specific name for Final
                       })
                   .attr("d", function(d){return path(d)})
@@ -606,23 +600,25 @@
 
   };
 //we'll use this eventually
-  // function populatePanel(wiInst){
-  //   var dynamictext = d3.select("div#moundpanel")
-  //     .attr('class', 'moundpaneltext')
-  //     .append("text")
-  //     .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".");
-  // };
-  function populatePanel(d){
-    console.log('reached function')
-    var dynamictext = d3.selectAll('rect')
-        .data(d)
-        .enter()
-        .append('text')
-        .attr('text', function(d){
-          console.log('What is the airspeed velocity of an unladen swallow?')
-          return ("African or European?") //love it!
-        });
+  function populateInstPanel(wiInst){
+    console.log('this function works')
+    var dynamictext = d3.select("div#flowinfo")
+      .attr('class', 'flowpaneltext')
+      .append("text")
+      .text("what is the airspeed velocity of an unladen swallow?");
   };
+
+  // function populatePanel(d){
+  //   console.log('reached function')
+  //   var dynamictext = d3.selectAll('rect')
+  //       .data(d)
+  //       .enter()
+  //       .append('text')
+  //       .attr('text', function(d){
+  //         console.log('What is the airspeed velocity of an unladen swallow?')
+  //         return ("African or European?") //love it!
+  //       });
+  // };
   })();
 
 
@@ -757,7 +753,7 @@
       var dynamictext = d3.select("div#moundpanel")
         .attr('class', 'moundpaneltext')
         .append("p")
-        .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed as "+mounds.properties['status']+".");
+        .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
     };
 
   // Create Retrieve Method -- onMouseover or onClick methods
