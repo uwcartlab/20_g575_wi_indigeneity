@@ -363,7 +363,9 @@
                       InstDehighlight(wisc, d);
                     })
                     .on("mousemove", moveLabel)
-                    .on('click', populateInstPanel(wiInst));
+                    .on('click', function(d){
+                      populateInstPanel(d)
+                    });
             var desc = institution.append("desc")
               .text('{"stroke": "#555", "stroke-width":"0.5px"}');
           };
@@ -600,8 +602,8 @@
 
   };
 //we'll use this eventually
-  function populateInstPanel(wiInst){
-    console.log('this function works')
+  function populateInstPanel(d){
+    console.log(d)
     var dynamictext = d3.select("div#flowinfo")
       .attr('class', 'flowpaneltext')
       .append("text")
