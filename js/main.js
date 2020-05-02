@@ -327,14 +327,19 @@
                 return "#888";
               }
             })
-            .on("mouseover", function(d){
+          //  .on("mouseover", function(d){
               //console.log(d)
-              ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc,d);
-            })
-            .on("mouseout", function(d){
+            //  ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc,d);
+          //  })
+            .on("click", function(d){
+              //console.log(d)
               ReservDehighlight(d);
-            })
-            .on("mousemove", moveLabel);
+              ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc,d);
+            });
+            //.on("mouseout", function(d){
+            //  ReservDehighlight(d);
+            //})
+            //.on("mousemove", moveLabel);
             var desc = reservation.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
@@ -355,17 +360,19 @@
                       return "#555";
                       }
                   })
-                  .on("mouseover", function(d){
+                  //.on("mouseover", function(d){
                       //console.log(d)
-                      InstHighlight(basemap, baseProjection, wisc, d);
-                    })
-                    .on("mouseout", function(d){
+                      //InstHighlight(basemap, baseProjection, wisc, d);
+                    //})
+                .on("click", function(d){
+                      //console.log(d);
                       InstDehighlight(wisc, d);
-                    })
-                    .on("mousemove", moveLabel)
-                    .on('click', function(d){
-                      populateInstPanel(d)
-                    });
+                      InstHighlight(basemap, baseProjection, wisc, d);
+                  });
+                  //.on("mouseout", function(d){
+                  //    InstDehighlight(wisc, d);
+                //  })
+                  //.on("mousemove", moveLabel)
             var desc = institution.append("desc")
               .text('{"stroke": "#555", "stroke-width":"0.5px"}');
           };
@@ -423,26 +430,26 @@
       .attr("class", "labelname")
       .html(props.NAME);
     };
-  function moveLabel(){
-        //get width of label
-        var labelWidth = d3.select(".infolabel")
-            .node()
-            .getBoundingClientRect()
-            .width;
-        //use coordinates of mousemove event to set label coordinates
-        var x1 = d3.event.clientX + 10,
-            y1 = d3.event.clientY - 75,
-            x2 = d3.event.clientX - labelWidth - 10,
-            y2 = d3.event.clientY + 25;
-        //horizontal label coordinate, testing for overflow
-        var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
-        //vertical label coordinate, testing for overflow
-        var y = d3.event.clientY < 75 ? y2 : y1;
-
-        d3.select(".infolabel")
-            .style("left", x + "px")
-            .style("top", y + "px");
-    };
+  // function moveLabel(){
+  //       //get width of label
+  //       var labelWidth = d3.select(".infolabel")
+  //           .node()
+  //           .getBoundingClientRect()
+  //           .width;
+  //       //use coordinates of mousemove event to set label coordinates
+  //       var x1 = d3.event.clientX + 10,
+  //           y1 = d3.event.clientY - 75,
+  //           x2 = d3.event.clientX - labelWidth - 10,
+  //           y2 = d3.event.clientY + 25;
+  //       //horizontal label coordinate, testing for overflow
+  //       var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
+  //       //vertical label coordinate, testing for overflow
+  //       var y = d3.event.clientY < 75 ? y2 : y1;
+  //
+  //       d3.select(".infolabel")
+  //           .style("left", x + "px")
+  //           .style("top", y + "px");
+  //   };
   //create Lines from institutions to counties
   function instLines(basemap, baseProjection, props, wisc, wiInst){
       var path = d3.geoPath() //create Path generator
