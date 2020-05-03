@@ -235,8 +235,6 @@
 
 //Wrapper Function for Flow Map
 (function(){
-  attrArray = ["MNI", "AFO", "CUI"]
-  //expressed = attrArray[0]
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
@@ -270,6 +268,7 @@
       promises.push(d3.csv('data/nagpra/wi-institutions.csv'));
       promises.push(d3.csv('data/nagpra/wiSource.csv'));
       promises.push(d3.csv('data/nagpra/wiReservations.csv'));
+      promises.push(d3.json('data/nagpra/Sources.json'));
       Promise.all(promises).then(callback);
 
       function callback(data){
@@ -278,15 +277,18 @@
         instit = data[2];
         wiDest = data[3];
         wiInst = data[4];
-        wiSource = data[5];
+        wiSource = data[7];
         wiReserv = data[6];
+        sourceInst = data[9]
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
+        var institutionsSource = topojson.feature(sourceInst, sourceInst.objects.Sources).features;
+        console.log(institutionsSource)
         //console.log(lands)
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, wiReserv, basemap, path, baseProjection);
-        getInstitutions(basemap, baseProjection, wisc, institutions, path);
+        getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, path);
         buildInfoPanel(wiSource, wiInst, wiReserv)
         };
       };
@@ -327,14 +329,16 @@
                 return "#888";
               }
             })
-          //  .on("mouseover", function(d){
-              //console.log(d)
-            //  ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc,d);
-          //  })
-            .on("click", function(d){
-              //console.log(d)
+            .on("mouseover", function(d){
+              InstDehighlight(wisc, d);
               ReservDehighlight(d);
-              ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc,d);
+              ReservHighlight_noLine(basemap, baseProjection, wiReserv, lands, wisc, d);
+            })
+            .on("click", function(d){
+              InstDehighlight(wisc, d);
+              ReservDehighlight(d);
+              ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc, d);
+              populatePanel(d);
             });
             //.on("mouseout", function(d){
             //  ReservDehighlight(d);
@@ -343,13 +347,13 @@
             var desc = reservation.append("desc")
               .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
             };
-  function getInstitutions(basemap, baseProjection, wisc, institutions, path){
+  function getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, path){
           var institution = basemap.selectAll(".institutions")
-              .data(institutions)
+              .data(institutionsSource)
               .enter()
               .append("path")
               .attr("class", function(d){
-                  return "institution " + d.properties.name; //placeholder name
+                  return "institution " + d.properties.Name; //placeholder name
                     })
               .attr("d", path)
               .style("fill", function(d){ // Color Enumeration Units
@@ -360,14 +364,16 @@
                       return "#555";
                       }
                   })
-                  //.on("mouseover", function(d){
-                      //console.log(d)
-                      //InstHighlight(basemap, baseProjection, wisc, d);
-                    //})
-                .on("click", function(d){
-                      //console.log(d);
+                .on("mouseover", function(d){
+                      ReservDehighlight(d);
                       InstDehighlight(wisc, d);
-                      InstHighlight(basemap, baseProjection, wisc, d);
+                      InstHighlight_noLine(basemap, baseProjection, wisc, d, wiSource);
+                  })
+                .on("click", function(d){
+                      ReservDehighlight(d);
+                      InstDehighlight(wisc, d);
+                      InstHighlight(basemap, baseProjection, wisc, d, wiSource);
+                      populatePanel(d)
                   });
                   //.on("mouseout", function(d){
                   //    InstDehighlight(wisc, d);
@@ -430,38 +436,17 @@
       .attr("class", "labelname")
       .html(props.NAME);
     };
-  // function moveLabel(){
-  //       //get width of label
-  //       var labelWidth = d3.select(".infolabel")
-  //           .node()
-  //           .getBoundingClientRect()
-  //           .width;
-  //       //use coordinates of mousemove event to set label coordinates
-  //       var x1 = d3.event.clientX + 10,
-  //           y1 = d3.event.clientY - 75,
-  //           x2 = d3.event.clientX - labelWidth - 10,
-  //           y2 = d3.event.clientY + 25;
-  //       //horizontal label coordinate, testing for overflow
-  //       var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
-  //       //vertical label coordinate, testing for overflow
-  //       var y = d3.event.clientY < 75 ? y2 : y1;
-  //
-  //       d3.select(".infolabel")
-  //           .style("left", x + "px")
-  //           .style("top", y + "px");
-  //   };
   //create Lines from institutions to counties
-  function instLines(basemap, baseProjection, props, wisc, wiInst){
+  function instLines(basemap, baseProjection, props, wisc, wiSource){
       var path = d3.geoPath() //create Path generator
         .projection(baseProjection) //use baseProjection
       var link = []  // creates array for linestrings to be pushed
       var obj; // objects in County topojson
       var instit; //institutions in wisconsin institutions csv
       for (obj in wisc){  //iterate each county
-        for (instit in wiInst){ //iterate each institution
-          if(wisc[obj].properties.NAME == wiInst[instit].County){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
-            if(props.properties.name==wiInst[instit].Label){       // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County
-            //if these two conditions are met, draw line from coordinates of Institution (from II) to coordinates of all counties it is linked to (from I)
+        for (instit in wiSource){ //iterate each institution
+          if(wisc[obj].properties.NAME == wiSource[instit].County){                                                                    // I - check if Name of County is Equal to Name of a Target County for any Institutions
+            if(props.properties.Name==wiSource[instit].Name){      // II - check if Dot hovered over has Name equal to name of an Institution in wiInstitutions that targets named County                                      //if these two conditions are met, draw line from coordinates of Institution (from II) to coordinates of all counties it is linked to (from I)
                 //set target coordinates
               var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
                 //set origin coordinates
@@ -528,9 +513,16 @@
     wiLabels(props);
     resLines(basemap, baseProjection, wiReserv, props, wisc, lands);
     };
+  function ReservHighlight_noLine(basemap, baseProjection, wiReserv, lands, wisc, props){
+      //console.log(props)
+      var selected = d3.selectAll("." + props.properties.label)
+        .style("stroke", "purple")
+        .style("stroke-width", "1.5");
+      wiLabels(props);
+      };
   // Create Dehighlight Function
   function ReservDehighlight(props){
-   var selected = d3.selectAll("."+props.properties.label)
+   var selected = d3.selectAll(".reservation")
       .style("stroke", function(){
         return getStyle(this, "stroke")
       })
@@ -549,17 +541,24 @@
     d3.selectAll(".arc")
       .remove();
   }
-  function InstHighlight(basemap, baseProjection, wisc, props){
+  function InstHighlight(basemap, baseProjection, wisc, props, wiSource){
     //console.log(props)
-    var selected = d3.selectAll("."+props.properties.name)
+    var selected = d3.selectAll("."+props.properties.Name)
       .style("stroke", "purple")
       .style("stroke-width", "1.5")
     wiLabels(props);
-    instLines(basemap, baseProjection, props, wisc, wiInst);
+    instLines(basemap, baseProjection, props, wisc, wiSource);
     };
+  function InstHighlight_noLine(basemap, baseProjection, wisc, props){
+      //console.log(props)
+      var selected = d3.selectAll("."+props.properties.Name)
+        .style("stroke", "purple")
+        .style("stroke-width", "1.5")
+      wiLabels(props);
+      };
   // Create Dehighlight Function
   function InstDehighlight(wisc,props){
-   var selected = d3.selectAll("."+props.properties.name)
+   var selected = d3.selectAll(".institution")
       .style("stroke", function(){
         return getStyle(this, "stroke")
       })
@@ -609,33 +608,18 @@
 
   };
 //we'll use this eventually
-  function populateInstPanel(d){
-    console.log(d)
-    var dynamictext = d3.select("div#flowinfo")
-      .attr('class', 'flowpaneltext')
-      .append("text")
-      .text("what is the airspeed velocity of an unladen swallow?");
-  };
-
-  // function populatePanel(d){
-  //   console.log('reached function')
-  //   var dynamictext = d3.selectAll('rect')
-  //       .data(d)
-  //       .enter()
-  //       .append('text')
-  //       .attr('text', function(d){
-  //         console.log('What is the airspeed velocity of an unladen swallow?')
-  //         return ("African or European?") //love it!
-  //       });
-  // };
+function populatePanel(d){
+  var dynamictext = d3.select("svg.flowinfo")
+    .attr('class', 'flowpaneltext')
+    .append("p")
+    .text("Testing.");
+};
   })();
 
 
 
 //Wrapper Function for Mound Map
 (function(){
-  attrArray = ["Selection 1", "Selection 2"]
-  //expressed = attrArray[0]
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
