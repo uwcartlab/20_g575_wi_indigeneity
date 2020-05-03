@@ -293,12 +293,21 @@
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         var institutionsSource = topojson.feature(sourceInst, sourceInst.objects.Sources).features;
+        setInfoPanel();
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, wiReserv, basemap, path, baseProjection, wiSource);
         getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, wiReserv, path);
         //buildInfoPanel(wiSource, wiInst, wiReserv)
         };
       };
+  function setInfoPanel(width, height){
+    var flowPanel = d3.select("div#flowpanel")
+    .attr("class", "flowpaneltext")
+    .attr("width", 250)
+    .attr("height", 500)
+    .attr('x', 250)
+    .attr('y', 500)
+  };
   function getWisconsin(wisc, basemap, path){
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
