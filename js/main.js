@@ -239,7 +239,7 @@
   //build Wisconsin map
   function setbaseMap(){
       var width = 800,
-          height = 500;
+          height = 800;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       //var zoom = d3.zoom().on('zoom', zoomed);
       //var transform = d3.event.transform;
@@ -259,8 +259,8 @@
 
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
-        .center([2.25, 44.88205])
-        .scale(5500)
+        .center([4.25, 44.90])
+        .scale(9000)
         .rotate([92.35, .5, -2])
         .translate([width / 2, height / 2]);
 
@@ -287,15 +287,15 @@
         wiDest = data[3];
         wiInst = data[4];
         wiSource = data[7];
-        wiReserv = data[6];
+        wiReserv = data[8];
         sourceInst = data[9]
         var wisc = topojson.feature(wisconsin, wisconsin.objects.cb_2015_wisconsin_county_20m).features;
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         var institutionsSource = topojson.feature(sourceInst, sourceInst.objects.Sources).features;
         getWisconsin(wisc, basemap, path);
-        getReservations(wisc, lands, wiReserv, basemap, path, baseProjection);
-        getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, path);
+        getReservations(wisc, lands, wiReserv, basemap, path, baseProjection, wiSource);
+        getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, wiReserv, path);
         //buildInfoPanel(wiSource, wiInst, wiReserv)
         };
       };
@@ -322,7 +322,7 @@
   function zoom() {
         d3.select(this).attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
       };
-  function getReservations(wisc, lands, wiReserv, basemap, path, baseProjection){
+  function getReservations(wisc, lands, wiReserv, basemap, path, baseProjection, wiSource){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -331,14 +331,7 @@
               return "reservation " + d.properties.label; //placeholder name
               })
             .attr("d", path)
-            .style("fill", function(d){ // Color Enumeration Units
-              var value = d.properties[expressed]
-              if(value){
-                return "#000";
-              } else {
-                return "#888";
-              }
-            })
+            .style("fill", "#555")
             .on("mouseover", function(d){
               InstDehighlight(wisc, d);
               ReservDehighlight(d);
@@ -348,16 +341,16 @@
               InstDehighlight(wisc, d);
               ReservDehighlight(d);
               ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc, d);
-              populatePanel(d);
+              populatePanel(d, wisc, wiSource, wiReserv);
             })
             //.on("mouseout", function(d){
             //  ReservDehighlight(d);
             //})
             //.on("mousemove", moveLabel);
             var desc = reservation.append("desc")
-              .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+              .text('{"stroke": "#555", "stroke-width":"0.5px"}');
             };
-  function getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, path){
+  function getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, wiReserv, path){
           var institution = basemap.selectAll(".institutions")
               .data(institutionsSource)
               .enter()
@@ -366,15 +359,10 @@
                   return "institution " + d.properties.Name; //placeholder name
                     })
               //.attr("d", path)
-              .attr("d", path.pointRadius(2.5))
-              .style("fill", function(d){ // Color Enumeration Units
-                  var value = d.properties[expressed]
-                    if(value){
-                      return "#000";
-                      } else {
-                      return "#555";
-                      }
-                  })
+              .attr("d", path.pointRadius(4))
+              .style("fill", "#555")
+              .style("stroke", "#FFFAFA")
+              .style("stroke-width", "0.5px")
                 .on("zoom", zoom)
                 .on("mouseover", function(d){
                       ReservDehighlight(d);
@@ -385,14 +373,14 @@
                       ReservDehighlight(d);
                       InstDehighlight(wisc, d);
                       InstHighlight(basemap, baseProjection, wisc, d, wiSource);
-                      populatePanel(d)
+                      populatePanel(d, wisc, wiSource, wiReserv)
                   });
                   //.on("mouseout", function(d){
                   //    InstDehighlight(wisc, d);
                 //  })
                   //.on("mousemove", moveLabel)
             var desc = institution.append("desc")
-              .text('{"stroke": "#555", "stroke-width":"0.5px"}');
+              .text('{"stroke": "#FFFAFA", "stroke-width":"0.5px"}');
           };
   // Create Quantile (maybe use Natural Breaks?) Color Scale
   function WIcolors(data){
@@ -590,11 +578,30 @@
       .remove();
   };
 //we'll use this eventually
-function populatePanel(d){
-  var dynamictext = d3.select("div#flowpanel")
-    .attr('class', 'flowpaneltext')
-    .append("p")
-    .text("Testing.");
+function populatePanel(d, wisc, wiSource, wiReserv){
+  if (d.properties.NAMELSAD){
+    for (reservation in wiReserv){
+      if (d.properties.label == wiReserv[reservation].Label){
+        console.log(wiReserv[reservation])
+        var reservationText = d3.select("div#flowpanel")
+            .attr('class', 'flowpaneltext')
+            .append("p")
+            .text(wiReserv[reservation].Tribe)
+            .text("What is the airspeed velocity of an unladen swallow?");
+      }
+    }
+  } else if (d.properties.Institution){
+    var instit;
+    for (instit in wiSource){
+      if (d.properties.Name == wiSource[instit].Name){
+        console.log(d.properties.Institution)
+        var institutionText = d3.select("div#flowpanel")
+          .attr('class', 'flowpaneltext')
+          .append("p")
+          .text("What do you mean? African or European swallow?");
+      }
+    }
+  }
 };
   })();
 
