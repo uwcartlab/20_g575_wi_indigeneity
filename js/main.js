@@ -241,23 +241,32 @@
       var width = 800,
           height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
+      //var zoom = d3.zoom().on('zoom', zoomed);
+      //var transform = d3.event.transform;
       var basemap = d3.select("div#flowmap")
         .append("svg")
         .attr("class", "flowmap")
         .attr("width", width)
         .attr("height", height)
         .attr('x', 100)
-        .attr('y', 500);
+        .attr('y', 500)
+        //.call(zoom)
+        //.attr('transform', transform.toString())
+        .call(d3.zoom().on("zoom", function () {
+            basemap.attr("transform", d3.event.transform)
+        }))
+        .append("g");
+
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([2.25, 44.88205])
         .scale(5500)
         .rotate([92.35, .5, -2])
-        .translate([width / 2, height / 2])
+        .translate([width / 2, height / 2]);
+
       //Path generator
       var path = d3.geoPath()
           .projection(baseProjection);
-
       var promises = [];
       promises.push(d3.json('data/effigy/wisconsin.json'));
       promises.push(d3.json('data/nagpra/wiRes.json'));
@@ -284,12 +293,10 @@
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         var institutionsSource = topojson.feature(sourceInst, sourceInst.objects.Sources).features;
-        console.log(institutionsSource)
-        //console.log(lands)
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, wiReserv, basemap, path, baseProjection);
         getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, path);
-        buildInfoPanel(wiSource, wiInst, wiReserv)
+        //buildInfoPanel(wiSource, wiInst, wiReserv)
         };
       };
   function getWisconsin(wisc, basemap, path){
@@ -312,6 +319,9 @@
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
         };
+  function zoom() {
+        d3.select(this).attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+      };
   function getReservations(wisc, lands, wiReserv, basemap, path, baseProjection){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
@@ -339,7 +349,7 @@
               ReservDehighlight(d);
               ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc, d);
               populatePanel(d);
-            });
+            })
             //.on("mouseout", function(d){
             //  ReservDehighlight(d);
             //})
@@ -355,7 +365,8 @@
               .attr("class", function(d){
                   return "institution " + d.properties.Name; //placeholder name
                     })
-              .attr("d", path)
+              //.attr("d", path)
+              .attr("d", path.pointRadius(2.5))
               .style("fill", function(d){ // Color Enumeration Units
                   var value = d.properties[expressed]
                     if(value){
@@ -364,6 +375,7 @@
                       return "#555";
                       }
                   })
+                .on("zoom", zoom)
                 .on("mouseover", function(d){
                       ReservDehighlight(d);
                       InstDehighlight(wisc, d);
@@ -577,39 +589,9 @@
     d3.selectAll(".arc")
       .remove();
   };
-  function buildInfoPanel(wiSource, wiInst, wiReserv){
-    //console.log('made it')
-    var width = 300,
-        height = 500;
-    var flowinfo = d3.select("div#flowmap")
-      .append('svg')
-      .attr("class", "flowinfo")
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500)
-    var infopan = flowinfo.selectAll('rect')
-      .attr('class', 'rect')
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500);
-    var panel = flowinfo.selectAll('text')
-      .data(wiSource)
-      .enter()
-      .append('text')
-      .attr('class', 'text')
-      .attr("width", width)
-      .attr("height", height)
-      .attr('x', 100)
-      .attr('y', 500)
-      .style('fill', 'red')
-      .attr('class', 'actualtext')
-
-  };
 //we'll use this eventually
 function populatePanel(d){
-  var dynamictext = d3.select("svg.flowinfo")
+  var dynamictext = d3.select("div#flowpanel")
     .attr('class', 'flowpaneltext')
     .append("p")
     .text("Testing.");
