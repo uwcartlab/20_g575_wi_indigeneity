@@ -260,7 +260,7 @@
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([4.25, 44.90])
-        .scale(9000)
+        .scale(8800)
         .rotate([92.35, .5, -2])
         .translate([width / 2, height / 2]);
 
@@ -580,14 +580,14 @@
 //we'll use this eventually
 function populatePanel(d, wisc, wiSource, wiReserv){
   if (d.properties.NAMELSAD){
+    var reservation;
     for (reservation in wiReserv){
       if (d.properties.label == wiReserv[reservation].Label){
-        console.log(wiReserv[reservation])
         var reservationText = d3.select("div#flowpanel")
             .attr('class', 'flowpaneltext')
             .append("p")
-            .text(wiReserv[reservation].Tribe)
-            .text("What is the airspeed velocity of an unladen swallow?");
+            .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
+            //.text("What is the airspeed velocity of an unladen swallow?");
       }
     }
   } else if (d.properties.Institution){
@@ -598,7 +598,8 @@ function populatePanel(d, wisc, wiSource, wiReserv){
         var institutionText = d3.select("div#flowpanel")
           .attr('class', 'flowpaneltext')
           .append("p")
-          .text("What do you mean? African or European swallow?");
+          .text("This is the "+wiSource[instit].Institution+".");
+          //.text("What do you mean? African or European swallow?");
       }
     }
   }
