@@ -623,7 +623,7 @@ function populatePanel(flowPanel, d, wisc, wiSource, wiReserv){
 };
 
 function removePanel(){
-  console.log('nnnnn')
+  console.log('hhhhhhh')
   d3.select('.flowpaneltext').remove()
 }
   })();
@@ -676,7 +676,6 @@ function removePanel(){
 
   function getWisconsin(wisc, basemap, path){
         //console.log(zoom)
-        var mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
           .enter()
@@ -692,59 +691,66 @@ function removePanel(){
             })
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
-          var viewbox = "0 0 400 250"
-          var extent = [
-              [viewbox[0], viewbox[1]]
-              ,[(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
-              ]
-          var brush  = d3.brush()
-                .extent(extent)
-                .on("brush", brushed)
-          var zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
-          mini_svg
-              .call(brush)
-              .call(brush.move, brush.extent())
-              .call(zoom);
+          const moundmap_svg = d3.select("#moundmap svg.aperture").attr("class", "zoom")
+              , mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
+              // store the image's initial viewBox
+              , viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
+              , extent = [
+                      [viewbox[0], viewbox[1]]
+                    , [(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
+                  ]
+              , brush  = d3.brush()
+                    .extent(extent)
+                    .on("brush", brushed)
+              , zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
+            // Apply the brush to the minimap, and also apply the zoom behavior here
+            mini_svg
+                .call(brush)
+                .call(brush.move, brush.extent())
+                .call(zoom);
+            // Apply the zoom behavior to the moundmap svg
+            moundmap_svg
+                .call(zoom);
         };
 
-function brushed() {
-    if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
-      let sel = d3.event.selection
-          var vb = sel
-              ? [sel[0][0], sel[0][1], (sel[1][0] - sel[0][0]), (sel[1][1] - sel[0][1])]
-              : viewbox
-              var k = vb[3] / viewbox[3]
-              var t = d3.zoomIdentity.translate(vb[0], vb[1]).scale(k)
-            ;
-            mini_svg
-                .property("__zoom", t)
-            ;
-            // main_svg
-            //     .attr("viewBox", vb.join(' '))
-            //     .property("__zoom", t)
-            // ;
-        }
+    function brushed() {
+                // Ignore brush-via-zoom
+        if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
+            let sel = d3.event.selection
+                  , vb = sel
+                        ? [sel[0][0], sel[0][1], (sel[1][0] - sel[0][0]), (sel[1][1] - sel[0][1])]
+                        : viewbox
+                  , k = vb[3] / viewbox[3]
+                  , t = d3.zoomIdentity.translate(vb[0], vb[1]).scale(k);
+                mini_svg
+                    .property("__zoom", t);
+                moundmap_svg
+                    .attr("viewBox", vb.join(' '))
+                    .property("__zoom", t);
+  }; // brushed()
 
-function zoomed() {
-    if(this === mini_svg.node()) {
-          return basemap.call(zoom.transform, d3.event.transform);
-        }
-    if(!d3.event.sourceEvent || d3.event.sourceEvent.type === "brush") return;
+    function zoomed() {
+      if(this === mini_svg.node()) {
+            return moundmap_svg.call(zoom.transform, d3.event.transform);
+            }
+
+      if(!d3.event.sourceEvent || d3.event.sourceEvent.type === "brush") return;
+
+                // Process the zoom event on the moundmap SVG
         let t = d3.event.transform;
         t.x = t.x < viewbox[0] ? viewbox[0] : t.x;
         t.x = t.x > viewbox[2] ? viewbox[2] : t.x;
         t.y = t.y < viewbox[1] ? viewbox[1] : t.y;
         t.y = t.y > viewbox[3] ? viewbox[3] : t.y;
         if(t.k === 1) t.x = t.y = 0;
+
         const vb = [t.x, t.y, viewbox[2] * t.k, viewbox[3] * t.k];
 
-        //main_svg.attr("viewBox", vb.join(' '));
+        moundmap_svg.attr("viewBox", vb.join(' '));
         mini_svg
-            .property("__zoom", t)
-            .call(brush.move
-            , [[t.x, t.y], [t.x + vb[2], t.y + vb[3]]]
-            );
-        }
+              .property("__zoom", t)
+              .call(brush.move, [[t.x, t.y], [t.x + vb[2], t.y + vb[3]]]);
+  };
 
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
@@ -839,6 +845,6 @@ function getStyle(element, styleName){
     };
   d3.select(".infolabel")
     .remove();
-}
+};
 
-  })();
+})();
