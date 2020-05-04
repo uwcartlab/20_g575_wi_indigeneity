@@ -390,7 +390,8 @@
                       InstDehighlight(wisc, d);
                       InstHighlight(basemap, baseProjection, wisc, d, wiSource);
                       populatePanel(flowPanel, d, wisc, wiSource, wiReserv)
-                  });
+                  })
+                  .on("mouseout", removePanel());
                   //.on("mouseout", function(d){
                   //    InstDehighlight(wisc, d);
                 //  })
@@ -620,6 +621,11 @@ function populatePanel(flowPanel, d, wisc, wiSource, wiReserv){
     }
   }
 };
+
+function removePanel(){
+  console.log('nnnnn')
+  d3.select('.flowpaneltext').remove()
+}
   })();
 
 
@@ -645,8 +651,8 @@ function populatePanel(flowPanel, d, wisc, wiSource, wiReserv){
         .append("g");
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
-        .center([3.35, 44.88205])
-        .scale(20000)
+        .center([3.35, 46.2])
+        .scale(5500)
         .rotate([92.35, 1.8, -1])
         .translate([width / 2, height / 2])
 
@@ -792,7 +798,6 @@ function zoomed() {
           removePanel(d)
           mdehighlight(d.properties);
         })
-
         var desc = loc.append('desc')
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
     }
@@ -806,7 +811,7 @@ function zoomed() {
 
   function removePanel(mounds){
     console.log('nnnnn')
-    d3.select('div#moundpaneltext').remove()
+    d3.select('.moundpaneltext').remove()
   }
 
 function mhighlight(props){
