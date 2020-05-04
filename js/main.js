@@ -663,6 +663,7 @@ function populatePanel(d, wisc, wiSource, wiReserv){
 
   function getWisconsin(wisc, basemap, path){
         //console.log(zoom)
+        var mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
           .enter()
@@ -672,13 +673,65 @@ function populatePanel(d, wisc, wiSource, wiReserv){
             return "county " + d.properties.NAME;
             })
           .attr("d", path)
+          //.call(zoom)
           .style("fill", function(d){
               return "#ddd";
             })
           var desc = wiPath.append("desc")
-            .text('{"stroke": "#AAA", "stroke-width":"0.5px"}');
+            .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
+          var viewbox = "0 0 400 250"
+          var extent = [
+              [viewbox[0], viewbox[1]]
+              ,[(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
+              ]
+          var brush  = d3.brush()
+                .extent(extent)
+                .on("brush", brushed)
+          var zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
+          mini_svg
+              .call(brush)
+              .call(brush.move, brush.extent())
+              .call(zoom);
         };
 
+function brushed() {
+    if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
+      let sel = d3.event.selection
+          var vb = sel
+              ? [sel[0][0], sel[0][1], (sel[1][0] - sel[0][0]), (sel[1][1] - sel[0][1])]
+              : viewbox
+              var k = vb[3] / viewbox[3]
+              var t = d3.zoomIdentity.translate(vb[0], vb[1]).scale(k)
+            ;
+            mini_svg
+                .property("__zoom", t)
+            ;
+            // main_svg
+            //     .attr("viewBox", vb.join(' '))
+            //     .property("__zoom", t)
+            // ;
+        }
+
+function zoomed() {
+    if(this === mini_svg.node()) {
+          return basemap.call(zoom.transform, d3.event.transform);
+        }
+    if(!d3.event.sourceEvent || d3.event.sourceEvent.type === "brush") return;
+        let t = d3.event.transform;
+        t.x = t.x < viewbox[0] ? viewbox[0] : t.x;
+        t.x = t.x > viewbox[2] ? viewbox[2] : t.x;
+        t.y = t.y < viewbox[1] ? viewbox[1] : t.y;
+        t.y = t.y > viewbox[3] ? viewbox[3] : t.y;
+        if(t.k === 1) t.x = t.y = 0;
+        const vb = [t.x, t.y, viewbox[2] * t.k, viewbox[3] * t.k];
+
+        //main_svg.attr("viewBox", vb.join(' '));
+        mini_svg
+            .property("__zoom", t)
+            .call(brush.move
+            , [[t.x, t.y], [t.x + vb[2], t.y + vb[3]]]
+            );
+        }
 
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
@@ -725,18 +778,14 @@ function populatePanel(d, wisc, wiSource, wiReserv){
           }
         })
         .on("mouseover", function(d){
-          //console.log('highlight')
+          populatePanel(d)
           mhighlight(d.properties);
         })
         .on("mouseout", function(d){
+          removePanel(d)
           mdehighlight(d.properties);
         })
-        //buildInfoPanel(mounds);
-        // .on("mousemove", buildInfoPanel(mounds));
-        loc.on("click", function(d){
 
-          populatePanel(d)
-        })
         var desc = loc.append('desc')
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
     }
@@ -748,39 +797,10 @@ function populatePanel(d, wisc, wiSource, wiReserv){
         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
     };
 
-  // Create Retrieve Method -- onMouseover or onClick methods
-  // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
-  function wiLabels(props){
-    var labelAttribute = "<h1>"+props[expressed]+"</h1><b>"+expressed+"</b>";
-    var infolabel = d3.select(".county")
-      .append("div")
-      .attr("class", "infolabel")
-      .attr("id", props.NAME+"_label")
-      .html(labelAttribute);
-    var stateName = infolabel.append("div")
-      .attr("class", "labelname")
-      .html(props.NAME);
-    };
-  function moveLabel(){
-        //get width of label
-        var labelWidth = d3.select(".infolabel")
-            .node()
-            .getBoundingClientRect()
-            .width;
-        //use coordinates of mousemove event to set label coordinates
-        var x1 = d3.event.clientX + 10,
-            y1 = d3.event.clientY - 75,
-            x2 = d3.event.clientX - labelWidth - 10,
-            y2 = d3.event.clientY + 25;
-        //horizontal label coordinate, testing for overflow
-        var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
-        //vertical label coordinate, testing for overflow
-        var y = d3.event.clientY < 75 ? y2 : y1;
-
-        d3.select(".infolabel")
-            .style("left", x + "px")
-            .style("top", y + "px");
-    };
+  function removePanel(mounds){
+    console.log('nnnnn')
+    d3.select('div#moundpaneltext').remove()
+  }
 
 function mhighlight(props){
   //console.log(props)
