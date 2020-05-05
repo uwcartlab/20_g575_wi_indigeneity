@@ -643,7 +643,7 @@ function removePanel(){
       var width = 600,
         height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("div#moundmap")
+      var basemap = d3.select("div#main")
         .append("svg")
         .attr("class", "moundmap")
         .attr("width", width)
@@ -696,8 +696,8 @@ function removePanel(){
             })
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
-          const moundmap_svg = d3.select("#moundmap").attr("class", "zoom")
-              const mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
+          const moundmap_svg = d3.select("#main svg").attr("class", "zoom")
+              const mini_svg   = d3.select("#moundmini svg").append("g").attr("class", "zoom")
               console.log('moundmap variables construction')
               // store the image's initial viewBox
               const viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
@@ -707,7 +707,7 @@ function removePanel(){
                   ]
               const brush  = d3.brush()
                     .extent(extent)
-                    .on("brush", brushed())
+                    .on("brush", brushed)
               const zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
             // Apply the brush to the minimap, and also apply the zoom behavior here
             mini_svg
