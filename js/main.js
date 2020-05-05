@@ -693,6 +693,7 @@ function removePanel(){
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
           const moundmap_svg = d3.select("#moundmap").attr("class", "zoom")
               const mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
+              console.log('moundmap variables construction')
               // store the image's initial viewBox
               const viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
               const extent = [
@@ -701,7 +702,7 @@ function removePanel(){
                   ]
               const brush  = d3.brush()
                     .extent(extent)
-                    .on("brush", brushed)
+                    .on("brush", brushed())
               const zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
             // Apply the brush to the minimap, and also apply the zoom behavior here
             mini_svg
@@ -714,8 +715,9 @@ function removePanel(){
         };
 
     function brushed() {
-                // Ignore brush-via-zoom
-        if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
+        console.log('brushed reached')
+        console.log(d3.event)
+        //if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
             let sel = d3.event.selection
                   let vb = sel
                         ? [sel[0][0], sel[0][1], (sel[1][0] - sel[0][0]), (sel[1][1] - sel[0][1])]
