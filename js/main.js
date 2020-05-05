@@ -649,7 +649,7 @@ function removePanel(){
         .attr('class', 'aperture')
         .attr("width", width)
         .attr("height", height)
-        // .attr('viewBox', "0 0 0 0")
+        .attr('viewBox', "0 0 600 450") //400 250 ratio
         .attr('preserveAspectRatio', "none")
         .call(d3.zoom().on("zoom", function () {
             basemap.attr("transform", d3.event.transform)
@@ -682,6 +682,7 @@ function removePanel(){
 var viewbox;
 var moundmap_svg;
 var mini_svg;
+var brush;
   function getWisconsin(wisc, basemap, path){
         //console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
@@ -708,7 +709,7 @@ var mini_svg;
                       [viewbox[0], viewbox[1]]
                     , [(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
                   ]
-              const brush  = d3.brush()
+               brush  = d3.brush()
                     .extent(extent)
                     .on("brush", brushed)
               const zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
@@ -723,8 +724,8 @@ var mini_svg;
         };
 
     function brushed() {
-        console.log('brushed reached')
-        console.log(d3.event)
+        //console.log('brushed reached')
+        //console.log(d3.event)
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
             let sel = d3.event.selection
                   let vb = sel
@@ -740,7 +741,7 @@ var mini_svg;
   }; // brushed()
 
     function zoomed() {
-      console.log()
+      //console.log()
       if(this === mini_svg.node()) {
             return moundmap_svg.call(zoom.transform, d3.event.transform);
             }
@@ -758,12 +759,14 @@ var mini_svg;
         const vb = [t.x, t.y, viewbox[2] * t.k, viewbox[3] * t.k];
 
         moundmap_svg.attr("viewBox", vb.join(' '));
+        //console.log(mini_svg)
         mini_svg
               .property("__zoom", t)
               .call(brush.move, [[t.x, t.y], [t.x + vb[2], t.y + vb[3]]]);
   };
 
   function drawLocations(mounds, basemap, baseProjection) {
+      console.log('reached')
       var legend = d3.select("#moundlegend")
       legend.append("text").attr("x",-113).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
       legend.append("circle").attr("cx",30).attr("cy",28).attr("r", 6).style("fill", "green")
