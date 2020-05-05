@@ -797,6 +797,7 @@ function removePanel(){
           }
         })
         .on("mouseover", function(d){
+          // updatePopup(d)
           populatePanel(d)
           mhighlight(d.properties);
         })
@@ -807,6 +808,19 @@ function removePanel(){
         var desc = loc.append('desc')
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
     }
+
+//     function PopupContent(mounds){
+//       var dynamictext = d3.select("div#moundpanel")
+//         .attr('class', 'moundpaneltext')
+//         .append("p")
+//         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
+//     }
+// var popupContent = ''
+//     function updatePopup(mounds){
+//       console.log("sss")
+//       d3.select("#moundmap")
+//           var popupContent = new PopupContent(mounds)
+//       };
 
     function populatePanel(mounds){
       // d3.select('col-md-4')
@@ -819,6 +833,7 @@ function removePanel(){
 
   function removePanel(mounds){
     console.log('nnnnn')
+    // popupContent = ""
     d3.select('.moundpaneltext').remove()
   }
 
