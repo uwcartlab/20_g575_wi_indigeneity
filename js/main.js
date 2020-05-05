@@ -678,7 +678,9 @@ function removePanel(){
         drawLocations(mounds, basemap, baseProjection);
         };
       };
-
+var viewbox;
+var moundmap_svg;
+var mini_svg;
   function getWisconsin(wisc, basemap, path){
         //console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
@@ -696,11 +698,11 @@ function removePanel(){
             })
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
-          const moundmap_svg = d3.select("#main svg").attr("class", "zoom")
-              const mini_svg   = d3.select("#moundmini svg").append("g").attr("class", "zoom")
+           moundmap_svg = d3.select("#main svg").attr("class", "zoom")
+           mini_svg   = d3.select("#moundmini svg").append("g").attr("class", "zoom")
               console.log('moundmap variables construction')
               // store the image's initial viewBox
-              const viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
+              viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
               const extent = [
                       [viewbox[0], viewbox[1]]
                     , [(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
@@ -722,7 +724,7 @@ function removePanel(){
     function brushed() {
         console.log('brushed reached')
         console.log(d3.event)
-        //if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
+        if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
             let sel = d3.event.selection
                   let vb = sel
                         ? [sel[0][0], sel[0][1], (sel[1][0] - sel[0][0]), (sel[1][1] - sel[0][1])]
