@@ -301,7 +301,7 @@
         var institutionsSource = topojson.feature(sourceInst, sourceInst.objects.Sources).features;
         //setInfoPanel();
         getWisconsin(wisc, basemap, path);
-        getReservations(flowPanel, wisc, lands, wiReserv, basemap, path, baseProjection, wiSource);
+        getReservations(flowPanel, wisc, lands, wiReserv, basemap, path, baseProjection, wiSource, institutionsSource);
         getInstitutions(flowPanel, basemap, baseProjection, wisc, institutionsSource, wiSource, wiReserv, path);
         //buildInfoPanel(wiSource, wiInst, wiReserv)
         };
@@ -338,7 +338,7 @@
   function zoom() {
         d3.select(this).attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
       };
-  function getReservations(flowPanel, wisc, lands, wiReserv, basemap, path, baseProjection, wiSource){
+  function getReservations(flowPanel, wisc, lands, wiReserv, basemap, path, baseProjection, wiSource, institutionsSource){
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -356,7 +356,7 @@
             .on("click", function(d){
               InstDehighlight(wisc, d);
               ReservDehighlight(d);
-              ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc, d);
+              ReservHighlight(basemap, baseProjection, wiReserv, lands, institutionsSource, d);
               populatePanel(flowPanel,d, wisc, wiSource, wiReserv);
             })
             //.on("mouseout", function(d){
@@ -492,43 +492,48 @@
       }
     };
   //Reservations need flow lines to institutions they got items from.
-  function resLines(basemap, baseProjection, wiReserv, props, wisc, lands){
+  function reservationLines(basemap, baseProjection, wiReserv, props, institutionsSource, lands){
       var path = d3.geoPath()
         .projection(baseProjection)
       var link = []
-      var obj;
+      var instit;
       var reserv;
-      for (obj in wisc){
-        for (reserv in lands){
-          if(wisc[obj].properties.NAME == lands[reserv].properties.label){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
-            var target = [wisc[obj].properties.coordinates[1],wisc[obj].properties.coordinates[0]],
-                origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
-                topush = {type: "LineString", coordinates: [origin, target]}
-                link.push(topush)
-            basemap.selectAll("myPath")
-                .data(link)
-                .enter()
-                .append("path")
-                  .attr("class", function(d){
-                    return "arc"; //name it  "arc" --> may need more specific name for Final
-                    })
-                  .attr("d", function(d){return path(d)})
-                  .style("fill", "none")
-                  .style("stroke", "#807dba")
-                  .style("stroke-width", 2)
+      for (instit in institutionsSource){
+        for (reserv in wiReserv){
+          if(institutionsSource[instit].properties.Name == wiReserv[reserv].InstitLabel){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
+            console.log(institutionsSource[instit])
+            console.log(wiReserv[reserv])
+            console.log(props)
+            if(props.properties.label == wiReserv[reserv].Label){
+              var target = [institutionsSource[instit].geometry.coordinates[0],institutionsSource[instit].geometry.coordinates[1]],
+                  origin = [props.geometry.coordinates[0][0][0],props.geometry.coordinates[0][0][1]]
+                  topush = {type: "LineString", coordinates: [origin, target]}
+                  link.push(topush)
+              basemap.selectAll("myPath")
+                  .data(link)
+                  .enter()
+                  .append("path")
+                    .attr("class", function(d){
+                      return "arc"; //name it  "arc" --> may need more specific name for Final
+                      })
+                    .attr("d", function(d){return path(d)})
+                    .style("fill", "none")
+                    .style("stroke", "#807dba")
+                    .style("stroke-width", 2)
+            }
           }
         }
       }
     };
   // Create Dynamic Legend for ColorScale for expressed dataset
   // Create Highlight function
-  function ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc, props){
+  function ReservHighlight(basemap, baseProjection, wiReserv, lands, institutionsSource, props){
     //console.log(props)
     var selected = d3.selectAll("." + props.properties.label)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
     wiLabels(props);
-    resLines(basemap, baseProjection, wiReserv, props, wisc, lands);
+    reservationLines(basemap, baseProjection, wiReserv, props, institutionsSource, lands);
     };
   function ReservHighlight_noLine(basemap, baseProjection, wiReserv, lands, wisc, props){
       //console.log(props)
