@@ -649,8 +649,8 @@ function removePanel(){
         .attr('class', 'aperture')
         .attr("width", width)
         .attr("height", height)
-        .attr('viewBox', "0 0 600 450") //400 250 ratio
-        .attr('preserveAspectRatio', "none")
+        // .attr('viewBox', "0 0 600 450") //400 250 ratio
+        // .attr('preserveAspectRatio', "none")
         .call(d3.zoom().on("zoom", function () {
             basemap.attr("transform", d3.event.transform)
         }))
