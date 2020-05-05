@@ -717,11 +717,11 @@ function removePanel(){
                 // Ignore brush-via-zoom
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return;
             let sel = d3.event.selection
-                  , vb = sel
+                  let vb = sel
                         ? [sel[0][0], sel[0][1], (sel[1][0] - sel[0][0]), (sel[1][1] - sel[0][1])]
                         : viewbox
-                  , k = vb[3] / viewbox[3]
-                  , t = d3.zoomIdentity.translate(vb[0], vb[1]).scale(k);
+                  let k = vb[3] / viewbox[3]
+                  let t = d3.zoomIdentity.translate(vb[0], vb[1]).scale(k);
                 mini_svg
                     .property("__zoom", t);
                 moundmap_svg
