@@ -53,13 +53,8 @@ p {
   flex: 1 0 calc(25% - var(--margin));
 }
 
-#main > svg {
-    /* Occupy the full viewport */
-    width: 100%;
-    height: 100%;
-
-    /* don't scale the stroke-width of the magnified object.*/
-    vector-effect: non-scaling-stroke;
+.zoom{
+	display: inline-block;
 }
 
 .moundpaneltext {
@@ -124,7 +119,7 @@ p {
 }
 
 .infolabel {
-    position: absolute;
+    /* position: absolute; */
     height: 150px;
     min-width: 100px;
     color: #fff;

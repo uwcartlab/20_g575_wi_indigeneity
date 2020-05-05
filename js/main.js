@@ -691,18 +691,18 @@ function removePanel(){
             })
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
-          const moundmap_svg = d3.select("#moundmap svg.aperture").attr("class", "zoom")
-              , mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
+          const moundmap_svg = d3.select("#moundmap").attr("class", "zoom")
+              const mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
               // store the image's initial viewBox
-              , viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
-              , extent = [
+              const viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
+              const extent = [
                       [viewbox[0], viewbox[1]]
                     , [(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
                   ]
-              , brush  = d3.brush()
+              const brush  = d3.brush()
                     .extent(extent)
                     .on("brush", brushed)
-              , zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
+              const zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
             // Apply the brush to the minimap, and also apply the zoom behavior here
             mini_svg
                 .call(brush)
@@ -809,6 +809,8 @@ function removePanel(){
     }
 
     function populatePanel(mounds){
+      // d3.select('col-md-4')
+      //   .append('div', '#moundpanel')
       var dynamictext = d3.select("div#moundpanel")
         .attr('class', 'moundpaneltext')
         .append("p")
