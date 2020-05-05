@@ -645,11 +645,12 @@ function removePanel(){
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("div#main")
         .append("svg")
-        .attr("class", "moundmap")
+        .attr("id", "moundmap")
+        .attr('class', 'aperture')
         .attr("width", width)
         .attr("height", height)
-        // .attr('x', 100)
-        // .attr('y', 500)
+        // .attr('viewBox', "0 0 0 0")
+        .attr('preserveAspectRatio', "none")
         .call(d3.zoom().on("zoom", function () {
             basemap.attr("transform", d3.event.transform)
         }))
@@ -739,6 +740,7 @@ var mini_svg;
   }; // brushed()
 
     function zoomed() {
+      console.log()
       if(this === mini_svg.node()) {
             return moundmap_svg.call(zoom.transform, d3.event.transform);
             }

@@ -48,9 +48,13 @@ p {
   font-size: 16px;
   line-height: 27px;
 }
+#main {
+  flex: 3 0 calc(75% - var(--margin));
+}
 
 #mini {
-  flex: 1 0 calc(25% - var(--margin));
+	display: inline-block;
+  /* flex: 1 0 calc(25% - var(--margin)); */
 }
 
 .zoom{
