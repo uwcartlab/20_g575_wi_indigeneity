@@ -349,8 +349,8 @@
             .attr("d", path)
             .style("fill", "#555")
             .on("mouseover", function(d){
-              InstDehighlight(wisc, d);
-              ReservDehighlight(d);
+              //InstDehighlight(wisc, d);
+              //ReservDehighlight(d);
               ReservHighlight_noLine(basemap, baseProjection, wiReserv, lands, wisc, d);
             })
             .on("click", function(d){
@@ -381,8 +381,8 @@
               .style("stroke-width", "0.5px")
                 .on("zoom", zoom)
                 .on("mouseover", function(d){
-                      ReservDehighlight(d);
-                      InstDehighlight(wisc, d);
+                      //ReservDehighlight(d);
+                      //InstDehighlight(wisc, d);
                       InstHighlight_noLine(basemap, baseProjection, wisc, d, wiSource);
                   })
                 .on("click", function(d){
