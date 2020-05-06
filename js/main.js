@@ -718,6 +718,7 @@ var moundmap_svg;
 var mini_svg;
 var viewbox;
 var brush;
+var extent;
   function getWisconsin(wisc, basemap, path){
         //console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
@@ -739,7 +740,7 @@ var brush;
            mini_svg   = d3.select("#moundmini svg").append("g").attr("class", "zoom")
               // store the image's initial viewBox
              viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
-              const extent = [
+             extent = [
                       [viewbox[0], viewbox[1]]
                     , [(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
                   ]

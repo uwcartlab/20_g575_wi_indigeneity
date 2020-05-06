@@ -67,6 +67,7 @@ p {
 }
 .zoom{
 	display: inline-block;
+	pointer-events: all;
 }
 
 .moundpaneltext {
