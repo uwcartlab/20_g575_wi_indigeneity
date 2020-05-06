@@ -742,6 +742,7 @@ var extent;
               const zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
             // Apply the brush to the minimap, and also apply the zoom behavior here
             mini_svg
+                .call(drag)
                 .call(brush)
                 .call(brush.move, brush.extent())
                 .call(zoom);
@@ -749,6 +750,27 @@ var extent;
             moundmap_svg
                 .call(zoom);
         };
+
+        var drag = d3.drag()
+                .on('start', dragstarted)
+                .on('drag', dragged)
+                .on('end', dragended)
+
+          function dragstarted(d) {
+            d3.select(this).attr("stroke", "black");
+          }
+
+          function dragged(d) {
+            console.log('dragging')
+              var mousePos = d3.mouse(this)
+              var box = d3.select(this)
+                      .attr('x', mousePos[0])
+                      .attr('y', mousePos[1])
+          }
+
+          function dragended(d) {
+            d3.select(this).attr("stroke", null);
+          }
 
     function brushed() {
                 // Ignore brush-via-zoom
