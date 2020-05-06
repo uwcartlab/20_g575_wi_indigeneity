@@ -680,11 +680,12 @@ function removePanel(){
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("div#main")
         .append("svg")
-        .attr("class", "moundmap")
+        .attr("id", "moundmap")
+        .attr('class', 'aperture')
         .attr("width", width)
         .attr("height", height)
-        // .attr('x', 100)
-        // .attr('y', 500)
+        // .attr('viewBox', "0 0 600 450") //400 250 ratio
+        // .attr('preserveAspectRatio', "none")
         .call(d3.zoom().on("zoom", function () {
             basemap.attr("transform", d3.event.transform)
         }))
