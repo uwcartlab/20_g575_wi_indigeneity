@@ -256,7 +256,7 @@
             basemap.attr("transform", d3.event.transform)
         }))
         .append("g");
-<<<<<<< HEAD
+
       var flowPanel = d3.select("div#flowpanel")
         .append("svg")
         .attr("class", "information")
@@ -267,9 +267,9 @@
           .text('hello')
         //.attr('x', 100)
         //.attr('y', 500);
-=======
 
->>>>>>> parent of 7374a27... attempt at non-continuous flow panel
+
+
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([4.25, 44.90])
@@ -306,16 +306,16 @@
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         var institutionsSource = topojson.feature(sourceInst, sourceInst.objects.Sources).features;
-<<<<<<< HEAD
+
         getWisconsin(wisc, basemap, path);
         getReservations(flowPanel, wisc, lands, wiReserv, basemap, path, baseProjection, wiSource, institutionsSource);
         getInstitutions(flowPanel, basemap, baseProjection, wisc, institutionsSource, wiSource, wiReserv, path);
-=======
+
         setInfoPanel();
         getWisconsin(wisc, basemap, path);
         getReservations(wisc, lands, wiReserv, basemap, path, baseProjection, wiSource);
         getInstitutions(basemap, baseProjection, wisc, institutionsSource, wiSource, wiReserv, path);
->>>>>>> parent of 7374a27... attempt at non-continuous flow panel
+
         //buildInfoPanel(wiSource, wiInst, wiReserv)
         };
       };
@@ -350,11 +350,11 @@
   function zoom() {
         d3.select(this).attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
       };
-<<<<<<< HEAD
+
   function getReservations(flowPanel, wisc, lands, wiReserv, basemap, path, baseProjection, wiSource, institutionsSource){
-=======
+
   function getReservations(wisc, lands, wiReserv, basemap, path, baseProjection, wiSource){
->>>>>>> parent of 7374a27... attempt at non-continuous flow panel
+
           var reservation = basemap.selectAll(".lands")
             .data(lands)
             .enter()
@@ -372,13 +372,13 @@
             .on("click", function(d){
               InstDehighlight(wisc, d);
               ReservDehighlight(d);
-<<<<<<< HEAD
+
               ReservHighlight(basemap, baseProjection, wiReserv, lands, institutionsSource, d);
               populatePanel(flowPanel,d, wisc, wiSource, wiReserv);
-=======
+
               ReservHighlight(basemap, baseProjection, wiReserv, lands, wisc, d);
               populatePanel(d, wisc, wiSource, wiReserv);
->>>>>>> parent of 7374a27... attempt at non-continuous flow panel
+
             })
             //.on("mouseout", function(d){
             //  ReservDehighlight(d);
@@ -409,20 +409,19 @@
                 .on("click", function(d){
                       ReservDehighlight(d);
                       InstDehighlight(wisc, d);
-<<<<<<< HEAD
+
                       InstHighlight(flowPanel, basemap, baseProjection, wisc, d, wiSource, wiReserv);
                       populatePanel(flowPanel, d, wisc, wiSource, wiReserv)
                   })
-                  //.on("mouseout", removePanel());
-=======
-                      InstHighlight(basemap, baseProjection, wisc, d, wiSource);
-                      populatePanel(d, wisc, wiSource, wiReserv)
-                  });
+                  // .on("mouseout", removePanel());
+                  //     InstHighlight(basemap, baseProjection, wisc, d, wiSource);
+                  //     populatePanel(d, wisc, wiSource, wiReserv)
+                  // };
                   //.on("mouseout", function(d){
                   //    InstDehighlight(wisc, d);
                 //  })
                   //.on("mousemove", moveLabel)
->>>>>>> parent of 7374a27... attempt at non-continuous flow panel
+
             var desc = institution.append("desc")
               .text('{"stroke": "#FFFAFA", "stroke-width":"0.5px"}');
           };
@@ -657,7 +656,7 @@
       .remove();
   };
 //we'll use this eventually
-<<<<<<< HEAD
+
   function populatePanel(flowPanel, props, wisc, wiSource, wiReserv){
     if (props.properties.NAMELSAD){
       var reservation;
@@ -670,7 +669,10 @@
           //var reservationText = text
           //  .attr('class', 'flowpaneltext')
           //  .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
-=======
+        }
+      }
+    }
+  };
 function populatePanel(d, wisc, wiSource, wiReserv){
   if (d.properties.NAMELSAD){
     var reservation;
@@ -681,21 +683,21 @@ function populatePanel(d, wisc, wiSource, wiReserv){
             .append("p")
             .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
             //.text("What is the airspeed velocity of an unladen swallow?");
->>>>>>> parent of 7374a27... attempt at non-continuous flow panel
+
       }
     }
   } else if (props.properties.Institution){
     var instit;
     for (instit in wiSource){
-<<<<<<< HEAD
+
       if (props.properties.Name == wiSource[instit].Name){
         console.log("Gets to final step in Institution Text Append")
         var institutionText = flowPanel.selectAll(".information")
-=======
+
       if (d.properties.Name == wiSource[instit].Name){
         console.log(d.properties.Institution)
         var institutionText = d3.select("div#flowpanel")
->>>>>>> parent of 7374a27... attempt at non-continuous flow panel
+
           .attr('class', 'flowpaneltext')
           .append("p")
           .text("This is the "+wiSource[instit].Institution+".");
@@ -708,7 +710,7 @@ function populatePanel(d, wisc, wiSource, wiReserv){
   //console.log('panel removed')
   //d3.select('.flowpaneltext').remove()
 //}
-  })();
+})();
 
 
 
