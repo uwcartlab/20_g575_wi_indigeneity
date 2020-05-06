@@ -256,13 +256,13 @@
             basemap.attr("transform", d3.event.transform)
         }))
         .append("g");
-      var flowPanel = d3.select("div#col-md-4")
+      var flowPanel = d3.select("div#flowpanel")
         .append("svg")
-        .attr("class", "flowpaneltext")
-        .attr("width", 250)
-        .attr("height", 500)
-        .attr('x', 100)
-        .attr('y', 500);
+        .attr("class", "information")
+        .attr("width", 395)
+        .attr("height", 800)
+        //.attr('x', 100)
+        //.attr('y', 500);
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([4.25, 44.90])
@@ -299,7 +299,6 @@
         var lands = topojson.feature(res, res.objects.wiRes).features;
         var institutions = topojson.feature(instit, instit.objects.Museumlocations).features;
         var institutionsSource = topojson.feature(sourceInst, sourceInst.objects.Sources).features;
-        //setInfoPanel();
         getWisconsin(wisc, basemap, path);
         getReservations(flowPanel, wisc, lands, wiReserv, basemap, path, baseProjection, wiSource, institutionsSource);
         getInstitutions(flowPanel, basemap, baseProjection, wisc, institutionsSource, wiSource, wiReserv, path);
@@ -388,14 +387,10 @@
                 .on("click", function(d){
                       ReservDehighlight(d);
                       InstDehighlight(wisc, d);
-                      InstHighlight(basemap, baseProjection, wisc, d, wiSource);
+                      InstHighlight(flowPanel, basemap, baseProjection, wisc, d, wiSource, wiReserv);
                       populatePanel(flowPanel, d, wisc, wiSource, wiReserv)
                   })
-                  .on("mouseout", removePanel());
-                  //.on("mouseout", function(d){
-                  //    InstDehighlight(wisc, d);
-                //  })
-                  //.on("mousemove", moveLabel)
+                  //.on("mouseout", removePanel());
             var desc = institution.append("desc")
               .text('{"stroke": "#FFFAFA", "stroke-width":"0.5px"}');
           };
@@ -421,25 +416,6 @@
       return colorScale;
   };
   // Create Reexpress Method -- Menu Select that changes Expressed data for each State (different types of artifacts)
-  // Recreate Color Scale and Recolor Each Enumeration Unit based on changed Expressed data
-  function changeAttribute(attribute, wisconsinData){
-    //change Expressed
-    expressed = attribute;
-    //recreate colorScale
-    var wiColorScale = WIcolors(wisconsinData);
-    //recolor States
-    var states = d3.selectAll(".counties")
-      .transition()
-      .duration(1000)
-      .style("fill", function(d){
-        var value = d.properties[expressed];
-        if (value) {
-          return wiColorScale(value);
-        } else {
-          return "#ddd";
-        }
-      });
-  };
   // Create Retrieve Method -- onMouseover or onClick methods
   // Create Dynamic Label with State Name and Number of Returned Artifacts of Chosen Type
   function wiLabels(props){
@@ -594,13 +570,14 @@
     d3.select(".infolabel")
       .remove();
   }
-  function InstHighlight(basemap, baseProjection, wisc, props, wiSource){
+  function InstHighlight(flowPanel,basemap, baseProjection, wisc, props, wiSource, wiReserv){
     //console.log(props)
     var selected = d3.selectAll("."+props.properties.Name)
       .style("stroke", "purple")
       .style("stroke-width", "1.5")
     wiLabels(props);
     instLines(basemap, baseProjection, props, wisc, wiSource);
+    populatePanel(flowPanel,props, wisc, wiSource, wiReserv)
     };
   function InstHighlight_noLine(basemap, baseProjection, wisc, props){
       //console.log(props)
@@ -649,35 +626,36 @@
       .remove();
   };
 //we'll use this eventually
-  function populatePanel(flowPanel, d, wisc, wiSource, wiReserv){
-    if (d.properties.NAMELSAD){
+  function populatePanel(flowPanel, props, wisc, wiSource, wiReserv){
+    if (props.properties.NAMELSAD){
       var reservation;
       for (reservation in wiReserv){
-        if (d.properties.label == wiReserv[reservation].Label){
-          var reservationText = flowPanel.selectAll(".information")
+        if (props.properties.label == wiReserv[reservation].Label){
+          console.log("Gets to final step in Reservation Text Append")
+          var text = flowPanel.selectAll(".information")
+            .append("text")
+            .text('hello')
+          var reservationText = text
             .attr('class', 'flowpaneltext')
-            .append("p")
             .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
-            //.text("What is the airspeed velocity of an unladen swallow?");
       }
     }
-  } else if (d.properties.Institution){
+  } else if (props.properties.Institution){
     var instit;
     for (instit in wiSource){
-      if (d.properties.Name == wiSource[instit].Name){
-        console.log(d.properties.Institution)
+      if (props.properties.Name == wiSource[instit].Name){
+        console.log("Gets to final step in Institution Text Append")
         var institutionText = flowPanel.selectAll(".information")
           .attr('class', 'flowpaneltext')
           .append("p")
           .text("This is the "+wiSource[instit].Institution+".");
-          //.text("What do you mean? African or European swallow?");
       }
     }
   }
 };
 
 function removePanel(){
-  console.log('hhhhhhh')
+  console.log('panel removed')
   d3.select('.flowpaneltext').remove()
 }
   })();
