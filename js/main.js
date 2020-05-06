@@ -256,7 +256,7 @@
             basemap.attr("transform", d3.event.transform)
         }))
         .append("g");
-      var flowPanel = d3.select("div#flowpanel")
+      var flowPanel = d3.select("div#col-md-4")
         .append("svg")
         .attr("class", "flowpaneltext")
         .attr("width", 250)
@@ -349,8 +349,8 @@
             .attr("d", path)
             .style("fill", "#555")
             .on("mouseover", function(d){
-              //InstDehighlight(wisc, d);
-              //ReservDehighlight(d);
+              InstDehighlight_noLine(wisc, d);
+              ReservDehighlight_noLine(d);
               ReservHighlight_noLine(basemap, baseProjection, wiReserv, lands, wisc, d);
             })
             .on("click", function(d){
@@ -381,8 +381,8 @@
               .style("stroke-width", "0.5px")
                 .on("zoom", zoom)
                 .on("mouseover", function(d){
-                      //ReservDehighlight(d);
-                      //InstDehighlight(wisc, d);
+                      ReservDehighlight_noLine(d);
+                      InstDehighlight_noLine(wisc, d);
                       InstHighlight_noLine(basemap, baseProjection, wisc, d, wiSource);
                   })
                 .on("click", function(d){
@@ -561,6 +561,24 @@
       .remove();
     d3.selectAll(".arc")
       .remove();
+  };
+  function ReservDehighlight_noLine(props){
+   var selected = d3.selectAll(".reservation")
+      .style("stroke", function(){
+        return getStyle(this, "stroke")
+      })
+      .style("stroke-width", function(){
+        return getStyle(this, "stroke-width")
+      });
+    function getStyle(element, styleName){
+      var styleText = d3.select(element)
+       .select("desc")
+       .text();
+      var styleObject = JSON.parse(styleText);
+      return styleObject[styleName];
+    };
+    d3.select(".infolabel")
+      .remove();
   }
   function InstHighlight(basemap, baseProjection, wisc, props, wiSource){
     //console.log(props)
@@ -598,13 +616,31 @@
     d3.selectAll(".arc")
       .remove();
   };
+  function InstDehighlight_noLine(wisc,props){
+   var selected = d3.selectAll(".institution")
+      .style("stroke", function(){
+        return getStyle(this, "stroke")
+      })
+      .style("stroke-width", function(){
+        return getStyle(this, "stroke-width")
+      });
+    function getStyle(element, styleName){
+      var styleText = d3.select(element)
+       .select("desc")
+       .text();
+      var styleObject = JSON.parse(styleText);
+      return styleObject[styleName];
+    };
+    d3.select(".infolabel")
+      .remove();
+  };
 //we'll use this eventually
-function populatePanel(flowPanel, d, wisc, wiSource, wiReserv){
-  if (d.properties.NAMELSAD){
-    var reservation;
-    for (reservation in wiReserv){
-      if (d.properties.label == wiReserv[reservation].Label){
-        var reservationText = flowPanel.selectAll(".information")
+  function populatePanel(flowPanel, d, wisc, wiSource, wiReserv){
+    if (d.properties.NAMELSAD){
+      var reservation;
+      for (reservation in wiReserv){
+        if (d.properties.label == wiReserv[reservation].Label){
+          var reservationText = flowPanel.selectAll(".information")
             .attr('class', 'flowpaneltext')
             .append("p")
             .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
