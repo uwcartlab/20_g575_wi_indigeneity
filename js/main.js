@@ -678,7 +678,7 @@ function removePanel(){
       var width = 600,
         height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("div#moundmap")
+      var basemap = d3.select("div#main")
         .append("svg")
         .attr("class", "moundmap")
         .attr("width", width)
@@ -713,7 +713,10 @@ function removePanel(){
         drawLocations(mounds, basemap, baseProjection);
         };
       };
-
+var moundmap_svg;
+var mini_svg;
+var viewbox;
+var brush;
   function getWisconsin(wisc, basemap, path){
         //console.log(zoom)
         var wiPath = basemap.selectAll(".counties")
@@ -731,15 +734,15 @@ function removePanel(){
             })
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
-          const moundmap_svg = d3.select("#moundmap").attr("class", "zoom")
-              const mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
+           moundmap_svg = d3.select("#main svg").attr("class", "zoom")
+           mini_svg   = d3.select("#mini svg").append("g").attr("class", "zoom")
               // store the image's initial viewBox
-              const viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
+             viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
               const extent = [
                       [viewbox[0], viewbox[1]]
                     , [(viewbox[2] - viewbox[0]), (viewbox[3] - viewbox[1])]
                   ]
-              const brush  = d3.brush()
+               brush  = d3.brush()
                     .extent(extent)
                     .on("brush", brushed)
               const zoom = d3.zoom().scaleExtent([0.05, 1]).on("zoom", zoomed);
