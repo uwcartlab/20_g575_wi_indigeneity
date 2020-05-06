@@ -550,6 +550,13 @@
       .style("stroke-width", function(){
         return getStyle(this, "stroke-width")
       });
+    var menominee = d3.selectAll(".county.Menominee")
+         .style("stroke", function(){
+           return getStyle(this, "stroke")
+         })
+         .style("stroke-width", function(){
+           return getStyle(this, "stroke-width")
+         });
     function getStyle(element, styleName){
       var styleText = d3.select(element)
        .select("desc")
@@ -570,6 +577,13 @@
       .style("stroke-width", function(){
         return getStyle(this, "stroke-width")
       });
+    var menominee = d3.selectAll(".county.Menominee") //because Menominee is both a county and a reservation, this de-highlights the County specifically as the previous var only dehighlights the reservations
+           .style("stroke", function(){
+             return getStyle(this, "stroke")
+           })
+           .style("stroke-width", function(){
+             return getStyle(this, "stroke-width")
+           });
     function getStyle(element, styleName){
       var styleText = d3.select(element)
        .select("desc")
