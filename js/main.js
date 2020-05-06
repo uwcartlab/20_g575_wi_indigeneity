@@ -669,8 +669,8 @@
   window.onload = setbaseMap();
   //build Wisconsin map
   function setbaseMap(){
-      var width = 600,
-        height = 500;
+      var width = 800,
+        height = 700;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
       var basemap = d3.select("div#main")
         .append("svg")
