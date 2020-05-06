@@ -641,7 +641,7 @@
             .attr("dy", ".35em")
             .style("fill", "black")
             .attr("class", "newtext")
-            .text('hello');
+            .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
           //var reservationText = text
           //  .attr('class', 'flowpaneltext')
           //  .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
