@@ -261,6 +261,9 @@
         .attr("class", "information")
         .attr("width", 395)
         .attr("height", 800)
+        .append('text')
+          .attr("class", "flowpaneltext")
+          .text('hello')
         //.attr('x', 100)
         //.attr('y', 500);
       //Geo Albers Area Conic Projection
@@ -478,7 +481,6 @@
         for (reserv in wiReserv){
           if(institutionsSource[instit].properties.Name == wiReserv[reserv].InstitLabel){  // I - check if Name of County is Equal to Name of a Target County for any Institutions
             if(props.properties.label == wiReserv[reserv].Label){
-              console.log(props)
               var target = [institutionsSource[instit].geometry.coordinates[0],institutionsSource[instit].geometry.coordinates[1]],
                   origin = [props.properties.center[0],props.properties.center[1]]
                   topush = {type: "LineString", coordinates: [origin, target]}
@@ -632,12 +634,12 @@
       for (reservation in wiReserv){
         if (props.properties.label == wiReserv[reservation].Label){
           console.log("Gets to final step in Reservation Text Append")
-          var text = flowPanel.selectAll(".information")
-            .append("text")
-            .text('hello')
-          var reservationText = text
-            .attr('class', 'flowpaneltext')
-            .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
+          var text = flowPanel.append("text")
+            .attr("class", "flowpaneltext")
+            .text('hello');
+          //var reservationText = text
+          //  .attr('class', 'flowpaneltext')
+          //  .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
       }
     }
   } else if (props.properties.Institution){
@@ -654,10 +656,10 @@
   }
 };
 
-function removePanel(){
-  console.log('panel removed')
-  d3.select('.flowpaneltext').remove()
-}
+//function removePanel(){
+  //console.log('panel removed')
+  //d3.select('.flowpaneltext').remove()
+//}
   })();
 
 
