@@ -261,6 +261,7 @@
         .attr("class", "information")
         .attr("width", 395)
         .attr("height", 800)
+        .append('g')
         //.attr('x', 100)
         //.attr('y', 500);
       //Geo Albers Area Conic Projection
@@ -626,14 +627,19 @@
   };
 //we'll use this eventually
   function populatePanel(flowPanel, props, wisc, wiSource, wiReserv){
+    console.log('here')
     if (props.properties.NAMELSAD){
       var reservation;
+      //console.log('reached')
       for (reservation in wiReserv){
         if (props.properties.label == wiReserv[reservation].Label){
           console.log("Gets to final step in Reservation Text Append")
           var text = flowPanel.append("text")
             .append("p")
-            .attr("class", "flowpaneltext")
+            // .attr("x", 12)
+            // .attr("dy", ".35em")
+            .style("fill", "black")
+            .attr("class", "newtext")
             .text('hello');
           //var reservationText = text
           //  .attr('class', 'flowpaneltext')
