@@ -82,9 +82,7 @@ p {
 	display: inline-block;
 }
 .flowpaneltext {
-  background-color: #FFF0E6;
-	border: 2px solid #602F2D;
-  padding: 12px;
+  color: black;
 	display: inline-block;
 }
 .flowinfopanel {
