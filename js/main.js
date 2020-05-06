@@ -635,9 +635,9 @@
         if (props.properties.label == wiReserv[reservation].Label){
           console.log("Gets to final step in Reservation Text Append")
           var text = flowPanel.append("text")
-            .append("p")
-            // .attr("x", 12)
-            // .attr("dy", ".35em")
+            // .append("p")
+            .attr("x", 12)
+            .attr("dy", ".35em")
             .style("fill", "black")
             .attr("class", "newtext")
             .text('hello');
