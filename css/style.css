@@ -81,6 +81,12 @@ p {
 	padding: 12px;
 	display: inline-block;
 }
+#moundmini{
+	background-color: #ececf4;
+	border: 2px solid #602F2D;
+	padding: 12px;
+	display: inline-block;
+}
 .zoom{
 	background-color: #ececf4;
 	border: 2px solid #602F2D;
