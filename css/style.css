@@ -114,6 +114,11 @@ p {
     display: inline-block;
     margin-left: 40px;
 }
+#flowpanel {
+    height: 800px;
+    width: 400px;
+		overflow: scroll;
+}
 
 .state {
     fill: #EEE;
