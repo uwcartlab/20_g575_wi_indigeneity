@@ -630,26 +630,16 @@
   function populatePanel(flowPanel, props, wisc, wiSource, wiReserv){
     if (props.properties.NAMELSAD){
       var reservation;
+      var templist = [];
+      var item;
+      var counter = 0
       for (reservation in wiReserv){
         if (props.properties.label == wiReserv[reservation].Label){
+          templist.push(wiReserv[reservation])
           console.log("Gets to final step in Reservation Text Append")
+        };
+      for (item in templist){
           var text = flowPanel.append("text")
-            .append("p")
-            .attr("class", "flowpaneltext")
-            .text('');
-          //var reservationText = text
-          //  .attr('class', 'flowpaneltext')
-          //  .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
-      }
-    }
-  } else if (props.properties.Institution){
-    var instit;
-    var counter = 0
-    for (instit in wiSource){
-      if (props.properties.Name == wiSource[instit].Name){
-        console.log("Gets to final step in Institution Text Append")
-        var institutionText = flowPanel.append("text")
-          // .append("p")
           .attr("x", 25)
           .attr('y', function(d){
                 counter+=1
@@ -659,7 +649,29 @@
           .attr("dy", ".35em")
           // .style("fill", "black")
           .attr("class", "newtext")
+          .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
+          break
+      }
+    }
+  } else if (props.properties.Institution){
+    var instit;
+    var instcounter = 0
+    for (instit in wiSource){
+      if (props.properties.Name == wiSource[instit].Name){
+        console.log("Gets to final step in Institution Text Append")
+        var institutionText = flowPanel.append("text")
+          // .append("p")
+          .attr("x", 25)
+          .attr('y', function(d){
+                instcounter+=1
+                console.log(instcounter)
+                return 25+ (instcounter*15)
+              })
+          .attr("dy", ".35em")
+          // .style("fill", "black")
+          .attr("class", "newtext")
           .text("This is the "+wiSource[instit].Institution+".");
+          break
       }
     }
   }
