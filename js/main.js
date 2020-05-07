@@ -408,14 +408,12 @@
     var selected = d3.selectAll("." + props.properties.label)
       .style("stroke", "purple")
       .style("stroke-width", "1.5");
-    wiLabels(props);
     reservationLines(basemap, baseProjection, wiReserv, props, institutionsSource, lands);
     };
   function ReservHighlight_noLine(basemap, baseProjection, wiReserv, lands, wisc, props){
       var selected = d3.selectAll("." + props.properties.label)
         .style("stroke", "purple")
         .style("stroke-width", "1.5");
-      wiLabels(props);
       };
   // Create Dehighlight Function
   function ReservDehighlight(props){
