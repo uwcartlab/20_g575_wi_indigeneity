@@ -245,7 +245,7 @@
       //var transform = d3.event.transform;
       var basemap = d3.select("div#flowmap")
         .append("svg")
-        .attr("class", "flowmap")
+        .attr("class", "flowmap img-fluid")
         .attr("width", width)
         .attr("height", height)
         .attr('x', 100)
@@ -267,7 +267,7 @@
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
         .center([4.25, 44.90])
-        .scale(8800)
+        .scale(8700)
         .rotate([92.35, .5, -2])
         .translate([width / 2, height / 2]);
 
