@@ -633,12 +633,17 @@
         if (props.properties.label == wiReserv[reservation].Label){
           templist.push(wiReserv[reservation])
           console.log("Gets to final step in Reservation Text Append")
-        };
-      // var first = templist[0]
-      // console.log(first)
-      // for (item in templist){
+
+        }};
+      for (reservation in wiReserv){
+        if (props.properties.label == wiReserv[reservation].Label){
           var title = flowPanel.append("p")
-              .text("Example Repatriation to the " + wiReserv[reservation].Tribe + ":")
+            .text("Example Repatriation to the " + wiReserv[reservation].Tribe + ":")
+            break
+          }};
+      for (reservation in wiReserv){
+        if (props.properties.label == wiReserv[reservation].Label){
+
           var text = flowPanel.append("p")
           // .attr("x", 25)
           // .attr('y', function(d){
@@ -650,15 +655,20 @@
           // // .style("fill", "black")
           // .attr("class", "newtext")
           .text(wiReserv[reservation].CollectionHistory);
-          break
+          //break
       // }
-    }
+    }}
   } else if (props.properties.Institution){
     var instit;
+    var institList = [];
     // var instcounter = 0
     for (instit in wiSource){
       if (props.properties.Name == wiSource[instit].Name){
-        console.log("Gets to final step in Institution Text Append")
+        institList.push(wiSource[instit])
+      }};
+    for (instit in wiSource){
+      if (props.properties.Name == wiSource[instit].Name){
+        console.log(institList)
         var institutionText = flowPanel.append("p")
           // .append("p")
           // .attr("x", 25)
@@ -673,9 +683,9 @@
           .text("This is the "+wiSource[instit].Institution+".");
           break
       }
+     }
     }
   }
-};
 
 function removePanel(){
   console.log('panel removed')
@@ -920,6 +930,7 @@ function populatemoundPanel(mounds){
       // d3.select('col-md-4')
       //   .append('div', '#moundpanel')
       var dynamictext = d3.select("div#moundpanel")
+        .attr('class', 'moundpaneltext')
         // .append("p")
         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
     };
