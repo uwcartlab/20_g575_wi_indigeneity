@@ -257,10 +257,12 @@
         }))
         .append("g");
       var flowPanel = d3.select("div#flowpanel")
-        .append("svg")
-        .attr("class", "information")
-        .attr("width", 395)
-        .attr("height", 800)
+      //   .append("svg")
+      //   .attr("class", "information")
+      //   .attr("viewBox", "0 0 300 200")
+      //   .attr("preserveAspectRatio", "xMidYMid meet");
+        // .attr("width", 395)
+        // .attr("height", 800)
         //.attr('x', 100)
         //.attr('y', 500);
       //Geo Albers Area Conic Projection
@@ -641,17 +643,17 @@
       // var first = templist[0]
       // console.log(first)
       // for (item in templist){
-          var text = flowPanel.append("text")
-          .attr("x", 25)
-          .attr('y', function(d){
-                counter+=1
-                console.log(counter)
-                return 25+ (counter*15)
-              })
-          .attr("dy", ".35em")
-          // .style("fill", "black")
-          .attr("class", "newtext")
-          .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
+          var text = flowPanel.append("p")
+          // .attr("x", 25)
+          // .attr('y', function(d){
+          //       counter+=1
+          //       console.log(counter)
+          //       return 25+ (counter*15)
+          //     })
+          // .attr("dy", ".35em")
+          // // .style("fill", "black")
+          // .attr("class", "newtext")
+          .text(wiReserv[reservation].CollectionHistory);
           break
       // }
     }
