@@ -697,7 +697,7 @@ function removeinstPanel(){
       var width = 600,
         height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("div#main")
+      var basemap = d3.select(".aperture")
         .append("svg")
         .attr("id", "moundmap")
         .attr('class', 'aperture')
@@ -711,7 +711,7 @@ function removeinstPanel(){
         .append("g");
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
-        .center([3.35, 46.2])
+        .center([4.35, 44.2])
         .scale(5500)
         .rotate([92.35, 1.8, -1])
         .translate([width / 2, height / 2])
@@ -753,7 +753,7 @@ var extent;
           .style("fill", function(d){
               return "#ddd";
             })
-          .call(responsivefy)
+          //.call(responsivefy)
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
            moundmap_svg = d3.select("#main svg").attr("class", "zoom")
@@ -797,9 +797,9 @@ var extent;
 
   function zoomed() {
       if(this === mini_svg.node()) {
-        mini_svg.call(d3.zoom().on("zoom", function () {
-                mini_svg.attr("transform", d3.event.transform)
-        }))
+        //mini_svg.call(d3.zoom().on("zoom", function () {
+              //  mini_svg.attr("transform", d3.event.transform)
+      //  }))
             }
 
       if(!d3.event.sourceEvent || d3.event.sourceEvent.type === "brush") return;
@@ -819,45 +819,45 @@ var extent;
               .property("__zoom", t)
               .call(brush.move, [[t.x, t.y], [t.x + vb[2], t.y + vb[3]]]);
   };
-  function responsivefy(svg) {
-  // container will be the DOM element
-  // that the svg is appended to
-  // we then measure the container
-  // and find its aspect ratio
-  const container = d3.select(svg.node().parentNode),
-      width = parseInt(svg.style('width'), 10),
-      height = parseInt(svg.style('height'), 10),
-      aspect = width / height;
-
-  // set viewBox attribute to the initial size
-  // control scaling with preserveAspectRatio
-  // resize svg on inital page load
-  svg.attr('viewBox', `0 0 ${width} ${height}`)
-      .attr('preserveAspectRatio', 'xMinYMid')
-      .call(resize);
-
-  // add a listener so the chart will be resized
-  // when the window resizes
-  // multiple listeners for the same event type
-  // requires a namespace, i.e., 'click.foo'
-  // api docs: https://goo.gl/F3ZCFr
-  d3.select(window).on(
-      'resize.' + container.attr('id'),
-      resize
-  );
-
-  // this is the code that resizes the chart
-  // it will be called on load
-  // and in response to window resizes
-  // gets the width of the container
-  // and resizes the svg to fill it
-  // while maintaining a consistent aspect ratio
-  function resize() {
-      const w = parseInt(container.style('width'));
-      svg.attr('width', w);
-      svg.attr('height', Math.round(w / aspect));
-  }
-}
+//   function responsivefy(svg) {
+//   // container will be the DOM element
+//   // that the svg is appended to
+//   // we then measure the container
+//   // and find its aspect ratio
+//   const container = d3.select(svg.node().parentNode),
+//       width = parseInt(svg.style('width'), 10),
+//       height = parseInt(svg.style('height'), 10),
+//       aspect = width / height;
+//
+//   // set viewBox attribute to the initial size
+//   // control scaling with preserveAspectRatio
+//   // resize svg on inital page load
+//   svg.attr('viewBox', `0 0 ${width} ${height}`)
+//       .attr('preserveAspectRatio', 'xMinYMid')
+//       .call(resize);
+//
+//   // add a listener so the chart will be resized
+//   // when the window resizes
+//   // multiple listeners for the same event type
+//   // requires a namespace, i.e., 'click.foo'
+//   // api docs: https://goo.gl/F3ZCFr
+//   d3.select(window).on(
+//       'resize.' + container.attr('id'),
+//       resize
+//   );
+//
+//   // this is the code that resizes the chart
+//   // it will be called on load
+//   // and in response to window resizes
+//   // gets the width of the container
+//   // and resizes the svg to fill it
+//   // while maintaining a consistent aspect ratio
+//   function resize() {
+//       const w = parseInt(container.style('width'));
+//       svg.attr('width', w);
+//       svg.attr('height', Math.round(w / aspect));
+//   }
+// }
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
       legend.append("text").attr("x",-113).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
@@ -921,7 +921,7 @@ d3.select('.moundtext').remove()
 }
 
 
-    function populatemoundPanel(mounds){
+function populatemoundPanel(mounds){
       // d3.select('col-md-4')
       //   .append('div', '#moundpanel')
       var dynamictext = d3.select("div#moundpanel")
@@ -932,13 +932,11 @@ d3.select('.moundtext').remove()
 
 
 function mhighlight(props){
-  //console.log(props)
   var selected = d3.selectAll("." +props['SiteName'])
       .style("stroke", "red")
       .style("stroke-width", "2");
-      //choroLabel(props);
   };
-    // Create Dehighlight Function
+    // Create Dehighlight Functions
 function mdehighlight(props){
   var selected = d3.selectAll("."+props['SiteName'])
       .style("stroke", function(){
