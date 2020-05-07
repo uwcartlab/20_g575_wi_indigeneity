@@ -81,6 +81,14 @@ p {
 	padding: 12px;
 	display: inline-block;
 }
+#moundmini{
+	height: 233.433px;
+	width: 372.933px;
+	background-color: #ececf4;
+	border: 2px solid #602F2D;
+	padding: 12px;
+	display: inline-block;
+}
 .zoom{
 	background-color: #ececf4;
 	border: 2px solid #602F2D;
@@ -96,16 +104,10 @@ p {
 .newtext {
 	word-break:break-all;
 }
-.flowinfopanel {
+.col-md-4 {
   background-color: #FFF0E6;
 	border: 2px solid #602F2D;
-  padding: 12px;
-	display: inline-block;
-}
-.information {
-  background-color: #FFF0E6;
-	border: 2px solid #602F2D;
-  padding: 0px;
+  padding: 6px;
 	display: inline-block;
 }
 .flowmap{
