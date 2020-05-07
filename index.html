@@ -113,9 +113,9 @@
                 <div class="col-md-8">
                     <div id='flowmap'></div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 paneltext">
                   <h4>Repatriation Info</h4>
-                  <div id="flowpanel"></div>
+                  <div id="flowpanel"><em>Click on a Reservation or Institution to see more information.</div>
                 </div>
               </div>
               <div class="row" style="margin: 0 0 20px 0;"> <!-- this row contains the legend -->
@@ -167,9 +167,12 @@
                       <svg viewBox="0 0 400 250"><use xlink:href="#moundmap"></svg></div>
                 </div>
               </div>
-              <div class="row"> <!-- this row contains the panel and legend -->
+              <div class="row" style="padding: 0 0 2em 0"> <!-- this row contains the panel and legend -->
                 <div class="col-md-6">
-                  <div id="moundpanel"></div>
+                  <div class="paneltext">
+                      <h4>Mound Info</h4>
+                      <div id="moundpanel"><p><em>Hover over a point to see more information.</em></div>
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <svg id = 'moundlegend' style="width: 185px; height: 115px;"></svg>

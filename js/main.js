@@ -925,7 +925,6 @@ function populatemoundPanel(mounds){
       // d3.select('col-md-4')
       //   .append('div', '#moundpanel')
       var dynamictext = d3.select("div#moundpanel")
-        .attr('class', 'moundpaneltext')
         // .append("p")
         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
     };
