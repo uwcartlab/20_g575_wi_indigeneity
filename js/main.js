@@ -638,7 +638,9 @@
           templist.push(wiReserv[reservation])
           console.log("Gets to final step in Reservation Text Append")
         };
-      for (item in templist){
+      // var first = templist[0]
+      // console.log(first)
+      // for (item in templist){
           var text = flowPanel.append("text")
           .attr("x", 25)
           .attr('y', function(d){
@@ -651,7 +653,7 @@
           .attr("class", "newtext")
           .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
           break
-      }
+      // }
     }
   } else if (props.properties.Institution){
     var instit;
@@ -669,7 +671,7 @@
               })
           .attr("dy", ".35em")
           // .style("fill", "black")
-          .attr("class", "newtext")
+          .attr("class", "insttext")
           .text("This is the "+wiSource[instit].Institution+".");
           break
       }
