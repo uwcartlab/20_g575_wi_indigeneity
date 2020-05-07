@@ -72,11 +72,11 @@ p {
 	pointer-events: all;
 }
 
-.paneltext {
+/* .paneltext {
   background-color: #FFF0E6;
 	border: 2px solid #602F2D;
   padding: 12px;
-}
+} */
 
 .moundmap{
 	background-color: #ececf4;
@@ -102,7 +102,7 @@ p {
 }
 
 .flowpaneltext {
-  background-color: #000;
+	background-color: #FFF0E6;
 	border: 2px solid #602F2D;
   padding: 12px;
 	display: inline-block;
