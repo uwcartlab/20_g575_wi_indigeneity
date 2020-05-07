@@ -637,8 +637,10 @@
           var text = flowPanel.append("text")
             // .append("p")
             .attr("x", 25)
-            .attr('y', 25)
-            .attr("dy", ".35em")
+            .attr('y', function(d, i){
+              return 25 + (i*15)
+              })
+            // .attr("dy", ".35em")
             .style("fill", "black")
             .attr("class", "newtext")
             .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
