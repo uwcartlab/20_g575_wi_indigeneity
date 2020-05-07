@@ -919,37 +919,6 @@ var extent;
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
     }
 
-function populateffPanel(flowPanel, props, wisc, wiSource, wiReserv){
-  if (props.properties.NAMELSAD){
-    var reservation;
-    var templist = [];
-    var item;
-    var counter = 0
-    for (reservation in wiReserv){
-      if (props.properties.label == wiReserv[reservation].Label){
-        templist.push(wiReserv[reservation])
-        console.log("Gets to final step in Reservation Text Append")
-      };
-    // var first = templist[0]
-    // console.log(first)
-    // for (item in templist){
-        var text = flowPanel.append("text")
-        .attr("x", 25)
-        .attr('y', function(d){
-              counter+=1
-              console.log(counter)
-              return 25+ (counter*15)
-            })
-        .attr("dy", ".35em")
-        // .style("fill", "black")
-        .attr("class", "newtext")
-        .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
-        break
-    // }
-  }
-}
-};
-
 function removemoundPanel(){
 console.log('panel removed')
 d3.select('.moundtext').remove()
