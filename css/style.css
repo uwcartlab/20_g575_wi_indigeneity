@@ -102,16 +102,10 @@ p {
 .newtext {
 	word-break:break-all;
 }
-.flowinfopanel {
+.col-md-4 {
   background-color: #FFF0E6;
 	border: 2px solid #602F2D;
-  padding: 12px;
-	display: inline-block;
-}
-.information {
-  background-color: #FFF0E6;
-	border: 2px solid #602F2D;
-  padding: 0px;
+  padding: 6px;
 	display: inline-block;
 }
 .flowmap{
