@@ -908,44 +908,63 @@ var extent;
         })
         .on("mouseover", function(d){
           // updatePopup(d)
-          populatePanel(d)
+          populatemoundPanel(d)
           mhighlight(d.properties);
         })
         .on("mouseout", function(d){
-          removePanel(d)
+          removemoundPanel(d)
           mdehighlight(d.properties);
         })
         var desc = loc.append('desc')
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
     }
 
-//     function PopupContent(mounds){
-//       var dynamictext = d3.select("div#moundpanel")
-//         .attr('class', 'moundpaneltext')
-//         .append("p")
-//         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
-//     }
-// var popupContent = ''
-//     function updatePopup(mounds){
-//       console.log("sss")
-//       d3.select("#moundmap")
-//           var popupContent = new PopupContent(mounds)
-//       };
+function populateffPanel(flowPanel, props, wisc, wiSource, wiReserv){
+  if (props.properties.NAMELSAD){
+    var reservation;
+    var templist = [];
+    var item;
+    var counter = 0
+    for (reservation in wiReserv){
+      if (props.properties.label == wiReserv[reservation].Label){
+        templist.push(wiReserv[reservation])
+        console.log("Gets to final step in Reservation Text Append")
+      };
+    // var first = templist[0]
+    // console.log(first)
+    // for (item in templist){
+        var text = flowPanel.append("text")
+        .attr("x", 25)
+        .attr('y', function(d){
+              counter+=1
+              console.log(counter)
+              return 25+ (counter*15)
+            })
+        .attr("dy", ".35em")
+        // .style("fill", "black")
+        .attr("class", "newtext")
+        .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
+        break
+    // }
+  }
+}
+};
 
-    function populatePanel(mounds){
+function removemoundPanel(){
+console.log('panel removed')
+d3.select('.moundtext').remove()
+}
+
+
+    function populatemoundPanel(mounds){
       // d3.select('col-md-4')
       //   .append('div', '#moundpanel')
       var dynamictext = d3.select("div#moundpanel")
         .attr('class', 'moundpaneltext')
-        .append("p")
+        // .append("p")
         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
     };
 
-  function removePanel(mounds){
-    console.log('nnnnn')
-    // popupContent = ""
-    d3.select('.moundpaneltext').remove()
-  }
 
 function mhighlight(props){
   //console.log(props)
