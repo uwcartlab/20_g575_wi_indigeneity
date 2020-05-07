@@ -703,7 +703,7 @@ function removeinstPanel(){
       var width = 600,
         height = 500;
       // Create map svg container and set projection using d3 -- Push translated TopoJSON data (see week 9)
-      var basemap = d3.select("div#main")
+      var basemap = d3.select(".aperture")
         .append("svg")
         .attr("id", "moundmap")
         .attr('class', 'aperture')
