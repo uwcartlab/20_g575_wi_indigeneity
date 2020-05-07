@@ -640,7 +640,6 @@
         }
       var counter = 0
       for (item in templist){
-
           var text = flowPanel.append("text")
             // .append("p")
             .attr("x", 25)
@@ -660,12 +659,21 @@
     }
   } else if (props.properties.Institution){
     var instit;
+    var counter = 0
     for (instit in wiSource){
       if (props.properties.Name == wiSource[instit].Name){
         console.log("Gets to final step in Institution Text Append")
-        var institutionText = flowPanel.selectAll(".information")
-          .attr('class', 'flowpaneltext')
-          .append("p")
+        var institutionText = flowPanel.append("text")
+          // .append("p")
+          .attr("x", 25)
+          .attr('y', function(d){
+                counter+=1
+                console.log(counter)
+                return 25+ (counter*15)
+              })
+          .attr("dy", ".35em")
+          // .style("fill", "black")
+          .attr("class", "newtext")
           .text("This is the "+wiSource[instit].Institution+".");
       }
     }
