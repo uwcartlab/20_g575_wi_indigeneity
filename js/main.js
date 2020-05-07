@@ -388,6 +388,8 @@
                       ReservDehighlight(d);
                       InstDehighlight(wisc, d);
                       InstHighlight(flowPanel, basemap, baseProjection, wisc, d, wiSource, wiReserv);
+                      removePanel(d)
+                      removeinstPanel(d)
                       populatePanel(flowPanel, d, wisc, wiSource, wiReserv)
                   })
                 .on("mouseout", function(d){
@@ -679,10 +681,14 @@
   }
 };
 
-//function removePanel(){
-  //console.log('panel removed')
-  //d3.select('.flowpaneltext').remove()
-//}
+function removePanel(){
+  console.log('panel removed')
+  d3.select('.newtext').remove()
+}
+function removeinstPanel(){
+  console.log('nng')
+  d3.select('.insttext').remove()
+}
   })();
 
 
