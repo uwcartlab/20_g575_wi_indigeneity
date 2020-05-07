@@ -717,7 +717,7 @@ function removeinstPanel(){
         .append("g");
       //Geo Albers Area Conic Projection
       var baseProjection = d3.geoAlbers()
-        .center([3.35, 46.2])
+        .center([3.35, 44.2])
         .scale(5500)
         .rotate([92.35, 1.8, -1])
         .translate([width / 2, height / 2])
