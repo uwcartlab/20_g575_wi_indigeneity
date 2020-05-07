@@ -261,7 +261,6 @@
         .attr("class", "information")
         .attr("width", 395)
         .attr("height", 800)
-        .append('g')
         //.attr('x', 100)
         //.attr('y', 500);
       //Geo Albers Area Conic Projection
@@ -359,9 +358,9 @@
               ReservHighlight(basemap, baseProjection, wiReserv, lands, institutionsSource, d);
               populatePanel(flowPanel,d, wisc, wiSource, wiReserv);
             })
-            //.on("mouseout", function(d){
-            //  ReservDehighlight(d);
-            //})
+            .on("mouseout", function(d){
+              ReservDehighlight_noLine(d);
+            })
             //.on("mousemove", moveLabel);
             var desc = reservation.append("desc")
               .text('{"stroke": "#555", "stroke-width":"0.5px"}');
@@ -391,7 +390,9 @@
                       InstHighlight(flowPanel, basemap, baseProjection, wisc, d, wiSource, wiReserv);
                       populatePanel(flowPanel, d, wisc, wiSource, wiReserv)
                   })
-                  //.on("mouseout", removePanel());
+                .on("mouseout", function(d){
+                  InstDehighlight_noLine(wisc,d)
+                  });
             var desc = institution.append("desc")
               .text('{"stroke": "#FFFAFA", "stroke-width":"0.5px"}');
           };
@@ -627,31 +628,15 @@
   };
 //we'll use this eventually
   function populatePanel(flowPanel, props, wisc, wiSource, wiReserv){
-    console.log('here')
     if (props.properties.NAMELSAD){
       var reservation;
-      var item;
-      var templist = [];
-      //console.log('reached')
       for (reservation in wiReserv){
         if (props.properties.label == wiReserv[reservation].Label){
-          templist.push(wiReserv[reservation])
           console.log("Gets to final step in Reservation Text Append")
-        }
-      var counter = 0
-      for (item in templist){
           var text = flowPanel.append("text")
-            // .append("p")
-            .attr("x", 25)
-            .attr('y', function(d){
-                  counter+=1
-                  console.log(counter)
-                  return 25+ (counter*15)
-                })
-            .attr("dy", ".35em")
-            // .style("fill", "black")
-            .attr("class", "newtext")
-            .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
+            .append("p")
+            .attr("class", "flowpaneltext")
+            .text('');
           //var reservationText = text
           //  .attr('class', 'flowpaneltext')
           //  .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
@@ -752,10 +737,12 @@ var extent;
           .style("fill", function(d){
               return "#ddd";
             })
+          .call(responsivefy)
           var desc = wiPath.append("desc")
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
            moundmap_svg = d3.select("#main svg").attr("class", "zoom")
            mini_svg   = d3.select("#moundmini svg").append("g").attr("class", "zoom")
+
               // store the image's initial viewBox
              viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
              extent = [
@@ -792,9 +779,11 @@ var extent;
                     .property("__zoom", t);
   }; // brushed()
 
-    function zoomed() {
+  function zoomed() {
       if(this === mini_svg.node()) {
-            return moundmap_svg.call(zoom.transform, d3.event.transform);
+        mini_svg.call(d3.zoom().on("zoom", function () {
+                mini_svg.attr("transform", d3.event.transform)
+        }))
             }
 
       if(!d3.event.sourceEvent || d3.event.sourceEvent.type === "brush") return;
@@ -814,7 +803,45 @@ var extent;
               .property("__zoom", t)
               .call(brush.move, [[t.x, t.y], [t.x + vb[2], t.y + vb[3]]]);
   };
+  function responsivefy(svg) {
+  // container will be the DOM element
+  // that the svg is appended to
+  // we then measure the container
+  // and find its aspect ratio
+  const container = d3.select(svg.node().parentNode),
+      width = parseInt(svg.style('width'), 10),
+      height = parseInt(svg.style('height'), 10),
+      aspect = width / height;
 
+  // set viewBox attribute to the initial size
+  // control scaling with preserveAspectRatio
+  // resize svg on inital page load
+  svg.attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('preserveAspectRatio', 'xMinYMid')
+      .call(resize);
+
+  // add a listener so the chart will be resized
+  // when the window resizes
+  // multiple listeners for the same event type
+  // requires a namespace, i.e., 'click.foo'
+  // api docs: https://goo.gl/F3ZCFr
+  d3.select(window).on(
+      'resize.' + container.attr('id'),
+      resize
+  );
+
+  // this is the code that resizes the chart
+  // it will be called on load
+  // and in response to window resizes
+  // gets the width of the container
+  // and resizes the svg to fill it
+  // while maintaining a consistent aspect ratio
+  function resize() {
+      const w = parseInt(container.style('width'));
+      svg.attr('width', w);
+      svg.attr('height', Math.round(w / aspect));
+  }
+}
   function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
       legend.append("text").attr("x",-113).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
