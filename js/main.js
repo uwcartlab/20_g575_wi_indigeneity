@@ -630,27 +630,18 @@
     console.log('here')
     if (props.properties.NAMELSAD){
       var reservation;
-      var item;
-      var templist = [];
       //console.log('reached')
       for (reservation in wiReserv){
         if (props.properties.label == wiReserv[reservation].Label){
-          templist.push(wiReserv[reservation])
           console.log("Gets to final step in Reservation Text Append")
-        }
-      var counter = 0
-      for (item in templist){
-
           var text = flowPanel.append("text")
             // .append("p")
             .attr("x", 25)
-            .attr('y', function(d){
-                  counter+=1
-                  console.log(counter)
-                  return 25+ (counter*15)
-                })
-            .attr("dy", ".35em")
-            // .style("fill", "black")
+            .attr('y', function(d, i){
+              return 25 + (i*15)
+              })
+            // .attr("dy", ".35em")
+            .style("fill", "black")
             .attr("class", "newtext")
             .text("Notes: "+wiReserv[reservation].CollectionHistory+".");
           //var reservationText = text
