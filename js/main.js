@@ -390,6 +390,8 @@
                       ReservDehighlight(d);
                       InstDehighlight(wisc, d);
                       InstHighlight(flowPanel, basemap, baseProjection, wisc, d, wiSource, wiReserv);
+                      removePanel(d)
+                      removeinstPanel(d)
                       populatePanel(flowPanel, d, wisc, wiSource, wiReserv)
                   })
                 .on("mouseout", function(d){
@@ -681,10 +683,14 @@
   }
 };
 
-//function removePanel(){
-  //console.log('panel removed')
-  //d3.select('.flowpaneltext').remove()
-//}
+function removePanel(){
+  console.log('panel removed')
+  d3.select('.newtext').remove()
+}
+function removeinstPanel(){
+  console.log('nng')
+  d3.select('.insttext').remove()
+}
   })();
 
 
@@ -904,44 +910,32 @@ var extent;
         })
         .on("mouseover", function(d){
           // updatePopup(d)
-          populatePanel(d)
+          populatemoundPanel(d)
           mhighlight(d.properties);
         })
         .on("mouseout", function(d){
-          removePanel(d)
+          removemoundPanel(d)
           mdehighlight(d.properties);
         })
         var desc = loc.append('desc')
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
     }
 
-//     function PopupContent(mounds){
-//       var dynamictext = d3.select("div#moundpanel")
-//         .attr('class', 'moundpaneltext')
-//         .append("p")
-//         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
-//     }
-// var popupContent = ''
-//     function updatePopup(mounds){
-//       console.log("sss")
-//       d3.select("#moundmap")
-//           var popupContent = new PopupContent(mounds)
-//       };
+function removemoundPanel(){
+console.log('panel removed')
+d3.select('.moundtext').remove()
+}
 
-    function populatePanel(mounds){
+
+    function populatemoundPanel(mounds){
       // d3.select('col-md-4')
       //   .append('div', '#moundpanel')
       var dynamictext = d3.select("div#moundpanel")
         .attr('class', 'moundpaneltext')
-        .append("p")
+        // .append("p")
         .text("This mound group is located in "+ mounds.properties['County']+" county at the "+mounds.properties['Present Name']+" site. The site has "+ mounds.properties["Sum"]+" mounds listed with status: "+mounds.properties['status']+".");
     };
 
-  function removePanel(mounds){
-    console.log('nnnnn')
-    // popupContent = ""
-    d3.select('.moundpaneltext').remove()
-  }
 
 function mhighlight(props){
   //console.log(props)
