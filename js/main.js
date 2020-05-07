@@ -307,15 +307,7 @@
         //buildInfoPanel(wiSource, wiInst, wiReserv)
         };
       };
-  function setInfoPanel(width, height){
-    var flowPanel = d3.select("div#flowpanel")
-    .append("svg")
-    .attr("class", "flowpaneltext")
-    .attr("width", 250)
-    .attr("height", 500)
-    .attr('x', 250)
-    .attr('y', 500)
-  };
+
   function getWisconsin(wisc, basemap, path){
         var wiPath = basemap.selectAll(".counties")
           .data(wisc)
@@ -645,6 +637,8 @@
       // var first = templist[0]
       // console.log(first)
       // for (item in templist){
+          var title = flowPanel.append("p")
+              .text("Example Repatriation to the " + wiReserv[reservation].Tribe + ":")
           var text = flowPanel.append("p")
           // .attr("x", 25)
           // .attr('y', function(d){
@@ -661,21 +655,21 @@
     }
   } else if (props.properties.Institution){
     var instit;
-    var instcounter = 0
+    // var instcounter = 0
     for (instit in wiSource){
       if (props.properties.Name == wiSource[instit].Name){
         console.log("Gets to final step in Institution Text Append")
-        var institutionText = flowPanel.append("text")
+        var institutionText = flowPanel.append("p")
           // .append("p")
-          .attr("x", 25)
-          .attr('y', function(d){
-                instcounter+=1
-                console.log(instcounter)
-                return 25+ (instcounter*15)
-              })
-          .attr("dy", ".35em")
-          // .style("fill", "black")
-          .attr("class", "insttext")
+          // .attr("x", 25)
+          // .attr('y', function(d){
+          //       instcounter+=1
+          //       console.log(instcounter)
+          //       return 25+ (instcounter*15)
+          //     })
+          // .attr("dy", ".35em")
+          // // .style("fill", "black")
+          // .attr("class", "insttext")
           .text("This is the "+wiSource[instit].Institution+".");
           break
       }
