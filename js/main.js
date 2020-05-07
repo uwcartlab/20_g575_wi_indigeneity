@@ -300,6 +300,8 @@
               InstDehighlight();
               ReservDehighlight(d);
               ReservHighlight(basemap, baseProjection, wiReserv, lands, institutionsSource, d);
+              removePanel(d)
+              removeinstPanel(d)
               populatePanel(flowPanel,d, wisc, wiSource, wiReserv);
             })
             .on("mouseout", function(d){  //Mouseout Events
@@ -525,7 +527,7 @@
       for (reservation in wiReserv){
         if (props.properties.label == wiReserv[reservation].Label){
           var title = flowPanel.append("p")
-            .text("Example Repatriation to the " + wiReserv[reservation].Tribe + ":")  //Sets Title of Info Panel
+            .text("Wisconsin Repatriations to the " + wiReserv[reservation].Tribe + ":")  //Sets Title of Info Panel
             break
           }};
       for (reservation in wiReserv){
@@ -551,12 +553,10 @@
     }
   }
 function removePanel(){
-  console.log('panel removed')
-  d3.select('.newtext').remove()
-}
+  $('#flowpanel').html(" ")
+};
 function removeinstPanel(){
-  console.log('nng')
-  d3.select('.insttext').remove()
+  $('#flowpanel').html(" ")
 }
   })();
 //Wrapper Function for Mound Map
