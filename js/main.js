@@ -631,7 +631,6 @@ function getWisconsin(wisc, basemap, path){
             .text('{"stroke": "#AAA", "stroke-width":"0.5px"}')
            moundmap_svg = d3.select("#main svg").attr("class", "zoom")
            mini_svg   = d3.select("#moundmini svg").append("g").attr("class", "zoom")
-
               // store the image's initial viewBox
              viewbox = moundmap_svg.attr("viewBox").split(' ').map(d => +d)
              extent = [
