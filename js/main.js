@@ -542,14 +542,25 @@
       if (props.properties.Name == wiSource[instit].Name){  //Gets Data
         institList.push(wiSource[instit])
       }};
-    for (instit in wiSource){
+    for (instit in wiSource){  //Title for Instit
       if (props.properties.Name == wiSource[instit].Name){
-        console.log(institList)
-        var institutionText = flowPanel.append("p")
-          .text("This is the "+wiSource[instit].Institution+".");
+        var institutionName = flowPanel.append("p")
+          .text(""+wiSource[instit].Institution+" Object Origins: ");
           break
       }
      }
+     for (instit in wiSource){  //Populate Min Number Indiv for Instit
+       if (props.properties.Name == wiSource[instit].Name){
+         var institutionMNI = flowPanel.append("p")
+           .text("Minimum number of individuals from "+wiSource[instit].County+": "+wiSource[instit].MNI);
+       }
+      }
+      for (instit in wiSource){  //Populate Assoc Funerary Object Data for Instit
+        if (props.properties.Name == wiSource[instit].Name){
+          var institutionAFO = flowPanel.append("p")
+            .text("Associated Funerary Objects from "+wiSource[instit].County+": "+wiSource[instit].AFO);
+        }
+       }
     }
   }
 function removePanel(){
@@ -673,13 +684,13 @@ function zoomed() {
 function drawLocations(mounds, basemap, baseProjection) {
       var legend = d3.select("#moundlegend")
       legend.append("text").attr("x",-113).attr("y",9).attr("transform", "rotate(-90)").text("Mound status").style("font-size", "15px").style("font-weight", "bold").attr("alignment-baseline","middle")
-      legend.append("circle").attr("cx",30).attr("cy",28).attr("r", 6).style("fill", "green")
-      legend.append("circle").attr("cx",30).attr("cy",48).attr("r", 6).style("fill", "yellow")
-      legend.append("circle").attr("cx",30).attr("cy",68).attr("r", 6).style("fill", "gray")
-      legend.append("circle").attr("cx",30).attr("cy",88).attr("r", 6).style("fill", "black")
+      legend.append("circle").attr("cx",30).attr("cy",28).attr("r", 6).style("fill", "#1f78b4")
+      legend.append("circle").attr("cx",30).attr("cy",48).attr("r", 6).style("fill", "#a6cee3")
+      legend.append("circle").attr("cx",30).attr("cy",68).attr("r", 6).style("fill", "#b2df8a")
+      legend.append("circle").attr("cx",30).attr("cy",88).attr("r", 6).style("fill", "#33a02c")
       legend.append("text").attr("x", 40).attr("y", 29).text("Intact").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 40).attr("y", 49).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
-      legend.append("text").attr("x", 40).attr("y", 69).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 49).text("Partially Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
+      legend.append("text").attr("x", 40).attr("y", 69).text("Unknown").style("font-size", "15px").attr("alignment-baseline","middle")
       legend.append("text").attr("x", 40).attr("y", 89).text("Destroyed").style("font-size", "15px").attr("alignment-baseline","middle")
 
       var loc = basemap.selectAll("circle")
@@ -698,18 +709,20 @@ function drawLocations(mounds, basemap, baseProjection) {
         })
         .style("fill", function(d) {
           if(d.properties['status']=="intact"){
-            return "green"
+            return "#1f78b4"
           }
           if(d.properties['status']=="destroyed"){
-            return "black"
+            return "#33a02c"
           }
           if(d.properties['status']=="unknown"){
-            return "yellow"
+            return "#b2df8a"
           }
           if(d.properties['status']=='partially destroyed'){
-            return "gray"
+            return "#a6cee3"
           }
         })
+        .style("stroke", "#999")
+        .style("stroke-width", 0.25)
         .on("mouseover", function(d){
           populatemoundPanel(d)
           mhighlight(d.properties);
@@ -719,7 +732,7 @@ function drawLocations(mounds, basemap, baseProjection) {
           mdehighlight(d.properties);
         })
         var desc = loc.append('desc')
-            .text('{"stroke": "#AAA", "stroke-width":"0.1px"}')
+            .text('{"stroke": "#999", "stroke-width":"0.25px"}')
     };
 function removemoundPanel(){
 console.log('panel removed')
@@ -732,7 +745,7 @@ function populatemoundPanel(mounds){
 };
 function mhighlight(props){
   var selected = d3.selectAll("." +props['SiteName'])
-      .style("stroke", "red")
+      .style("stroke", "purple")
       .style("stroke-width", ".42");
 };
 // Create Dehighlight Functions
