@@ -796,11 +796,6 @@ var extent;
   }; // brushed()
 
   function zoomed() {
-      if(this === mini_svg.node()) {
-        //mini_svg.call(d3.zoom().on("zoom", function () {
-              //  mini_svg.attr("transform", d3.event.transform)
-      //  }))
-            }
 
       if(!d3.event.sourceEvent || d3.event.sourceEvent.type === "brush") return;
 
