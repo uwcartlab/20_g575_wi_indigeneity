@@ -942,7 +942,7 @@ function mhighlight(props){
       .style("stroke-width", "2");
       //choroLabel(props);
   };
-    // Create Dehighlight Function
+    // Create Dehighlight Functions
 function mdehighlight(props){
   var selected = d3.selectAll("."+props['SiteName'])
       .style("stroke", function(){
