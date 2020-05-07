@@ -358,9 +358,9 @@
               ReservHighlight(basemap, baseProjection, wiReserv, lands, institutionsSource, d);
               populatePanel(flowPanel,d, wisc, wiSource, wiReserv);
             })
-            //.on("mouseout", function(d){
-            //  ReservDehighlight(d);
-            //})
+            .on("mouseout", function(d){
+              ReservDehighlight_noLine(d);
+            })
             //.on("mousemove", moveLabel);
             var desc = reservation.append("desc")
               .text('{"stroke": "#555", "stroke-width":"0.5px"}');
@@ -390,7 +390,9 @@
                       InstHighlight(flowPanel, basemap, baseProjection, wisc, d, wiSource, wiReserv);
                       populatePanel(flowPanel, d, wisc, wiSource, wiReserv)
                   })
-                  //.on("mouseout", removePanel());
+                .on("mouseout", function(d){
+                  InstDehighlight_noLine(wisc,d)
+                  });
             var desc = institution.append("desc")
               .text('{"stroke": "#FFFAFA", "stroke-width":"0.5px"}');
           };
